@@ -1,6 +1,8 @@
 # Unit 1 Final Project
 
 ## Feature Requirements
+2 primary screens
+
 * Stopwatch
   * Laps
   * Pause

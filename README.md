@@ -12,7 +12,7 @@
   * User can select from preset timers
   * User can set a one time timer
   * User can pause timer
-  * Special events countdown
+  * Special events countdown (graduation, birthday, labor day)
 
 ## Technical Requirements
 * NSTimer or alternative (CADisplayLink, performSelector:)

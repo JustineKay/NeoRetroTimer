@@ -1,25 +1,270 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="D9c-cY-1N0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Stopwatch-->
+        <scene sceneID="hJX-Lq-K7T">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <navigationController id="UcV-YE-d7N" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Stopwatch" id="sGz-99-ITj"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="06l-AR-OBM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Beo-F0-gsW" kind="relationship" relationship="rootViewController" id="Q4E-vQ-sw7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6v-zE-OCp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="315" y="137"/>
+        </scene>
+        <!--Stopwatch-->
+        <scene sceneID="BXt-It-ALR">
+            <objects>
+                <tableViewController title="Stopwatch" id="Beo-F0-gsW" customClass="StopwatchTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="gYR-3Q-KhX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="qdk-Ef-S9X" userLabel="Header View">
+                            <rect key="frame" x="0.0" y="64" width="600" height="249"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.00" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toE-Or-8o7">
+                                    <rect key="frame" x="20" y="50" width="560" height="88"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="75"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZJ-lo-zvc" userLabel="Start/Pause Button">
+                                    <rect key="frame" x="260" y="199" width="81" height="30"/>
+                                    <state key="normal" title="Start/Pause">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6f-Mw-Pv8">
+                                    <rect key="frame" x="151" y="197" width="34" height="30"/>
+                                    <state key="normal" title="reset">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoT-6m-p26">
+                                    <rect key="frame" x="416" y="199" width="30" height="30"/>
+                                    <state key="normal" title="lap">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="centerX" secondItem="2ZJ-lo-zvc" secondAttribute="centerX" id="3EQ-Jj-P2p"/>
+                                <constraint firstAttribute="bottom" secondItem="hoT-6m-p26" secondAttribute="bottom" constant="20" id="5AD-KZ-nzW"/>
+                                <constraint firstItem="toE-Or-8o7" firstAttribute="leading" secondItem="qdk-Ef-S9X" secondAttribute="leading" constant="20" id="A62-RD-Arc"/>
+                                <constraint firstAttribute="bottom" secondItem="2ZJ-lo-zvc" secondAttribute="bottom" constant="20" id="ALi-8u-SYb"/>
+                                <constraint firstAttribute="bottom" secondItem="J6f-Mw-Pv8" secondAttribute="bottom" constant="22" id="HvS-86-23N"/>
+                                <constraint firstItem="hoT-6m-p26" firstAttribute="leading" secondItem="2ZJ-lo-zvc" secondAttribute="trailing" constant="75" id="KcY-T8-Vur"/>
+                                <constraint firstItem="toE-Or-8o7" firstAttribute="top" secondItem="qdk-Ef-S9X" secondAttribute="top" constant="50" id="jeo-66-2IY"/>
+                                <constraint firstAttribute="trailing" secondItem="toE-Or-8o7" secondAttribute="trailing" constant="20" id="mA9-am-fF5"/>
+                                <constraint firstItem="2ZJ-lo-zvc" firstAttribute="leading" secondItem="J6f-Mw-Pv8" secondAttribute="trailing" constant="75" id="zz2-Q1-Z98"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="u4h-7X-99A">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u4h-7X-99A" id="IdY-eL-eeA">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Beo-F0-gsW" id="GZD-El-mCi"/>
+                            <outlet property="delegate" destination="Beo-F0-gsW" id="UjN-2a-Ljw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Nsj-bJ-BTH"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jVU-mc-0Mb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="963" y="137"/>
+        </scene>
+        <!--Timer-->
+        <scene sceneID="ILG-S2-2vR">
+            <objects>
+                <viewController title="Timer" id="VOK-Pf-7TD" customClass="TimerHomepageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gcb-Iw-zBD"/>
+                        <viewControllerLayoutGuide type="bottom" id="3wq-JR-U6L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qro-3B-UCe" userLabel="Timer Background View">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pt9-ay-sVV" userLabel="Timer View">
+                                <rect key="frame" x="200" y="104" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="GOU-yt-mDO"/>
+                                    <constraint firstAttribute="width" constant="200" id="Ufe-45-dvR"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfV-3O-MOv" userLabel="Time Label">
+                                <rect key="frame" x="267" y="193" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Timer label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvx-OY-pP9">
+                                <rect key="frame" x="231" y="148" width="138" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-7Y-7IG" userLabel="Reset Button">
+                                <rect key="frame" x="283" y="239" width="34" height="30"/>
+                                <state key="normal" title="reset">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10s-kP-wGz" userLabel="Start/Pause Button">
+                                <rect key="frame" x="260" y="329" width="81" height="30"/>
+                                <state key="normal" title="Start/Pause">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CH0-w4-Swk" userLabel="Preset Timer List">
+                                <rect key="frame" x="140" y="389" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="461954698.26410902">
+                                    <!--2015-08-22 16:44:58 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="uvx-OY-pP9" secondAttribute="centerX" id="0fO-gB-6G7"/>
+                            <constraint firstAttribute="centerX" secondItem="pt9-ay-sVV" secondAttribute="centerX" id="2g4-6f-RaE"/>
+                            <constraint firstItem="CH0-w4-Swk" firstAttribute="top" secondItem="10s-kP-wGz" secondAttribute="bottom" constant="30" id="HkN-n4-ui6"/>
+                            <constraint firstItem="pt9-ay-sVV" firstAttribute="centerY" secondItem="CfV-3O-MOv" secondAttribute="centerY" constant="0.5" id="LoD-PQ-O0t"/>
+                            <constraint firstAttribute="centerX" secondItem="10s-kP-wGz" secondAttribute="centerX" id="Sc8-Za-uQb"/>
+                            <constraint firstItem="pt9-ay-sVV" firstAttribute="top" secondItem="Gcb-Iw-zBD" secondAttribute="bottom" constant="40" id="cki-sp-k7p"/>
+                            <constraint firstItem="TAG-7Y-7IG" firstAttribute="top" secondItem="CfV-3O-MOv" secondAttribute="bottom" constant="25" id="h7u-UC-I6v"/>
+                            <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="TAG-7Y-7IG" secondAttribute="centerX" id="iEf-cb-K3g"/>
+                            <constraint firstAttribute="centerX" secondItem="CH0-w4-Swk" secondAttribute="centerX" id="jfz-IF-IpL"/>
+                            <constraint firstItem="CfV-3O-MOv" firstAttribute="top" secondItem="uvx-OY-pP9" secondAttribute="bottom" constant="24" id="kTb-qG-SXR"/>
+                            <constraint firstItem="10s-kP-wGz" firstAttribute="top" secondItem="pt9-ay-sVV" secondAttribute="bottom" constant="25" id="mGP-eG-Ryd"/>
+                            <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="CfV-3O-MOv" secondAttribute="centerX" id="vfY-1W-b99"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="BRy-Xp-X0O">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fYj-5c-bqL">
+                            <connections>
+                                <segue destination="0sM-NC-Wgh" kind="presentation" id="6wI-g6-uzu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="stb-k5-5Az" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="963" y="871"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WPJ-7U-KUA">
+            <objects>
+                <navigationController id="0sM-NC-Wgh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QVL-CE-9O1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="THX-zg-zZY" kind="relationship" relationship="rootViewController" id="PbD-cV-J0g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCz-9E-rXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1619" y="871"/>
+        </scene>
+        <!--Set Timer View Controller-->
+        <scene sceneID="IZV-Ny-l2L">
+            <objects>
+                <viewController id="THX-zg-zZY" customClass="SetTimerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SiN-aQ-kgW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tz8-rc-HYS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zXL-gG-dnH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Save timer as... " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WTR-ns-stD">
+                                <rect key="frame" x="140" y="164" width="321" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="321" id="JWG-Al-vFe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-sD-o1j">
+                                <rect key="frame" x="140" y="219" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="461954026.02678198">
+                                    <!--2015-08-22 16:33:46 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="WTR-ns-stD" secondAttribute="centerX" id="0ve-YZ-DxX"/>
+                            <constraint firstItem="WTR-ns-stD" firstAttribute="top" secondItem="SiN-aQ-kgW" secondAttribute="bottom" constant="100" id="81p-v4-aek"/>
+                            <constraint firstAttribute="centerY" secondItem="2ta-sD-o1j" secondAttribute="centerY" id="Kry-oe-WA7"/>
+                            <constraint firstAttribute="centerX" secondItem="2ta-sD-o1j" secondAttribute="centerX" id="aPT-Ba-JLx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ie0-4J-odi">
+                        <barButtonItem key="leftBarButtonItem" title="Back" systemItem="cancel" id="XyM-zd-azA"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" systemItem="done" id="MeB-NN-l6n"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aGJ-Mg-caM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2287" y="871"/>
+        </scene>
+        <!--Timer-->
+        <scene sceneID="Il2-jW-KOa">
+            <objects>
+                <navigationController id="aS8-JE-0vy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Timer" id="TKJ-iQ-TGe"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tfv-x2-O07">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VOK-Pf-7TD" kind="relationship" relationship="rootViewController" id="j0K-zF-Cdw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rbx-Lf-6h3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="315" y="871"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yzf-WT-cVh">
+            <objects>
+                <tabBarController id="D9c-cY-1N0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AhT-6I-KbB"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="TUG-2R-0SJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="aS8-JE-0vy" kind="relationship" relationship="viewControllers" id="9b6-sw-Vk1"/>
+                        <segue destination="UcV-YE-d7N" kind="relationship" relationship="viewControllers" id="dko-wB-Nan"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sM3-xK-Nxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-441" y="462"/>
         </scene>
     </scenes>
 </document>

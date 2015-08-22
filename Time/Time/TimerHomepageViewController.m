@@ -7,6 +7,7 @@
 //
 
 #import "TimerHomepageViewController.h"
+#import "PresetTimerData.h"
 
 @interface TimerHomepageViewController ()
 @property (weak, nonatomic) IBOutlet UIView *timerBackgroundView;
@@ -21,9 +22,10 @@
 
 @implementation TimerHomepageViewController
 
+//NSString stringwithformat take a number and pass it as a string for timer counter
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.timerPickerData = @[@"Popcorn   00.03.00", @"Laundry-Washer   00.30.00", @"Laundry-Dryer   00.25.00"];
     

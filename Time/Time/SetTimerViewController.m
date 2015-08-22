@@ -7,6 +7,7 @@
 //
 
 #import "SetTimerViewController.h"
+#import "PresetTimerData.h"
 
 @interface SetTimerViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *userInputTextField;
@@ -20,13 +21,11 @@
 
 @implementation SetTimerViewController
 
+//To access the singleton: [PresetTimerData sharedModel] + .timerName or .time or .userPresetTimers
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.pickerData = @[@[ @(00), @(01), @(02), @(03), @(04), @(05)],
-//                        @[ @(00), @(01), @(02), @(03), @(04), @(05)],
-//                        @[ @(00), @(01), @(02), @(03), @(04), @(05)]
-//                        ];
     self.pickerData = @[@[ @"00", @"01", @"02", @"03", @"04", @"05"],
                         @[ @"00", @"01", @"02", @"03", @"04", @"05"],
                         @[ @"00", @"01", @"02", @"03", @"04", @"05"]

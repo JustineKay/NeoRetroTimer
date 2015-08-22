@@ -10,9 +10,6 @@
 
 @interface PresetTimer : NSObject
 @property (nonatomic) NSString *timerName;
-@property (nonatomic) NSDate *time;
-
-//singleton with an array of preset timers; picker gets populated based on array;
-//NSString stringwithformat take a number and pass it as a string for u
+@property (nonatomic) NSString *time;
 
 @end

@@ -24,10 +24,14 @@
 
 //NSString stringwithformat take a number and pass it as a string for timer counter
 
+//To access the singleton: [PresetTimerData sharedModel] + .timerName or .time or .userPresetTimers
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.timerPickerData = @[@"Popcorn   00.03.00", @"Laundry-Washer   00.30.00", @"Laundry-Dryer   00.25.00"];
+    
+    
+//    self.timerPickerData = @[@"Popcorn   00.03.00", @"Laundry-Washer   00.30.00", @"Laundry-Dryer   00.25.00"];
     
     
     self.timerPickerView.dataSource = self;
@@ -61,7 +65,9 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return self.timerPickerData[row];
+    //return self.timerPickerData[row];
+    
+    return [PresetTimerData sharedModel].userPresetTimers;
 }
 /*
 #pragma mark - Navigation

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SetTimerViewController : UIViewController
+@interface SetTimerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
 @end

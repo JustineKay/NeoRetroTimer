@@ -14,13 +14,44 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
+@property (nonatomic) NSArray *pickerData;
+
 @end
 
 @implementation SetTimerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+//    self.pickerData = @[@[ @(00), @(01), @(02), @(03), @(04), @(05)],
+//                        @[ @(00), @(01), @(02), @(03), @(04), @(05)],
+//                        @[ @(00), @(01), @(02), @(03), @(04), @(05)]
+//                        ];
+    self.pickerData = @[@[ @"00", @"01", @"02", @"03", @"04", @"05"],
+                        @[ @"00", @"01", @"02", @"03", @"04", @"05"],
+                        @[ @"00", @"01", @"02", @"03", @"04", @"05"]
+                        ];
+    
+    self.setTimerPickerView.dataSource = self;
+    self.setTimerPickerView.delegate = self;
+}
+
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    
+    return 3;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    
+    return self.pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    
+    return self.pickerData[component][row];
 }
 
 - (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {

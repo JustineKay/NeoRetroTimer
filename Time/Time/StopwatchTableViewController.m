@@ -9,6 +9,10 @@
 #import "StopwatchTableViewController.h"
 
 @interface StopwatchTableViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property (weak, nonatomic) IBOutlet UIButton *startPauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *lapButton;
 
 @end
 
@@ -23,6 +27,16 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+- (IBAction)resetButtonTapped:(UIButton *)sender {
+}
+- (IBAction)startPauseButtonTapped:(UIButton *)sender {
+}
+
+- (IBAction)lapButtonTapped:(UIButton *)sender {
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

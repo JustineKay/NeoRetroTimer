@@ -9,6 +9,10 @@
 #import "SetTimerViewController.h"
 
 @interface SetTimerViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *userInputTextField;
+@property (weak, nonatomic) IBOutlet UIPickerView *setTimerPickerView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 @end
 
@@ -17,6 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
+     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)doneButtonTapped:(UIBarButtonItem *)sender {
 }
 
 - (void)didReceiveMemoryWarning {

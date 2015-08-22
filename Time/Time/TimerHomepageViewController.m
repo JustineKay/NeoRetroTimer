@@ -9,6 +9,12 @@
 #import "TimerHomepageViewController.h"
 
 @interface TimerHomepageViewController ()
+@property (weak, nonatomic) IBOutlet UIView *timerBackgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *presetTimerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+@property (weak, nonatomic) IBOutlet UIButton *startPauseButton;
+@property (weak, nonatomic) IBOutlet UIPickerView *timerPickerView;
 
 @end
 
@@ -18,6 +24,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+- (IBAction)resetButtonTapped:(UIButton *)sender {
+}
+
+- (IBAction)startPauseButtonTapped:(UIButton *)sender {
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

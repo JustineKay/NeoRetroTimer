@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="D9c-cY-1N0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="D9c-cY-1N0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Stopwatch-->
         <scene sceneID="hJX-Lq-K7T">
@@ -44,18 +50,27 @@
                                     <state key="normal" title="Start/Pause">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="startPauseButtonTapped:" destination="Beo-F0-gsW" eventType="touchUpInside" id="HcP-LE-YlA"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6f-Mw-Pv8">
-                                    <rect key="frame" x="151" y="197" width="34" height="30"/>
+                                    <rect key="frame" x="150" y="199" width="35" height="30"/>
                                     <state key="normal" title="reset">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="resetButtonTapped:" destination="Beo-F0-gsW" eventType="touchUpInside" id="ued-Nh-7ML"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoT-6m-p26">
                                     <rect key="frame" x="416" y="199" width="30" height="30"/>
                                     <state key="normal" title="lap">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="lapButtonTapped:" destination="Beo-F0-gsW" eventType="touchUpInside" id="l4a-cR-dcX"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,7 +79,7 @@
                                 <constraint firstAttribute="bottom" secondItem="hoT-6m-p26" secondAttribute="bottom" constant="20" id="5AD-KZ-nzW"/>
                                 <constraint firstItem="toE-Or-8o7" firstAttribute="leading" secondItem="qdk-Ef-S9X" secondAttribute="leading" constant="20" id="A62-RD-Arc"/>
                                 <constraint firstAttribute="bottom" secondItem="2ZJ-lo-zvc" secondAttribute="bottom" constant="20" id="ALi-8u-SYb"/>
-                                <constraint firstAttribute="bottom" secondItem="J6f-Mw-Pv8" secondAttribute="bottom" constant="22" id="HvS-86-23N"/>
+                                <constraint firstAttribute="bottom" secondItem="J6f-Mw-Pv8" secondAttribute="bottom" constant="20" id="HvS-86-23N"/>
                                 <constraint firstItem="hoT-6m-p26" firstAttribute="leading" secondItem="2ZJ-lo-zvc" secondAttribute="trailing" constant="75" id="KcY-T8-Vur"/>
                                 <constraint firstItem="toE-Or-8o7" firstAttribute="top" secondItem="qdk-Ef-S9X" secondAttribute="top" constant="50" id="jeo-66-2IY"/>
                                 <constraint firstAttribute="trailing" secondItem="toE-Or-8o7" secondAttribute="trailing" constant="20" id="mA9-am-fF5"/>
@@ -73,8 +88,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="u4h-7X-99A">
+                                <rect key="frame" x="0.0" y="335" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u4h-7X-99A" id="IdY-eL-eeA">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -85,6 +102,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Nsj-bJ-BTH"/>
+                    <connections>
+                        <outlet property="lapButton" destination="hoT-6m-p26" id="6Pg-GI-9sD"/>
+                        <outlet property="resetButton" destination="J6f-Mw-Pv8" id="Y8v-g3-6l8"/>
+                        <outlet property="startPauseButton" destination="2ZJ-lo-zvc" id="Vhh-vo-qKE"/>
+                        <outlet property="timeLabel" destination="toE-Or-8o7" id="1Sf-Jk-5SQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jVU-mc-0Mb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -111,49 +134,52 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfV-3O-MOv" userLabel="Time Label">
-                                <rect key="frame" x="267" y="193" width="67" height="21"/>
+                                <rect key="frame" x="266" y="193" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Timer label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvx-OY-pP9">
-                                <rect key="frame" x="231" y="148" width="138" height="21"/>
+                                <rect key="frame" x="231" y="148" width="139" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-7Y-7IG" userLabel="Reset Button">
-                                <rect key="frame" x="283" y="239" width="34" height="30"/>
+                                <rect key="frame" x="283" y="239" width="35" height="30"/>
                                 <state key="normal" title="reset">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="VOK-Pf-7TD" eventType="touchUpInside" id="MN7-YU-ses"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10s-kP-wGz" userLabel="Start/Pause Button">
                                 <rect key="frame" x="260" y="329" width="81" height="30"/>
                                 <state key="normal" title="Start/Pause">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="startPauseButtonTapped:" destination="VOK-Pf-7TD" eventType="touchUpInside" id="nix-8f-5ZD"/>
+                                </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="CH0-w4-Swk" userLabel="Preset Timer List">
-                                <rect key="frame" x="140" y="389" width="320" height="162"/>
-                                <date key="date" timeIntervalSinceReferenceDate="461954698.26410902">
-                                    <!--2015-08-22 16:44:58 +0000-->
-                                </date>
-                            </datePicker>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJY-Ga-uuv">
+                                <rect key="frame" x="140" y="389" width="320" height="216"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="uvx-OY-pP9" secondAttribute="centerX" id="0fO-gB-6G7"/>
                             <constraint firstAttribute="centerX" secondItem="pt9-ay-sVV" secondAttribute="centerX" id="2g4-6f-RaE"/>
-                            <constraint firstItem="CH0-w4-Swk" firstAttribute="top" secondItem="10s-kP-wGz" secondAttribute="bottom" constant="30" id="HkN-n4-ui6"/>
+                            <constraint firstItem="YJY-Ga-uuv" firstAttribute="centerX" secondItem="qro-3B-UCe" secondAttribute="centerX" id="KsS-vT-fEq"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerY" secondItem="CfV-3O-MOv" secondAttribute="centerY" constant="0.5" id="LoD-PQ-O0t"/>
                             <constraint firstAttribute="centerX" secondItem="10s-kP-wGz" secondAttribute="centerX" id="Sc8-Za-uQb"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="top" secondItem="Gcb-Iw-zBD" secondAttribute="bottom" constant="40" id="cki-sp-k7p"/>
                             <constraint firstItem="TAG-7Y-7IG" firstAttribute="top" secondItem="CfV-3O-MOv" secondAttribute="bottom" constant="25" id="h7u-UC-I6v"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="TAG-7Y-7IG" secondAttribute="centerX" id="iEf-cb-K3g"/>
-                            <constraint firstAttribute="centerX" secondItem="CH0-w4-Swk" secondAttribute="centerX" id="jfz-IF-IpL"/>
                             <constraint firstItem="CfV-3O-MOv" firstAttribute="top" secondItem="uvx-OY-pP9" secondAttribute="bottom" constant="24" id="kTb-qG-SXR"/>
                             <constraint firstItem="10s-kP-wGz" firstAttribute="top" secondItem="pt9-ay-sVV" secondAttribute="bottom" constant="25" id="mGP-eG-Ryd"/>
+                            <constraint firstItem="YJY-Ga-uuv" firstAttribute="top" secondItem="10s-kP-wGz" secondAttribute="bottom" constant="30" id="sdw-IR-dkI"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="CfV-3O-MOv" secondAttribute="centerX" id="vfY-1W-b99"/>
                         </constraints>
                     </view>
@@ -164,6 +190,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="presetTimerLabel" destination="uvx-OY-pP9" id="ZRe-LC-S4Q"/>
+                        <outlet property="resetButton" destination="TAG-7Y-7IG" id="feX-gN-dMA"/>
+                        <outlet property="startPauseButton" destination="10s-kP-wGz" id="lS0-OI-JhP"/>
+                        <outlet property="timeLabel" destination="CfV-3O-MOv" id="jZI-i2-mJc"/>
+                        <outlet property="timerBackgroundView" destination="pt9-ay-sVV" id="QKv-6H-btx"/>
+                        <outlet property="timerPickerView" destination="YJY-Ga-uuv" id="S8f-GN-AM8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stb-k5-5Az" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -198,32 +232,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Save timer as... " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WTR-ns-stD">
-                                <rect key="frame" x="140" y="164" width="321" height="30"/>
+                                <rect key="frame" x="140" y="137" width="321" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="321" id="JWG-Al-vFe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2ta-sD-o1j">
-                                <rect key="frame" x="140" y="219" width="320" height="162"/>
-                                <date key="date" timeIntervalSinceReferenceDate="461954026.02678198">
-                                    <!--2015-08-22 16:33:46 +0000-->
-                                </date>
-                            </datePicker>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE0-hL-Mo2">
+                                <rect key="frame" x="140" y="192" width="320" height="216"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="WTR-ns-stD" secondAttribute="centerX" id="0ve-YZ-DxX"/>
                             <constraint firstItem="WTR-ns-stD" firstAttribute="top" secondItem="SiN-aQ-kgW" secondAttribute="bottom" constant="100" id="81p-v4-aek"/>
-                            <constraint firstAttribute="centerY" secondItem="2ta-sD-o1j" secondAttribute="centerY" id="Kry-oe-WA7"/>
-                            <constraint firstAttribute="centerX" secondItem="2ta-sD-o1j" secondAttribute="centerX" id="aPT-Ba-JLx"/>
+                            <constraint firstItem="OE0-hL-Mo2" firstAttribute="centerX" secondItem="zXL-gG-dnH" secondAttribute="centerX" id="9hS-pd-M81"/>
+                            <constraint firstItem="OE0-hL-Mo2" firstAttribute="centerY" secondItem="zXL-gG-dnH" secondAttribute="centerY" id="M5N-4H-Adm"/>
+                            <constraint firstItem="OE0-hL-Mo2" firstAttribute="top" secondItem="WTR-ns-stD" secondAttribute="bottom" constant="25" id="pzB-aR-Bhr"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="81p-v4-aek"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ie0-4J-odi">
-                        <barButtonItem key="leftBarButtonItem" title="Back" systemItem="cancel" id="XyM-zd-azA"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" systemItem="done" id="MeB-NN-l6n"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" systemItem="cancel" id="XyM-zd-azA">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="THX-zg-zZY" id="odZ-po-dDf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" systemItem="done" id="MeB-NN-l6n">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="THX-zg-zZY" id="3ST-p2-8pC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="XyM-zd-azA" id="q8M-Is-PnR"/>
+                        <outlet property="doneButton" destination="MeB-NN-l6n" id="dw3-5v-RpA"/>
+                        <outlet property="setTimerPickerView" destination="OE0-hL-Mo2" id="Unr-bT-wyH"/>
+                        <outlet property="userInputTextField" destination="WTR-ns-stD" id="eHY-Pl-4uS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGJ-Mg-caM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

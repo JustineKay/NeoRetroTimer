@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F4CBFF91B8901F800592B58 /* PresetTimerClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4CBFF81B8901F800592B58 /* PresetTimerClass.m */; };
 		6BB1946A1B88D99900082D0A /* StopwatchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB194691B88D99900082D0A /* StopwatchTableViewController.m */; };
 		6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */; };
 		6BB194701B88D9EE00082D0A /* SetTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F4CBFF71B8901F800592B58 /* PresetTimerClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetTimerClass.h; sourceTree = "<group>"; };
+		5F4CBFF81B8901F800592B58 /* PresetTimerClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetTimerClass.m; sourceTree = "<group>"; };
 		6BB194681B88D99900082D0A /* StopwatchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopwatchTableViewController.h; sourceTree = "<group>"; };
 		6BB194691B88D99900082D0A /* StopwatchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopwatchTableViewController.m; sourceTree = "<group>"; };
 		6BB1946B1B88D9D000082D0A /* TimerHomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerHomepageViewController.h; sourceTree = "<group>"; };
@@ -91,10 +94,12 @@
 				8D0537601B86687C00588318 /* AppDelegate.m */,
 				6BB194681B88D99900082D0A /* StopwatchTableViewController.h */,
 				6BB194691B88D99900082D0A /* StopwatchTableViewController.m */,
-				6BB1946E1B88D9EE00082D0A /* SetTimerViewController.h */,
-				6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */,
+				5F4CBFF71B8901F800592B58 /* PresetTimerClass.h */,
+				5F4CBFF81B8901F800592B58 /* PresetTimerClass.m */,
 				6BB1946B1B88D9D000082D0A /* TimerHomepageViewController.h */,
 				6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */,
+				6BB1946E1B88D9EE00082D0A /* SetTimerViewController.h */,
+				6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */,
 				8D0537651B86687C00588318 /* Main.storyboard */,
 				8D0537681B86687C00588318 /* Images.xcassets */,
 				8D05376A1B86687C00588318 /* LaunchScreen.xib */,
@@ -232,6 +237,7 @@
 				6BB1946A1B88D99900082D0A /* StopwatchTableViewController.m in Sources */,
 				8D0537611B86687C00588318 /* AppDelegate.m in Sources */,
 				6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */,
+				5F4CBFF91B8901F800592B58 /* PresetTimerClass.m in Sources */,
 				8D05375E1B86687C00588318 /* main.m in Sources */,
 				6BB194701B88D9EE00082D0A /* SetTimerViewController.m in Sources */,
 			);

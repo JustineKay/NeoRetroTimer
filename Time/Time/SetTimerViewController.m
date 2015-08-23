@@ -119,7 +119,7 @@
         NSString *time = [PresetTimerData sharedModel].userPresetTimerData.time;
         NSString *timerName = [PresetTimerData sharedModel].userPresetTimerData.timerName;
         
-        self.userPresetTimer = [timerName stringByAppendingFormat:@"          %@", time];
+        self.userPresetTimer = [timerName stringByAppendingFormat:@"     %@", time];
     
         NSLog(@"user preset timer: %@", self.userPresetTimer);
     

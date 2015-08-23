@@ -69,6 +69,15 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
+    NSString *userChoice = [self.timerPickerData objectAtIndex:[pickerView selectedRowInComponent:0]];
+    NSArray *separatedComponents = [userChoice componentsSeparatedByString:@"     "];
+    [PresetTimerData sharedModel].userPresetTimerData.timerName = separatedComponents[0];
+    self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
+    
+    [PresetTimerData sharedModel].userPresetTimerData.time = separatedComponents[1];
+    
+    self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
+    
     //    [@"the dog" componentsSeparatedByString:@"    "];
     //    @[@"the", @"dog"];
     

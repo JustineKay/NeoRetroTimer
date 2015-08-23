@@ -17,12 +17,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *startPauseButton;
 @property (weak, nonatomic) IBOutlet UIPickerView *timerPickerView;
 @property (nonatomic) NSArray *timerPickerData;
+@property (nonatomic) NSTimer *timer;
+//secondsElapsed
+@property (nonatomic) int secondsElapsed;
 
 @end
 
 @implementation TimerHomepageViewController
-
-//NSString stringwithformat take a number and pass it as a string for timer counter
 
 //To access the singleton: [PresetTimerData sharedModel] + .timerName or .time or .userPresetTimers
 
@@ -36,6 +37,8 @@
     self.timerPickerView.dataSource = self;
     self.timerPickerView.delegate = self;
     
+    self.navigationItem.title = @"Timer";
+    
     NSLog(@"timer picker data: %@", self.timerPickerData);
 }
 
@@ -46,9 +49,72 @@
 }
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {
+    
+    self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
+    
 }
 
 - (IBAction)startPauseButtonTapped:(UIButton *)sender {
+    
+    int startTime = [[PresetTimerData sharedModel].userPresetTimerData.time intValue];
+    
+    self.millisecondsElapsed = 120;
+    
+    [self startTimer];
+    
+    
+}
+
+-(void)startTimer{
+    
+    NSTimer *timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    
+    self.timer = timer;
+    
+}
+
+-(void)timerFired:(NSTimer *)timer{
+    
+    self.secondsElapsed -= 1;
+    
+    //hours
+    //minutes
+    //seconds
+    //int hours = total seconds divided by 3600 to get hours
+    int hours = self.secondsElapsed / 60;
+    
+    //from that remainder you get number of seconds left that weren't part of that hour
+    //0-3600
+    //From that number you can get the number of minutes by dviding by 60
+    //0-60
+    
+    int remainder_h = self.secondsElapsed % 60; //remaining milliseconds
+    
+    //if there are seconds left after that that will be the remainder
+    
+    int minutes =   remainder_h/100 ; // seconds
+    int remainder_m = remainder_h % 100; //remaining seconds
+    
+    int seconds = remainder_m;
+    
+    
+    
+    self.timeLabel.text = [NSString stringWithFormat:@"%02d:%02d:%02d", hours, minutes, seconds];
+    
+//    CGFloat currentNumber = [self.timeLabel.text floatValue];
+//    CGFloat nextNumber = currentNumber - 0.01;
+//    
+//    self.timeLabel.text = [NSString stringWithFormat:@"%.2f", nextNumber];
+//    
+//    if (nextNumber == 00.00){
+//        
+//        [timer invalidate];
+//    }
+    
+    NSLog(@"reaction timer ticking");
+    
 }
 
 

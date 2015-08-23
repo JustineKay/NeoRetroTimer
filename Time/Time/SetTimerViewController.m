@@ -32,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"Set Timer";
+    
     self.userInputTextField.text = @"";
     
     NSMutableArray *hours = @[@"00"].mutableCopy;

@@ -27,9 +27,9 @@
     
     self.userPresetTimerData = [[PresetTimer alloc] init];
    
-    self.userPresetTimers = @[@"Popcorn   00.03.00",
-                              @"Laundry-Washer   00.30.00",
-                              @"Laundry-Dryer   00.25.00"
+    self.userPresetTimers = @[@"Popcorn   00:03:00",
+                              @"Laundry-Washer   00:30:00",
+                              @"Laundry-Dryer   00:25:00"
                               ].mutableCopy;
     
 }

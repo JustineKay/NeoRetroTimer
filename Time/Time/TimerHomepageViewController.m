@@ -33,6 +33,10 @@
     
     self.timerPickerView.dataSource = self;
     self.timerPickerView.delegate = self;
+    
+    [self.timerPickerView reloadAllComponents];
+    
+    NSLog(@"timer picker data: %@", self.timerPickerData);
 }
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {

@@ -34,9 +34,13 @@
     self.timerPickerView.dataSource = self;
     self.timerPickerView.delegate = self;
     
+    NSLog(@"timer picker data: %@", self.timerPickerData);
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    
     [self.timerPickerView reloadAllComponents];
     
-    NSLog(@"timer picker data: %@", self.timerPickerData);
 }
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {
@@ -58,11 +62,15 @@
 
 // The number of rows of data
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    
     return self.timerPickerData.count;
 }
 
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    
+    //    [@"the dog" componentsSeparatedByString:@"    "];
+    //    @[@"the", @"dog"];
     
     return self.timerPickerData[row];
 }

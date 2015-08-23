@@ -32,9 +32,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.pickerHours = @[ @"00", @"01", @"02", @"03", @"04", @"05"];
-    self.pickerMins = @[ @"06", @"07", @"08", @"09", @"10", @"11"];
-    self.pickerSecs = @[ @"37", @"38", @"39", @"40", @"41", @"042"];
+    NSMutableArray *hours = @[@"00"].mutableCopy;
+    NSMutableArray *mins = @[@"00"].mutableCopy;
+    NSMutableArray *secs = @[@"00"].mutableCopy;
+    
+    NSInteger integer = 0;
+    
+    for (int i = 0; i < 99; i++) {
+        
+        integer += 1;
+        
+        NSLog(@"%ld", integer);
+        
+        NSString *digit = [NSString stringWithFormat:@"%ld", integer];
+        
+        if ([digit integerValue] < 10) {
+            
+            NSString *zero = @"0";
+            
+            digit = [zero stringByAppendingString:digit];
+        };
+        
+        [hours addObject:digit];
+        [mins addObject:digit];
+        [secs addObject:digit];
+        
+    }
+    
+    NSLog(@"hours: %@/n", hours);
+    NSLog(@"mins: %@/n", mins);
+    NSLog(@"secs: %@/n", secs);
+    
+    self.pickerHours = hours;
+    self.pickerMins = mins;
+    self.pickerSecs = secs;
     
     self.pickerData = @[self.pickerHours,
                         self.pickerMins,
@@ -53,8 +84,9 @@
 
 // The number of rows of data
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+
     
-    return self.pickerData.count;
+    return [self.pickerData[component] count];
 }
 
 // The data to return for the row and component (column) that's being passed in

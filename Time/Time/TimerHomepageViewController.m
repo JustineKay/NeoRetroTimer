@@ -29,10 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
-//    self.timerPickerData = @[@"Popcorn   00.03.00", @"Laundry-Washer   00.30.00", @"Laundry-Dryer   00.25.00"];
-    
+    self.timerPickerData = [PresetTimerData sharedModel].userPresetTimers;
     
     self.timerPickerView.dataSource = self;
     self.timerPickerView.delegate = self;
@@ -51,23 +48,19 @@
 }
 
 // The number of columns of data
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
 // The number of rows of data
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     return self.timerPickerData.count;
 }
 
 // The data to return for the row and component (column) that's being passed in
-- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    //return self.timerPickerData[row];
+- (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-    return [PresetTimerData sharedModel].userPresetTimers;
+    return self.timerPickerData[row];
 }
 /*
 #pragma mark - Navigation

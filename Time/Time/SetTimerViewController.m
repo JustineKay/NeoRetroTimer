@@ -32,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.userInputTextField.text = @"";
+    
     NSMutableArray *hours = @[@"00"].mutableCopy;
     NSMutableArray *mins = @[@"00"].mutableCopy;
     NSMutableArray *secs = @[@"00"].mutableCopy;
@@ -92,10 +94,16 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-    NSString* hour = [self.pickerHours objectAtIndex:[pickerView selectedRowInComponent:0]];
-    NSString* min = [self.pickerMins objectAtIndex:[pickerView selectedRowInComponent:1]];
-    NSString* sec = [self.pickerSecs objectAtIndex:[pickerView selectedRowInComponent:2]];
-    [PresetTimerData sharedModel].userPresetTimerData.time = [hour stringByAppendingFormat:@":%@:%@", min, sec];
+    NSString *hour = [self.pickerHours objectAtIndex:[pickerView selectedRowInComponent:0]];
+    NSString *min = [self.pickerMins objectAtIndex:[pickerView selectedRowInComponent:1]];
+    NSString *sec = [self.pickerSecs objectAtIndex:[pickerView selectedRowInComponent:2]];
+    NSString *hourMinSec = [hour stringByAppendingFormat:@":%@:%@", min, sec];
+    
+    [PresetTimerData sharedModel].userPresetTimerData.time = hourMinSec;
+    
+//    if ([hourMinSec isEqualToString:@"00:00:00"]) {
+//        [PresetTimerData sharedModel].userPresetTimerData.time = nil;
+//    }
     
     NSLog(@"time: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
     
@@ -110,7 +118,16 @@
 
 - (IBAction)doneButtonTapped:(UIBarButtonItem *)sender {
     
-    //if (self.userInputTextField.text != nil) {
+    if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"]){
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }else if ([self.userInputTextField.text isEqualToString:@""]) {
+        
+        [PresetTimerData sharedModel].userPresetTimerData.timerName = @"";
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }else {
         
         [PresetTimerData sharedModel].userPresetTimerData.timerName = self.userInputTextField.text;
         
@@ -120,15 +137,15 @@
         NSString *timerName = [PresetTimerData sharedModel].userPresetTimerData.timerName;
         
         self.userPresetTimer = [timerName stringByAppendingFormat:@"     %@", time];
-    
+        
         NSLog(@"user preset timer: %@", self.userPresetTimer);
-    
+        
         [[PresetTimerData sharedModel].userPresetTimers addObject:self.userPresetTimer];
-    
+        
         NSLog(@"user preset timers: %@", [PresetTimerData sharedModel].userPresetTimers);
-    //}
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     
 }
 

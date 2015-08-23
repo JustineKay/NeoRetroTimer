@@ -14,7 +14,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *startPauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *lapButton;
 
+@property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSDate *startTime;
+@property (nonatomic) NSTimeInterval totalSessionTime;
+@property (nonatomic) NSTimeInterval totalTime;
+
 @end
+
 
 @implementation StopwatchTableViewController
 
@@ -30,11 +36,33 @@
 - (IBAction)resetButtonTapped:(UIButton *)sender {
 }
 - (IBAction)startPauseButtonTapped:(UIButton *)sender {
+    //set up a BOOL for start and pause button
+    //self.button.hidden = yes or no;
+    
+    if ([sender tag] == 1) {
+    self.startTime = [[NSDate alloc] init];
+        self.timer = [NSTimer timerWithTimeInterval:1/60.0 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES]; }
+    
+    else if ([sender tag] == 2) {
+        self.totalTime = self.totalTime + self.totalSessionTime;
+        [self.timer invalidate];
+    }
 }
 
 - (IBAction)lapButtonTapped:(UIButton *)sender {
 }
 
+
+- (void)timerFired: (NSTimer *)timer {
+    NSDate *now = [[NSDate alloc] init];
+    
+    self.totalSessionTime = [now timeIntervalSinceDate:self.startTime];
+    NSTimeInterval distance = self.totalTime + self.totalSessionTime;
+    
+    self.timeLabel.text = [NSString stringWithFormat:@"%0.2f", distance];
+    
+    NSLog(@"%f", distance);
+}
 
 
 

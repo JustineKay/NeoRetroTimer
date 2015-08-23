@@ -19,6 +19,8 @@
 @property (nonatomic) NSTimeInterval totalSessionTime;
 @property (nonatomic) NSTimeInterval totalTime;
 
+@property (nonatomic) BOOL isRunning;
+
 @end
 
 
@@ -27,26 +29,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.isRunning = NO;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 - (IBAction)resetButtonTapped:(UIButton *)sender {
+    
 }
+
+
 - (IBAction)startPauseButtonTapped:(UIButton *)sender {
     //set up a BOOL for start and pause button
     //self.button.hidden = yes or no;
     
-    if ([sender tag] == 1) {
-    self.startTime = [[NSDate alloc] init];
-        self.timer = [NSTimer timerWithTimeInterval:1/60.0 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES]; }
     
-    else if ([sender tag] == 2) {
+    if (self.isRunning) {
+        self.isRunning = NO;
         self.totalTime = self.totalTime + self.totalSessionTime;
         [self.timer invalidate];
+        
+        [sender setImage:[UIImage imageNamed:@"playIcon.png"] forState:UIControlStateNormal];
+
+    } else {
+        self.startTime = [[NSDate alloc] init];
+        self.timer = [NSTimer timerWithTimeInterval:1/60.0 target:self selector:@selector(timerFired:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+        [sender setImage:[UIImage imageNamed:@"pauseIcon.png"] forState:UIControlStateNormal];
+
+        self.isRunning = YES;
     }
+    
 }
 
 - (IBAction)lapButtonTapped:(UIButton *)sender {

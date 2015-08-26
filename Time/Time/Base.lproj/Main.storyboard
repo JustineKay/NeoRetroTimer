@@ -84,6 +84,16 @@
                                         <action selector="lapButtonTapped:" destination="Beo-F0-gsW" eventType="touchUpInside" id="l4a-cR-dcX"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5f-bi-fJ0" userLabel="LapTimeLabel">
+                                    <rect key="frame" x="529" y="8" width="42" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="Cj0-Vh-RlC"/>
+                                        <constraint firstAttribute="width" constant="42" id="TYC-hF-5wV"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -95,6 +105,7 @@
                                 <constraint firstItem="toE-Or-8o7" firstAttribute="leading" secondItem="qdk-Ef-S9X" secondAttribute="leading" constant="20" id="A62-RD-Arc"/>
                                 <constraint firstAttribute="bottom" secondItem="2ZJ-lo-zvc" secondAttribute="bottom" constant="20" id="ALi-8u-SYb"/>
                                 <constraint firstItem="2ZJ-lo-zvc" firstAttribute="centerX" secondItem="qdk-Ef-S9X" secondAttribute="centerX" id="DL1-V6-Exz"/>
+                                <constraint firstAttribute="trailing" secondItem="I5f-bi-fJ0" secondAttribute="trailing" constant="29" id="Hig-tb-IfZ"/>
                                 <constraint firstAttribute="bottom" secondItem="J6f-Mw-Pv8" secondAttribute="bottom" constant="20" id="HvS-86-23N"/>
                                 <constraint firstItem="hoT-6m-p26" firstAttribute="leading" secondItem="2ZJ-lo-zvc" secondAttribute="trailing" constant="75" id="KcY-T8-Vur"/>
                                 <constraint firstItem="2ZJ-lo-zvc" firstAttribute="top" secondItem="toE-Or-8o7" secondAttribute="bottom" constant="41" id="OdS-0v-Nc5"/>
@@ -104,6 +115,7 @@
                                 <constraint firstItem="2ZJ-lo-zvc" firstAttribute="leading" secondItem="J6f-Mw-Pv8" secondAttribute="trailing" constant="30" id="kQ5-vj-roQ"/>
                                 <constraint firstAttribute="trailing" secondItem="toE-Or-8o7" secondAttribute="trailing" constant="20" id="mA9-am-fF5"/>
                                 <constraint firstItem="2ZJ-lo-zvc" firstAttribute="top" secondItem="toE-Or-8o7" secondAttribute="bottom" constant="30" id="pcO-TF-2sm"/>
+                                <constraint firstItem="I5f-bi-fJ0" firstAttribute="top" secondItem="qdk-Ef-S9X" secondAttribute="top" constant="8" id="rjL-WC-dmy"/>
                                 <constraint firstItem="2ZJ-lo-zvc" firstAttribute="leading" secondItem="J6f-Mw-Pv8" secondAttribute="trailing" constant="75" id="zz2-Q1-Z98"/>
                             </constraints>
                             <variation key="default">
@@ -120,13 +132,32 @@
                                 </mask>
                             </variation>
                         </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="DPN-yR-jQf">
+                            <rect key="frame" x="0.0" y="379" width="600" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="u4h-7X-99A">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="lapViewCell" id="u4h-7X-99A">
                                 <rect key="frame" x="0.0" y="335" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u4h-7X-99A" id="IdY-eL-eeA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zE4-gE-ng4" userLabel="Detail">
+                                            <rect key="frame" x="460" y="11" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWT-Zu-mhJ" userLabel="Title">
+                                            <rect key="frame" x="72" y="11" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -135,9 +166,20 @@
                             <outlet property="delegate" destination="Beo-F0-gsW" id="UjN-2a-Ljw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Nsj-bJ-BTH"/>
+                    <navigationItem key="navigationItem" id="Nsj-bJ-BTH">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="tQT-om-8Ro">
+                            <view key="customView" contentMode="scaleToFill" id="OoV-YS-0Tf">
+                                <rect key="frame" x="0.0" y="5" width="133" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="lapButton" destination="hoT-6m-p26" id="6Pg-GI-9sD"/>
+                        <outlet property="lapTableView" destination="gYR-3Q-KhX" id="XgH-J6-IKf"/>
+                        <outlet property="lapTimeLabel" destination="I5f-bi-fJ0" id="3Ec-JB-VeK"/>
                         <outlet property="resetButton" destination="J6f-Mw-Pv8" id="Y8v-g3-6l8"/>
                         <outlet property="startPauseButton" destination="2ZJ-lo-zvc" id="Vhh-vo-qKE"/>
                         <outlet property="timeLabel" destination="toE-Or-8o7" id="1Sf-Jk-5SQ"/>

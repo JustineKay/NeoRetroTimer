@@ -21,6 +21,7 @@
 //secondsElapsed
 @property (nonatomic) NSInteger secondsElapsed;
 
+@property (nonatomic) BOOL *isRunning;
 
 @end
 
@@ -40,6 +41,8 @@
     
     self.navigationItem.title = @"Timer";
     
+    self.isRunning = FALSE;
+    
     NSLog(@"timer picker data: %@", self.timerPickerData);
 }
 
@@ -47,6 +50,14 @@
     
     [self.timerPickerView reloadAllComponents];
     
+    if ([PresetTimerData sharedModel].userUnsavedTimerData.time == Nil) {
+        self.timeLabel.text = @"00:00:00";
+    } else{
+    
+        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
+        self.presetTimerLabel.text = @"";
+    
+    }
 }
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {
@@ -55,38 +66,65 @@
     
 }
 
+- (void)updateTimerLabel{
+    
+    NSInteger selectedRow = [self.timerPickerView selectedRowInComponent:0];
+    NSString *selection = [PresetTimerData sharedModel].userPresetTimers[selectedRow];
+    NSArray *separatedComponents = [selection componentsSeparatedByString:@"     "];
+    
+    [PresetTimerData sharedModel].userPresetTimerData.time = separatedComponents[1];
+    
+    self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
+
+    
+    [PresetTimerData sharedModel].userPresetTimerData.timerName = separatedComponents[0];
+    
+    self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
+
+}
+
 - (IBAction)startPauseButtonTapped:(UIButton *)sender {
     
+    [self updateTimerLabel];
+
+    if (self.isRunning) {
+        [self.timer invalidate];
+        self.isRunning = FALSE;
+        //[PresetTimerData sharedModel].userPresetTimerData.time = self.timeLabel.text;
+        
+    }else {
+        
+        NSString *goTime = [PresetTimerData sharedModel].userPresetTimerData.time;
+        NSLog(@"Go time: %@", goTime);
+        
+        NSArray *goTimeComponents = [goTime componentsSeparatedByString:@":"];
+        NSLog(@"%@", goTimeComponents);
+        
+        NSString *hrs = goTimeComponents[0];
+        NSString *mns = goTimeComponents[1];
+        NSString *scs = goTimeComponents[2];
+        NSInteger hrsInt = [hrs integerValue];
+        NSInteger mnsInt = [mns integerValue];
+        NSInteger scsInt = [scs integerValue];
+        
+        NSInteger hrsIntInSec = hrsInt * 3600;
+        
+        NSInteger mnsIntInSec = mnsInt * 60;
+        
+        NSInteger goTimeInSeconds = hrsIntInSec + mnsIntInSec + scsInt;
+        
+        NSLog(@"hrs: %ld, mns: %ld, scs: %ld", hrsIntInSec, mnsIntInSec, scsInt);
+        NSLog( @"go time in seconds: %ld", goTimeInSeconds);
+        NSLog(@"%@", [PresetTimerData sharedModel].userPresetTimerData.time);
+        NSLog(@"timer name: %@", [PresetTimerData sharedModel].userPresetTimerData.timerName);
+        
+        self.secondsElapsed = goTimeInSeconds;
+        
+        [self startTimer];
+        
+        self.isRunning = TRUE;
     
-    NSString *goTime = [PresetTimerData sharedModel].userPresetTimerData.time;
-    NSLog(@"Go time: %@", goTime);
-    
-    NSArray *goTimeComponents = [goTime componentsSeparatedByString:@":"];
-    NSLog(@"%@", goTimeComponents);
-    
-    NSString *hrs = goTimeComponents[0];
-    NSString *mns = goTimeComponents[1];
-    NSString *scs = goTimeComponents[2];
-    NSInteger hrsInt = [hrs integerValue];
-    NSInteger mnsInt = [mns integerValue];
-    NSInteger scsInt = [scs integerValue];
-    
-    NSInteger hrsIntInSec = hrsInt * 3600;
-    
-    NSInteger mnsIntInSec = mnsInt * 60;
-    
-    NSInteger goTimeInSeconds = hrsIntInSec + mnsIntInSec + scsInt;
-    
-    NSLog(@"hrs: %ld, mns: %ld, scs: %ld", hrsIntInSec, mnsIntInSec, scsInt);
-    NSLog( @"go time in seconds: %ld", goTimeInSeconds);
-    NSLog(@"%@", [PresetTimerData sharedModel].userPresetTimerData.time);
-    NSLog(@"timer name: %@", [PresetTimerData sharedModel].userPresetTimerData.timerName);
-    
-    self.secondsElapsed = goTimeInSeconds;
-    
-    [self startTimer];
-    
-    
+    }
 }
 
 -(void)startTimer{
@@ -153,40 +191,41 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-    if ([[PresetTimerData sharedModel].userPresetTimerData.timerName isEqualToString:@""]) {
-        
-        self.presetTimerLabel.text = @"";
-        self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
-        
-    }else if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"]){
-        
-        NSString *userChoice = [self.timerPickerData objectAtIndex:[pickerView selectedRowInComponent:0]];
-        NSArray *separatedComponents = [userChoice componentsSeparatedByString:@"     "];
-        
-        [PresetTimerData sharedModel].userPresetTimerData.timerName = separatedComponents[0];
-        
-        self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
-        
-        [PresetTimerData sharedModel].userPresetTimerData.time = separatedComponents[1];
-        
-        self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
-        
-    }else {
-        
-        NSString *userChoice = [self.timerPickerData objectAtIndex:[pickerView selectedRowInComponent:0]];
-        NSArray *separatedComponents = [userChoice componentsSeparatedByString:@"     "];
-        
-        [PresetTimerData sharedModel].userPresetTimerData.timerName = separatedComponents[0];
-        
-        self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
-        
-        [PresetTimerData sharedModel].userPresetTimerData.time = separatedComponents[1];
-        
-        self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
-        
-    }
+//    if ([[PresetTimerData sharedModel].userPresetTimerData.timerName isEqualToString:@""]) {
+//        
+//        self.presetTimerLabel.text = @"";
+//        self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
+//        
+//    }else if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"]){
+//        
+//        NSString *userChoice = [self.timerPickerData objectAtIndex:[pickerView selectedRowInComponent:0]];
+//        NSArray *separatedComponents = [userChoice componentsSeparatedByString:@"     "];
+//        
+//        [PresetTimerData sharedModel].userPresetTimerData.timerName = separatedComponents[0];
+//        
+//        self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
+//        
+//        [PresetTimerData sharedModel].userPresetTimerData.time = separatedComponents[1];
+//        
+//        self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
+//        
+//    }else {
+//        
+//        
+//    }
     
+//    [self updateTimerLabel];
     return self.timerPickerData[row];
+}
+
+- (void)startTimer:(PresetTimer *)timer {
+    // update timer lables
+    // start timer
+    
+    self.presetTimerLabel.text = timer.timerName;
+    self.timeLabel.text = timer.time;
+    
+    // create a new timer with timer.time as the time
 }
 /*
 #pragma mark - Navigation

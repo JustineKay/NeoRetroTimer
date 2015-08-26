@@ -11,5 +11,6 @@
 @interface PresetTimer : NSObject
 @property (nonatomic) NSString *timerName;
 @property (nonatomic) NSString *time;
+@property (nonatomic) NSString *unsavedTime;
 
 @end

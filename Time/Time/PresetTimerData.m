@@ -32,6 +32,8 @@
                               @"Laundry-Dryer     00:25:00"
                               ].mutableCopy;
     
+    self.userUnsavedTimerData = [[PresetTimer alloc] init];
+    
 }
 
 @end

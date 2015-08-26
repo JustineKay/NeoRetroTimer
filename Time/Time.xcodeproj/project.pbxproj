@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F4CBFFC1B8916A500592B58 /* PresetTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4CBFFB1B8916A500592B58 /* PresetTimer.m */; };
+		6B1AD1561B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B1AD1551B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf */; };
 		6BB1946A1B88D99900082D0A /* StopwatchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB194691B88D99900082D0A /* StopwatchTableViewController.m */; };
 		6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */; };
 		6BB194701B88D9EE00082D0A /* SetTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		5F4CBFFA1B8916A500592B58 /* PresetTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetTimer.h; sourceTree = "<group>"; };
 		5F4CBFFB1B8916A500592B58 /* PresetTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetTimer.m; sourceTree = "<group>"; };
+		6B1AD1551B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DIGITALDREAMFAT.ttf; path = "../../../../../../../Downloads/digital-dream/DIGITALDREAMFAT.ttf"; sourceTree = "<group>"; };
 		6BB194681B88D99900082D0A /* StopwatchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopwatchTableViewController.h; sourceTree = "<group>"; };
 		6BB194691B88D99900082D0A /* StopwatchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopwatchTableViewController.m; sourceTree = "<group>"; };
 		6BB1946B1B88D9D000082D0A /* TimerHomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerHomepageViewController.h; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				8D05375C1B86687B00588318 /* Info.plist */,
+				6B1AD1551B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf */,
 				8D05375D1B86687C00588318 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0537671B86687C00588318 /* Main.storyboard in Resources */,
+				6B1AD1561B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf in Resources */,
 				8D05376C1B86687C00588318 /* LaunchScreen.xib in Resources */,
 				8D0537691B86687C00588318 /* Images.xcassets in Resources */,
 			);

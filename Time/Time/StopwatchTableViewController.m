@@ -43,6 +43,15 @@
     
     self.isRunning = NO;
     
+    _currentTime = 0;
+    _currentLapTime = 0;
+    _laps = [NSMutableArray array];
+    _isRunning = NO;
+    _currentLapStartTime = 0;
+    _startTime = nil;
+    _finishTime = nil;
+   
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -62,23 +71,6 @@
 }
 
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self)
-    {
-        _currentTime = 0;
-        _currentLapTime = 0;
-        _laps = [NSMutableArray array];
-        _isRunning = NO;
-        _currentLapStartTime = nil;
-        _startTime = nil;
-        _finishTime = nil;
-    }
-    
-    return self;
-}
-
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {
 
@@ -88,8 +80,10 @@
     self.startTime = nil;
     self.finishTime = nil;
     
-    self.timeLabel.text = @"00:00.00";
-    self.lapTimeLabel.text = @"00:00.00";
+    self.timeLabel.text = @"00.00.00";
+   self.lapTimeLabel.text = @"00.00.00";
+    
+
     [self.lapTableView reloadData];
    
     }
@@ -99,35 +93,63 @@
     //set up a BOOL for start and pause button
     //self.button.hidden = yes or no;
     
-    if (self.isRunning) {
+    if (self.currentLapStartTime == nil) {
+        self.currentLapStartTime = [NSDate date];
+    }
+
+    
+    if (!self.isRunning) {
         self.isRunning = YES;
         self.startTime = [NSDate date];
         
         if (![self.timer isValid]) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01
-                                                                target:self
-                                                              selector:@selector(updateTimer)
-                                                              userInfo:nil
-                                                               repeats:YES];
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01
+                                                          target:self
+                                                        selector:@selector(updateTimer)
+                                                        userInfo:nil
+                                                         repeats:YES];
+            
+//            self.lapButton = [NSTimer scheduledTimerWithTimeInterval:0.01
+//                                                          target:self
+//                                                        selector:@selector(updateLapTimer)
+//                                                        userInfo:nil
+//                                                         repeats:YES];
             
             [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+            
         }
+        
+        
+        [self.startPauseButton setImage:[UIImage imageNamed:@"pauseIcon.png"] forState:UIControlStateNormal];
+        
     } else {
         self.isRunning = NO;
         self.finishTime = [NSDate date];
         
         [self.timer invalidate];
+        
+
+        [self.startPauseButton setImage:[UIImage imageNamed:@"playIcon.png"] forState:UIControlStateNormal];
     }
 }
 
 
 
 - (IBAction)lapButtonTapped:(UIButton *)sender {
-    [self.laps addObject:@(self.currentTime)];
+    
+    
+    NSLog(@"Current time: %f", self.currentLapTime);
+
+//    [self updateLapTimer];
+    self.lapTimeLabel.text = [NSString stringWithFormat:@"%f", self.currentLapTime];
+
+   [self.laps addObject:@(self.currentLapTime)];
+   // [self.laps addObject:self.lapTimeLabel.text];
     self.currentLapStartTime = [NSDate date];
     
-    [self.lapTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
-                              withRowAnimation:UITableViewRowAnimationNone];
+//    [self.lapTableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
+//                              withRowAnimation:UITableViewRowAnimationNone];
+    [self.lapTableView reloadData];
 }
 
 
@@ -179,7 +201,7 @@
 }
 
 - (NSTimeInterval)currentLapTime {
-    if (self.isRunning && self.laps.count > 0) {
+    if (self.isRunning) {
         return [[NSDate date] timeIntervalSinceDate:self.currentLapStartTime];
     }
     
@@ -204,15 +226,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"lapViewCell" forIndexPath:indexPath];
     
-    unsigned long lapNumber = [self.laps count];
-        NSNumber *lapTime = [self.laps objectAtIndex:lapNumber - 1];
+    unsigned long lapNumber = indexPath.row + 1;//[self.laps count];
+    NSNumber *lapTime = [self.laps objectAtIndex:indexPath.row];
     
-        cell.textLabel.text = [NSString stringWithFormat:@"Lap %lu", lapNumber];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"00:00:%2@", lapTime];
+    cell.textLabel.text = [NSString stringWithFormat:@"Lap %lu", lapNumber];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"00:00:%2@", lapTime];
     
     
-   // self.lapLabel.text = [NSString stringWithFormat:@"00:00:%02d", self.lapMilliElapsed];
-   // self.stopwatchLabel.text = [NSString stringWithFormat:@"00:00:%02d", self.millisecondsElapsed];
+    // self.lapLabel.text = [NSString stringWithFormat:@"00:00:%02d", self.lapMilliElapsed];
+    // self.stopwatchLabel.text = [NSString stringWithFormat:@"00:00:%02d", self.millisecondsElapsed];
     return cell;
 }
 

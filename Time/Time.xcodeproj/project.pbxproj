@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5F4CBFFC1B8916A500592B58 /* PresetTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4CBFFB1B8916A500592B58 /* PresetTimer.m */; };
-		6B1AD1561B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B1AD1551B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf */; };
 		6BB1946A1B88D99900082D0A /* StopwatchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB194691B88D99900082D0A /* StopwatchTableViewController.m */; };
 		6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */; };
 		6BB194701B88D9EE00082D0A /* SetTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */; };
@@ -223,7 +222,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0537671B86687C00588318 /* Main.storyboard in Resources */,
-				6B1AD1561B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf in Resources */,
 				8D05376C1B86687C00588318 /* LaunchScreen.xib in Resources */,
 				8D0537691B86687C00588318 /* Images.xcassets in Resources */,
 			);

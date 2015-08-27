@@ -122,15 +122,24 @@
 
 - (IBAction)doneButtonTapped:(UIBarButtonItem *)sender {
     
-    if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"]){
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-        
-    }else if ([self.userInputTextField.text isEqualToString:@""]) {
+//    if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@""]){
+//        
+//        [[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"];
+//        
+//        NSLog(@"Unsaved Timer: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
+//        
+//        [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([self.userInputTextField.text isEqualToString:@""]) {
         
         [PresetTimerData sharedModel].userPresetTimerData.timerName = @"";
+        [PresetTimerData sharedModel].userPresetTimerData.time  = @"00:00:00";
+        
+        NSLog(@"Preset Timer: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
         
         [self setTimer:[PresetTimerData sharedModel].userUnsavedTimerData With:self.setTimerPickerView];
+        
+        NSLog(@"Unsaved Timer: %@", [PresetTimerData sharedModel].userUnsavedTimerData.time);
         
         [self dismissViewControllerAnimated:YES completion:nil];
         

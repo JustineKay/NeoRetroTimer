@@ -18,8 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *timerPickerView;
 @property (nonatomic) NSArray *timerPickerData;
 @property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSString *pausedTime;
 //secondsElapsed
-@property (nonatomic) NSInteger secondsElapsed;
+@property (nonatomic) NSInteger timeInSeconds;
 
 @property (nonatomic) BOOL *isRunning;
 
@@ -50,11 +51,12 @@
 -(void)viewDidAppear:(BOOL)animated{
     
     [self.timerPickerView reloadAllComponents];
+    [self.timer invalidate];
+    self.pausedTime = Nil;
     
     if ([PresetTimerData sharedModel].userUnsavedTimerData.time == Nil) {
         
-        self.timeLabel.text = @"00:00:00";
-        self.presetTimerLabel.text = @"";
+        [self updateTimeLabel];
         
     } else{
     
@@ -66,56 +68,21 @@
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {
     
-    //self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
-    
-}
-
-- (void)updateTimeLabel{
-    
-    if ([[PresetTimerData sharedModel].userPresetTimerData.timerName isEqualToString:@""]) {
-        
-        self.presetTimerLabel.text = @"";
-        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
-        
-    }else if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"] && [[PresetTimerData sharedModel].userUnsavedTimerData.time isEqualToString:@"00:00:00"]){
-    
-    NSInteger selectedRow = [self.timerPickerView selectedRowInComponent:0];
-    NSString *selection = [PresetTimerData sharedModel].userPresetTimers[selectedRow];
-    NSArray *separatedComponents = [selection componentsSeparatedByString:@"     "];
-    
-    [PresetTimerData sharedModel].userPresetTimerData.time = separatedComponents[1];
-    
-    self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
-
-    
-    [PresetTimerData sharedModel].userPresetTimerData.timerName = separatedComponents[0];
-    
-    self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
-    }
-
+    self.pausedTime = Nil;
+    [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
+    [self updateTimeLabel];
 }
 
 - (IBAction)startPauseButtonTapped:(UIButton *)sender {
-    
-    //[self updateTimeLabel];
 
     if (self.isRunning) {
         [self.timer invalidate];
         self.isRunning = FALSE;
-        //[PresetTimerData sharedModel].userPresetTimerData.time = self.timeLabel.text;
+        self.pausedTime = self.timeLabel.text;
         
     }else {
         
         [self updateTimeLabel];
-        
-        if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"]) {
-            
-            [self setTimeLabelToSecondsWithTimer:[PresetTimerData sharedModel].userUnsavedTimerData];
-        
-        } else {
-            
-            [self setTimeLabelToSecondsWithTimer:[PresetTimerData sharedModel].userPresetTimerData];
-        }
 
         [self startTimer];
         
@@ -124,11 +91,62 @@
     }
 }
 
--(void)setTimeLabelToSecondsWithTimer: (PresetTimer *)timer{
+- (void)startTimer:(PresetTimer *)timer {
+    // update timer lables
+    // start timer
+    
+    self.presetTimerLabel.text = timer.timerName;
+    self.timeLabel.text = timer.time;
+    
+    // create a new timer with timer.time as the time
+}
+
+- (void)updateTimeLabel{
+    
+    if (self.pausedTime != Nil) {
+        self.timeLabel.text = self.pausedTime;
+        [self setNumericalValueOfTime:self.pausedTime];
+    
+    }else if ([PresetTimerData sharedModel].userUnsavedTimerData.time != Nil) {
+        
+        self.presetTimerLabel.text = @"";
+        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
+        [self setNumericalValueOfTime:[PresetTimerData sharedModel].userUnsavedTimerData.time];
+        
+    }else {
+        
+        [self setPresetTimer:[PresetTimerData sharedModel].userPresetTimerData With:self.timerPickerView];
+        
+        self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
+        self. timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
+        
+        [self setNumericalValueOfTime:[PresetTimerData sharedModel].userPresetTimerData.time];
+    }
+    
+}
+
+-(void)setPresetTimer:(PresetTimer *)timer With: (UIPickerView *)pickerView{
+    
+    NSInteger selectedRow = [pickerView selectedRowInComponent:0];
+    NSString *selection = [PresetTimerData sharedModel].userPresetTimers[selectedRow];
+    NSArray *separatedComponents = [selection componentsSeparatedByString:@"     "];
+    
+    timer.time = separatedComponents[1];
+    
+    self.timeLabel.text = timer.time;
+    
+    
+    timer.timerName = separatedComponents[0];
+    
+    self.presetTimerLabel.text = timer.timerName;
+    
+}
+
+-(void)setNumericalValueOfTime: (NSString *)time{
     
     NSString *goTime;
     
-    goTime = timer.time;
+    goTime = time;
     
     NSLog(@"Go time: %@", goTime);
     
@@ -153,7 +171,7 @@
     NSLog(@"%@", [PresetTimerData sharedModel].userPresetTimerData.time);
     NSLog(@"timer name: %@", [PresetTimerData sharedModel].userPresetTimerData.timerName);
     
-    self.secondsElapsed = goTimeInSeconds;
+    self.timeInSeconds = goTimeInSeconds;
     
 }
 
@@ -169,17 +187,17 @@
 
 -(void)timerFired:(NSTimer *)timer{
     
-    self.secondsElapsed -= 1;
+    self.timeInSeconds -= 1;
     
     //hours
     //minutes
     //seconds
     //int hours = total seconds divided by 3600 to get hours
-    NSInteger hours = self.secondsElapsed / 3600;
+    NSInteger hours = self.timeInSeconds / 3600;
     
     //from that remainder you get number of seconds left that weren't part of that hour
     //0-3600
-    NSInteger remainder_h = self.secondsElapsed % 3600; //remaining milliseconds
+    NSInteger remainder_h = self.timeInSeconds % 3600; //remaining milliseconds
     
     //From that number you can get the number of minutes by dviding by 60
     //0-60
@@ -192,7 +210,7 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
     
     
-    if (hours == 0 && minutes == 0 && seconds == 0){
+    if (hours <= 0 && minutes <= 0 && seconds <= 0){
         
                 [timer invalidate];
     }
@@ -201,11 +219,6 @@
     
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 // The number of columns of data
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -247,24 +260,5 @@
 //    [self updateTimerLabel];
     return self.timerPickerData[row];
 }
-
-- (void)startTimer:(PresetTimer *)timer {
-    // update timer lables
-    // start timer
-    
-    self.presetTimerLabel.text = timer.timerName;
-    self.timeLabel.text = timer.time;
-    
-    // create a new timer with timer.time as the time
-}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

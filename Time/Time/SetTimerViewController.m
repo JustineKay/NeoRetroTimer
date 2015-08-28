@@ -132,8 +132,8 @@
     
     if ([self.userInputTextField.text isEqualToString:@""]) {
         
-        [PresetTimerData sharedModel].userPresetTimerData.timerName = @"";
-        [PresetTimerData sharedModel].userPresetTimerData.time  = @"00:00:00";
+        [PresetTimerData sharedModel].userPresetTimerData.timerName = Nil;
+        [PresetTimerData sharedModel].userPresetTimerData.time  = Nil;
         
         NSLog(@"Preset Timer: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
         
@@ -151,16 +151,20 @@
         
         [self setTimer:[PresetTimerData sharedModel].userPresetTimerData With:self.setTimerPickerView];
         
+        [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
+        NSLog(@"Unsaved Timer: %@", [PresetTimerData sharedModel].userUnsavedTimerData.time);
+        
         NSString *time = [PresetTimerData sharedModel].userPresetTimerData.time;
         NSString *timerName = [PresetTimerData sharedModel].userPresetTimerData.timerName;
         
         self.userPresetTimer = [timerName stringByAppendingFormat:@"     %@", time];
-        
         NSLog(@"user preset timer: %@", self.userPresetTimer);
         
-        [[PresetTimerData sharedModel].userPresetTimers addObject:self.userPresetTimer];
-        
+        [[PresetTimerData sharedModel].userPresetTimers insertObject:self.userPresetTimer atIndex:00];
         NSLog(@"user preset timers: %@", [PresetTimerData sharedModel].userPresetTimers);
+        
+        [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
+        NSLog(@"unsaved time: %@", [PresetTimerData sharedModel].userUnsavedTimerData.time);
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }

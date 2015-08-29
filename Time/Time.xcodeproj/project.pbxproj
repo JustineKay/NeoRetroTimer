@@ -10,6 +10,11 @@
 		5F4416FA1B920B48002969D0 /* CountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4416F91B920B48002969D0 /* CountdownViewController.m */; };
 		5F4416FD1B921609002969D0 /* SetCountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4416FC1B921609002969D0 /* SetCountdownViewController.m */; };
 		5F4CBFFC1B8916A500592B58 /* PresetTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4CBFFB1B8916A500592B58 /* PresetTimer.m */; };
+		6B5FB36D1B923125004D9958 /* Existence-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFFA7D1B922D730077669E /* Existence-Light.otf */; };
+		6B5FB36E1B92312F004D9958 /* DIGITALDREAM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFFA761B922D650077669E /* DIGITALDREAM.ttf */; };
+		6B5FB36F1B92313A004D9958 /* DIGITALDREAMFATNARROW.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFFA771B922D650077669E /* DIGITALDREAMFATNARROW.ttf */; };
+		6B5FB3701B923154004D9958 /* Existence-StencilLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFFA7E1B922D730077669E /* Existence-StencilLight.otf */; };
+		6B5FB3721B9254A8004D9958 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5FB3711B9254A8004D9958 /* QuartzCore.framework */; };
 		6BB1946A1B88D99900082D0A /* StopwatchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB194691B88D99900082D0A /* StopwatchTableViewController.m */; };
 		6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */; };
 		6BB194701B88D9EE00082D0A /* SetTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */; };
@@ -39,7 +44,7 @@
 		5F4416FC1B921609002969D0 /* SetCountdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCountdownViewController.m; sourceTree = "<group>"; };
 		5F4CBFFA1B8916A500592B58 /* PresetTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetTimer.h; sourceTree = "<group>"; };
 		5F4CBFFB1B8916A500592B58 /* PresetTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetTimer.m; sourceTree = "<group>"; };
-		6B1AD1551B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DIGITALDREAMFAT.ttf; path = "../../../../../../../Downloads/digital-dream/DIGITALDREAMFAT.ttf"; sourceTree = "<group>"; };
+		6B5FB3711B9254A8004D9958 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6BB194681B88D99900082D0A /* StopwatchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopwatchTableViewController.h; sourceTree = "<group>"; };
 		6BB194691B88D99900082D0A /* StopwatchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopwatchTableViewController.m; sourceTree = "<group>"; };
 		6BB1946B1B88D9D000082D0A /* TimerHomepageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerHomepageViewController.h; sourceTree = "<group>"; };
@@ -48,6 +53,16 @@
 		6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTimerViewController.m; sourceTree = "<group>"; };
 		6BB194711B89184700082D0A /* PresetTimerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetTimerData.h; sourceTree = "<group>"; };
 		6BB194721B89184700082D0A /* PresetTimerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetTimerData.m; sourceTree = "<group>"; };
+		6BFFFA761B922D650077669E /* DIGITALDREAM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAM.ttf; sourceTree = "<group>"; };
+		6BFFFA771B922D650077669E /* DIGITALDREAMFATNARROW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMFATNARROW.ttf; sourceTree = "<group>"; };
+		6BFFFA781B922D650077669E /* DIGITALDREAMFATSKEW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMFATSKEW.ttf; sourceTree = "<group>"; };
+		6BFFFA791B922D650077669E /* DIGITALDREAMFATSKEWNARROW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMFATSKEWNARROW.ttf; sourceTree = "<group>"; };
+		6BFFFA7A1B922D650077669E /* DIGITALDREAMNARROW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMNARROW.ttf; sourceTree = "<group>"; };
+		6BFFFA7B1B922D650077669E /* DIGITALDREAMSKEW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMSKEW.ttf; sourceTree = "<group>"; };
+		6BFFFA7C1B922D650077669E /* DIGITALDREAMSKEWNARROW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMSKEWNARROW.ttf; sourceTree = "<group>"; };
+		6BFFFA7D1B922D730077669E /* Existence-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-Light.otf"; sourceTree = "<group>"; };
+		6BFFFA7E1B922D730077669E /* Existence-StencilLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-StencilLight.otf"; sourceTree = "<group>"; };
+		6BFFFA7F1B922D730077669E /* Existence-UnicaseLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Existence-UnicaseLight.otf"; sourceTree = "<group>"; };
 		8D0537581B86687B00588318 /* Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Time.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D05375C1B86687B00588318 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D05375D1B86687C00588318 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B5FB3721B9254A8004D9958 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,9 +95,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6BFFFA801B922D780077669E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6BFFFA761B922D650077669E /* DIGITALDREAM.ttf */,
+				6BFFFA771B922D650077669E /* DIGITALDREAMFATNARROW.ttf */,
+				6BFFFA781B922D650077669E /* DIGITALDREAMFATSKEW.ttf */,
+				6BFFFA791B922D650077669E /* DIGITALDREAMFATSKEWNARROW.ttf */,
+				6BFFFA7A1B922D650077669E /* DIGITALDREAMNARROW.ttf */,
+				6BFFFA7B1B922D650077669E /* DIGITALDREAMSKEW.ttf */,
+				6BFFFA7C1B922D650077669E /* DIGITALDREAMSKEWNARROW.ttf */,
+				6BFFFA7D1B922D730077669E /* Existence-Light.otf */,
+				6BFFFA7E1B922D730077669E /* Existence-StencilLight.otf */,
+				6BFFFA7F1B922D730077669E /* Existence-UnicaseLight.otf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		8D05374F1B86687B00588318 = {
 			isa = PBXGroup;
 			children = (
+				6B5FB3711B9254A8004D9958 /* QuartzCore.framework */,
 				8D05375A1B86687B00588318 /* Time */,
 				8D0537741B86687C00588318 /* TimeTests */,
 				8D0537591B86687B00588318 /* Products */,
@@ -119,6 +153,7 @@
 				8D0537651B86687C00588318 /* Main.storyboard */,
 				8D0537681B86687C00588318 /* Images.xcassets */,
 				8D05376A1B86687C00588318 /* LaunchScreen.xib */,
+				6BFFFA801B922D780077669E /* Fonts */,
 				8D05375B1B86687B00588318 /* Supporting Files */,
 			);
 			path = Time;
@@ -128,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				8D05375C1B86687B00588318 /* Info.plist */,
-				6B1AD1551B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf */,
 				8D05375D1B86687C00588318 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -231,6 +265,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B5FB3701B923154004D9958 /* Existence-StencilLight.otf in Resources */,
+				6B5FB36F1B92313A004D9958 /* DIGITALDREAMFATNARROW.ttf in Resources */,
+				6B5FB36E1B92312F004D9958 /* DIGITALDREAM.ttf in Resources */,
+				6B5FB36D1B923125004D9958 /* Existence-Light.otf in Resources */,
 				8D0537671B86687C00588318 /* Main.storyboard in Resources */,
 				8D05376C1B86687C00588318 /* LaunchScreen.xib in Resources */,
 				8D0537691B86687C00588318 /* Images.xcassets in Resources */,

@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="D9c-cY-1N0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="D9c-cY-1N0">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="DIGITALDREAM.ttf">
+            <string>Digitaldream</string>
+        </mutableArray>
+        <mutableArray key="Existence-Light.otf">
+            <string>Existence-Light</string>
+        </mutableArray>
         <mutableArray key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
         </mutableArray>
@@ -14,7 +20,7 @@
         <scene sceneID="hJX-Lq-K7T">
             <objects>
                 <navigationController id="UcV-YE-d7N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stopwatch" id="sGz-99-ITj"/>
+                    <tabBarItem key="tabBarItem" title="Stopwatch" image="Stopwatch" id="sGz-99-ITj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="06l-AR-OBM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -204,38 +210,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lz0-TQ-TkD" userLabel="BACKGROUND">
+                                <rect key="frame" x="150" y="211" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pt9-ay-sVV" userLabel="Timer View">
-                                <rect key="frame" x="200" y="104" width="200" height="200"/>
+                                <rect key="frame" x="200" y="124" width="200" height="200"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="GOU-yt-mDO"/>
                                     <constraint firstAttribute="width" constant="200" id="Ufe-45-dvR"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="00.00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfV-3O-MOv" userLabel="Time Label">
-                                <rect key="frame" x="267" y="193" width="67" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfV-3O-MOv" userLabel="Time Label">
+                                <rect key="frame" x="223" y="211" width="154" height="25"/>
+                                <fontDescription key="fontDescription" name="Digitaldream" family="Digital dream" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Preset Timer label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvx-OY-pP9">
-                                <rect key="frame" x="231" y="148" width="138" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Timer label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvx-OY-pP9">
+                                <rect key="frame" x="235" y="166" width="131" height="21"/>
+                                <fontDescription key="fontDescription" name="Existence-Light" family="Existence" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-7Y-7IG" userLabel="Reset Button">
-                                <rect key="frame" x="283" y="239" width="34" height="30"/>
-                                <state key="normal" title="reset">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-7Y-7IG" userLabel="Reset Button">
+                                <rect key="frame" x="285" y="261" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BtS-eb-TMq"/>
+                                    <constraint firstAttribute="width" constant="30" id="SDu-Er-eph"/>
+                                </constraints>
+                                <state key="normal" image="Refresh Filled-C">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="resetButtonTapped:" destination="VOK-Pf-7TD" eventType="touchUpInside" id="MN7-YU-ses"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10s-kP-wGz" userLabel="Start/Pause Button">
-                                <rect key="frame" x="260" y="329" width="81" height="30"/>
-                                <state key="normal" title="Start/Pause">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10s-kP-wGz" userLabel="Start/Pause Button">
+                                <rect key="frame" x="263" y="332" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="8qE-2k-x5r"/>
+                                    <constraint firstAttribute="width" constant="75" id="TfV-4E-Rhm"/>
+                                </constraints>
+                                <state key="normal" image="Play Filled-O">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -243,23 +261,30 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YJY-Ga-uuv">
-                                <rect key="frame" x="140" y="389" width="320" height="162"/>
+                                <rect key="frame" x="151" y="387" width="300" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="wJZ-CL-JUE"/>
+                                </constraints>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="uvx-OY-pP9" secondAttribute="centerX" id="0fO-gB-6G7"/>
                             <constraint firstAttribute="centerX" secondItem="pt9-ay-sVV" secondAttribute="centerX" id="2g4-6f-RaE"/>
+                            <constraint firstItem="Lz0-TQ-TkD" firstAttribute="top" secondItem="qro-3B-UCe" secondAttribute="topMargin" id="6IN-gr-iJh"/>
                             <constraint firstItem="YJY-Ga-uuv" firstAttribute="centerX" secondItem="qro-3B-UCe" secondAttribute="centerX" id="KsS-vT-fEq"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerY" secondItem="CfV-3O-MOv" secondAttribute="centerY" constant="0.5" id="LoD-PQ-O0t"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Lz0-TQ-TkD" secondAttribute="bottom" id="OjP-dp-ZEd"/>
                             <constraint firstAttribute="centerX" secondItem="10s-kP-wGz" secondAttribute="centerX" id="Sc8-Za-uQb"/>
-                            <constraint firstItem="pt9-ay-sVV" firstAttribute="top" secondItem="Gcb-Iw-zBD" secondAttribute="bottom" constant="40" id="cki-sp-k7p"/>
+                            <constraint firstItem="pt9-ay-sVV" firstAttribute="top" secondItem="Gcb-Iw-zBD" secondAttribute="bottom" constant="60" id="cki-sp-k7p"/>
                             <constraint firstItem="TAG-7Y-7IG" firstAttribute="top" secondItem="CfV-3O-MOv" secondAttribute="bottom" constant="25" id="h7u-UC-I6v"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="TAG-7Y-7IG" secondAttribute="centerX" id="iEf-cb-K3g"/>
                             <constraint firstItem="CfV-3O-MOv" firstAttribute="top" secondItem="uvx-OY-pP9" secondAttribute="bottom" constant="24" id="kTb-qG-SXR"/>
-                            <constraint firstItem="10s-kP-wGz" firstAttribute="top" secondItem="pt9-ay-sVV" secondAttribute="bottom" constant="25" id="mGP-eG-Ryd"/>
-                            <constraint firstItem="YJY-Ga-uuv" firstAttribute="top" secondItem="10s-kP-wGz" secondAttribute="bottom" constant="30" id="sdw-IR-dkI"/>
+                            <constraint firstItem="10s-kP-wGz" firstAttribute="top" secondItem="pt9-ay-sVV" secondAttribute="bottom" constant="8" id="mGP-eG-Ryd"/>
+                            <constraint firstItem="YJY-Ga-uuv" firstAttribute="top" secondItem="10s-kP-wGz" secondAttribute="bottom" id="sdw-IR-dkI"/>
+                            <constraint firstItem="Lz0-TQ-TkD" firstAttribute="leading" secondItem="qro-3B-UCe" secondAttribute="leadingMargin" id="uYY-0j-Kdb"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="CfV-3O-MOv" secondAttribute="centerX" id="vfY-1W-b99"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lz0-TQ-TkD" secondAttribute="trailing" id="y0Y-Ir-8yb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BRy-Xp-X0O">
@@ -270,6 +295,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundView" destination="Lz0-TQ-TkD" id="Rhn-an-flK"/>
                         <outlet property="presetTimerLabel" destination="uvx-OY-pP9" id="ZRe-LC-S4Q"/>
                         <outlet property="resetButton" destination="TAG-7Y-7IG" id="feX-gN-dMA"/>
                         <outlet property="startPauseButton" destination="10s-kP-wGz" id="lS0-OI-JhP"/>
@@ -310,7 +336,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Save timer as... " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WTR-ns-stD">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Save timer as... " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WTR-ns-stD">
                                 <rect key="frame" x="140" y="164" width="321" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="321" id="JWG-Al-vFe"/>
@@ -318,7 +344,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OE0-hL-Mo2">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE0-hL-Mo2">
                                 <rect key="frame" x="140" y="219" width="320" height="162"/>
                             </pickerView>
                         </subviews>
@@ -387,7 +413,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y74-C8-fZq">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y74-C8-fZq">
                                 <rect key="frame" x="221" y="490" width="159" height="30"/>
                                 <state key="normal" title="Start Event Countdown"/>
                                 <connections>
@@ -452,7 +478,7 @@
         <scene sceneID="0up-eN-TFi">
             <objects>
                 <navigationController title="Countdown" id="hwF-VO-CHs" userLabel="Countdown" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Countdown" id="Deq-RN-PfC"/>
+                    <tabBarItem key="tabBarItem" title="Countdown" image="Overtime" id="Deq-RN-PfC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="25w-vl-3fh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -477,13 +503,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days  Hours  Mins Secs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMr-wn-WeY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Days  Hours  Mins Secs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMr-wn-WeY">
                                 <rect key="frame" x="210" y="289" width="180" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Until my event" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-HU-nwo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Until my event" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-HU-nwo">
                                 <rect key="frame" x="230" y="345" width="141" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -514,11 +540,11 @@
             </objects>
             <point key="canvasLocation" x="963" y="1589"/>
         </scene>
-        <!--Timer-->
+        <!--Navigation Controller-->
         <scene sceneID="Il2-jW-KOa">
             <objects>
                 <navigationController id="aS8-JE-0vy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Timer" id="TKJ-iQ-TGe"/>
+                    <tabBarItem key="tabBarItem" title="" id="TKJ-iQ-TGe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tfv-x2-O07">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -554,6 +580,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Overtime" width="30" height="30"/>
+        <image name="Play Filled-O" width="100" height="100"/>
+        <image name="Refresh Filled-C" width="100" height="100"/>
+        <image name="Stopwatch" width="30" height="30"/>
         <image name="playIcon" width="128" height="128"/>
     </resources>
 </document>

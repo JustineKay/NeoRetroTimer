@@ -10,6 +10,7 @@
 #import "PresetTimerData.h"
 
 @interface TimerHomepageViewController ()
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *timerBackgroundView;
 @property (weak, nonatomic) IBOutlet UILabel *presetTimerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -30,8 +31,30 @@
 
 //To access the singleton: [PresetTimerData sharedModel] + .timerName or .time or .userPresetTimers
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        
+        // non-selected tab bar image
+        UIImage *defaultImage = [[UIImage imageNamed:@"Future"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // selected tab bar image
+        UIImage *selectedImage = [[UIImage imageNamed:@"Future Filled"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // set the tab bar item with a title and both images
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Timer" image:defaultImage selectedImage:selectedImage];
+        
+        return self;
+    }
+    return nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //rgb(230,233,240)
+    self.backgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)230/255 green:(CGFloat)233/255 blue:(CGFloat)240/255 alpha:1];
+    
+    self.timerBackgroundView.layer.cornerRadius = 100;
     
     self.timeLabel.text = @"00:00:00";
     self.presetTimerLabel.text = @"";
@@ -64,6 +87,30 @@
         self.presetTimerLabel.text = @"";
     
     }
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+
+    
+    UILabel *pickerLabel = (UILabel *)view;
+    
+    if (pickerLabel == nil) {
+        //label size
+        
+        pickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)];
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        //here you can play with fonts
+        [pickerLabel setFont:[UIFont fontWithName:@"Existence-Light" size:14.0]];
+        //rgb(67,28,93)
+        [pickerLabel setTextColor:[UIColor colorWithRed:(CGFloat)67/255 green:(CGFloat)28/255 blue:(CGFloat)93/255 alpha:1]];
+        
+    }
+    //picker view array is the datasource
+    [pickerLabel setText:[self.timerPickerData objectAtIndex:row]];
+    
+    return pickerLabel;
+    
 }
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {
@@ -234,30 +281,6 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-//    if ([[PresetTimerData sharedModel].userPresetTimerData.timerName isEqualToString:@""]) {
-//        
-//        self.presetTimerLabel.text = @"";
-//        self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
-//        
-//    }else if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"]){
-//        
-//        NSString *userChoice = [self.timerPickerData objectAtIndex:[pickerView selectedRowInComponent:0]];
-//        NSArray *separatedComponents = [userChoice componentsSeparatedByString:@"     "];
-//        
-//        [PresetTimerData sharedModel].userPresetTimerData.timerName = separatedComponents[0];
-//        
-//        self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
-//        
-//        [PresetTimerData sharedModel].userPresetTimerData.time = separatedComponents[1];
-//        
-//        self.timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
-//        
-//    }else {
-//        
-//        
-//    }
-//    
-//    [self updateTimerLabel];
     return self.timerPickerData[row];
 }
 

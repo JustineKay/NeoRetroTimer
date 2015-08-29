@@ -40,6 +40,23 @@
 
 @implementation StopwatchTableViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        
+        // non-selected tab bar image
+        UIImage *defaultImage = [[UIImage imageNamed:@"Stopwatch"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // selected tab bar image
+        UIImage *selectedImage = [[UIImage imageNamed:@"Stopwatch Filled"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // set the tab bar item with a title and both images
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Stopwatch" image:defaultImage selectedImage:selectedImage];
+        
+        return self;
+    }
+    return nil;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

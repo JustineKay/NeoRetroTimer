@@ -57,6 +57,7 @@
     self.timerBackgroundView.layer.cornerRadius = 100;
     
     self.timeLabel.text = @"00:00:00";
+    self.timeLabel.textColor = [UIColor colorWithRed:(CGFloat)67/255 green:(CGFloat)28/255 blue:(CGFloat)93/255 alpha:1];
     self.presetTimerLabel.text = @"";
     
     self.timerPickerData = [PresetTimerData sharedModel].userPresetTimers;

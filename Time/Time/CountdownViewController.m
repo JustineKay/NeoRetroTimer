@@ -19,6 +19,24 @@
 
 @implementation CountdownViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        
+        // non-selected tab bar image
+        UIImage *defaultImage = [[UIImage imageNamed:@"Overtime"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // selected tab bar image
+        UIImage *selectedImage = [[UIImage imageNamed:@"Overtime Filled"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        // set the tab bar item with a title and both images
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Countdown" image:defaultImage selectedImage:selectedImage];
+        
+        return self;
+    }
+    return nil;
+}
+
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     

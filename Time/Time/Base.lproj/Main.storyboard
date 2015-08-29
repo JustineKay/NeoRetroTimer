@@ -16,11 +16,11 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Stopwatch-->
+        <!--Navigation Controller-->
         <scene sceneID="hJX-Lq-K7T">
             <objects>
                 <navigationController id="UcV-YE-d7N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stopwatch" image="Stopwatch" id="sGz-99-ITj"/>
+                    <tabBarItem key="tabBarItem" title="" id="sGz-99-ITj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="06l-AR-OBM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -210,8 +210,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lz0-TQ-TkD" userLabel="BACKGROUND">
-                                <rect key="frame" x="150" y="211" width="300" height="300"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lz0-TQ-TkD" userLabel="BACKGROUND">
+                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pt9-ay-sVV" userLabel="Timer View">
@@ -260,8 +260,8 @@
                                     <action selector="startPauseButtonTapped:" destination="VOK-Pf-7TD" eventType="touchUpInside" id="nix-8f-5ZD"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YJY-Ga-uuv">
-                                <rect key="frame" x="151" y="387" width="300" height="162"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJY-Ga-uuv">
+                                <rect key="frame" x="150" y="407" width="300" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="wJZ-CL-JUE"/>
                                 </constraints>
@@ -478,7 +478,7 @@
         <scene sceneID="0up-eN-TFi">
             <objects>
                 <navigationController title="Countdown" id="hwF-VO-CHs" userLabel="Countdown" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Countdown" image="Overtime" id="Deq-RN-PfC"/>
+                    <tabBarItem key="tabBarItem" title="" id="Deq-RN-PfC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="25w-vl-3fh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -580,10 +580,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Overtime" width="30" height="30"/>
         <image name="Play Filled-O" width="100" height="100"/>
         <image name="Refresh Filled-C" width="100" height="100"/>
-        <image name="Stopwatch" width="30" height="30"/>
         <image name="playIcon" width="128" height="128"/>
     </resources>
 </document>

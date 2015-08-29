@@ -86,7 +86,7 @@
 
         [self startTimer];
         
-        self.isRunning = TRUE;
+        self.isRunning = YES;
     
     }
 }

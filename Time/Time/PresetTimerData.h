@@ -15,7 +15,7 @@
 
 @property (nonatomic) PresetTimer *userPresetTimerData;
 @property (nonatomic) PresetTimer *userUnsavedTimerData;
-@property (nonatomic) PresetTimer *userCountdownTimerData;
+@property (nonatomic) NSMutableArray *userCountdownTimerData;
 
 -(void)initializeData;
 

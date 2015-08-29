@@ -7,6 +7,7 @@
 //
 
 #import "SetCountdownViewController.h"
+#import "CountdownViewController.h"
 #import "PresetTimerData.h"
 
 @interface SetCountdownViewController ()
@@ -14,6 +15,12 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *setDatePickerData;
 @property (weak, nonatomic) IBOutlet UIButton *eventCountdownButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+
+@property (nonatomic) NSArray *datePickerData;
+@property (nonatomic) NSArray *datePickerDays;
+@property (nonatomic) NSArray *datePickerHours;
+@property (nonatomic) NSArray *datePickerMins;
+@property (nonatomic) NSArray *datePickerSecs;
 
 @end
 
@@ -30,59 +37,25 @@
 }
 
 
-/*
-
-if ([self.userInputTextField.text isEqualToString:@""]) {
-    
-    [PresetTimerData sharedModel].userPresetTimerData.timerName = Nil;
-    [PresetTimerData sharedModel].userPresetTimerData.time  = Nil;
-    
-    NSLog(@"Preset Timer: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
-    
-    [self setTimer:[PresetTimerData sharedModel].userUnsavedTimerData With:self.setTimerPickerView];
-    
-    NSLog(@"Unsaved Timer: %@", [PresetTimerData sharedModel].userUnsavedTimerData.time);
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}else {
-    
-    [PresetTimerData sharedModel].userPresetTimerData.timerName = self.userInputTextField.text;
-    
-    NSLog(@"timer name: %@",[PresetTimerData sharedModel].userPresetTimerData.timerName);
-    
-    [self setTimer:[PresetTimerData sharedModel].userPresetTimerData With:self.setTimerPickerView];
-    
-    [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
-    NSLog(@"Unsaved Timer: %@", [PresetTimerData sharedModel].userUnsavedTimerData.time);
-    
-    NSString *time = [PresetTimerData sharedModel].userPresetTimerData.time;
-    NSString *timerName = [PresetTimerData sharedModel].userPresetTimerData.timerName;
-    
-    self.userPresetTimer = [timerName stringByAppendingFormat:@"     %@", time];
-    NSLog(@"user preset timer: %@", self.userPresetTimer);
-    
-    [[PresetTimerData sharedModel].userPresetTimers insertObject:self.userPresetTimer atIndex:00];
-    NSLog(@"user preset timers: %@", [PresetTimerData sharedModel].userPresetTimers);
-    
-    [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
-    NSLog(@"unsaved time: %@", [PresetTimerData sharedModel].userUnsavedTimerData.time);
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
- 
- */
-
 - (IBAction)eventCountdownButtonTapped:(id)sender {
-    if ([self.userInputTextField.text isEqualToString:@""]) {
-        [PresetTimerData sharedModel].userCountdownTimerData.timerName = Nil;
-         }
+    NSLog(@"%@", self.setDatePickerData.date);
     
+   
+        NSDictionary *countdownData = @{
+                                        @"name" : self.userInputTextField.text,
+                                        @"date" : self.setDatePickerData.date
+                                        };
+    
+        [[PresetTimerData sharedModel].userCountdownTimerData addObject:countdownData];
+    
+        [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (IBAction)cancelButtonTapped:(id)sender {
       [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

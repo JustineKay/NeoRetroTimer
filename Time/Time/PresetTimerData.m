@@ -33,6 +33,7 @@
                               ].mutableCopy;
     
     self.userUnsavedTimerData = [[PresetTimer alloc] init];
+    self.userCountdownTimerData = [[PresetTimer alloc] init];
     
 }
 

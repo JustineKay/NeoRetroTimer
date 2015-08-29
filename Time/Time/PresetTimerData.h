@@ -15,6 +15,7 @@
 
 @property (nonatomic) PresetTimer *userPresetTimerData;
 @property (nonatomic) PresetTimer *userUnsavedTimerData;
+@property (nonatomic) PresetTimer *userCountdownTimerData;
 
 -(void)initializeData;
 

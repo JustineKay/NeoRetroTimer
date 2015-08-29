@@ -359,6 +359,161 @@
             </objects>
             <point key="canvasLocation" x="2287" y="871"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wZ3-pA-43E">
+            <objects>
+                <navigationController id="SzI-Bl-V9H" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l9Z-35-jkM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hoj-by-rt8" kind="relationship" relationship="rootViewController" id="XMe-mG-ca8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhu-qM-F1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1619" y="1579"/>
+        </scene>
+        <!--Set Countdown View Controller-->
+        <scene sceneID="dVi-pj-Hba">
+            <objects>
+                <viewController id="hoj-by-rt8" customClass="SetCountdownViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fOc-my-a7F"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lgb-Rm-m72"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GPv-1h-taQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y74-C8-fZq">
+                                <rect key="frame" x="221" y="490" width="159" height="30"/>
+                                <state key="normal" title="Start Event Countdown"/>
+                                <connections>
+                                    <action selector="eventCountdownButtonTapped:" destination="hoj-by-rt8" eventType="touchUpInside" id="wMg-C8-Z9U"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Set Event Countdown as..." borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yTz-sr-dBH">
+                                <rect key="frame" x="140" y="90" width="321" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MpU-3f-682"/>
+                                    <constraint firstAttribute="width" constant="321" id="i2z-Xc-hm7"/>
+                                </constraints>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xox-TN-Y0R">
+                                <rect key="frame" x="0.0" y="156" width="600" height="288"/>
+                                <date key="date" timeIntervalSinceReferenceDate="462554246.442514">
+                                    <!--2015-08-29 15:17:26 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yTz-sr-dBH" firstAttribute="top" secondItem="fOc-my-a7F" secondAttribute="bottom" constant="26" id="2Cn-s4-hwE"/>
+                            <constraint firstItem="Y74-C8-fZq" firstAttribute="centerX" secondItem="GPv-1h-taQ" secondAttribute="centerX" id="Bwz-cB-rCA"/>
+                            <constraint firstAttribute="trailing" secondItem="xox-TN-Y0R" secondAttribute="trailing" id="CFk-9R-2KM"/>
+                            <constraint firstItem="xox-TN-Y0R" firstAttribute="leading" secondItem="GPv-1h-taQ" secondAttribute="leading" id="DAn-nr-v8f"/>
+                            <constraint firstItem="xox-TN-Y0R" firstAttribute="top" secondItem="yTz-sr-dBH" secondAttribute="bottom" constant="33" id="EBl-1F-PLQ"/>
+                            <constraint firstItem="xox-TN-Y0R" firstAttribute="centerY" secondItem="GPv-1h-taQ" secondAttribute="centerY" id="QSA-RN-P28"/>
+                            <constraint firstItem="Lgb-Rm-m72" firstAttribute="top" secondItem="Y74-C8-fZq" secondAttribute="bottom" constant="80" id="qII-QG-Ud6"/>
+                            <constraint firstItem="xox-TN-Y0R" firstAttribute="top" secondItem="fOc-my-a7F" secondAttribute="bottom" constant="75" id="rkx-YN-ps0"/>
+                            <constraint firstItem="yTz-sr-dBH" firstAttribute="centerX" secondItem="GPv-1h-taQ" secondAttribute="centerX" id="uBr-I5-Zvl"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="rkx-YN-ps0"/>
+                                <exclude reference="2Cn-s4-hwE"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="GVi-9I-M3c">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="op6-aQ-8eB">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="hoj-by-rt8" id="cMd-Tr-ZIu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="op6-aQ-8eB" id="U0s-x2-S2O"/>
+                        <outlet property="eventCountdownButton" destination="Y74-C8-fZq" id="3nF-Tm-hbB"/>
+                        <outlet property="setDatePickerData" destination="xox-TN-Y0R" id="U8P-Ex-CBx"/>
+                        <outlet property="userInputTextField" destination="yTz-sr-dBH" id="VS7-HV-3Eu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XdA-Lb-2My" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="1579"/>
+        </scene>
+        <!--Countdown-->
+        <scene sceneID="0up-eN-TFi">
+            <objects>
+                <navigationController title="Countdown" id="hwF-VO-CHs" userLabel="Countdown" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Countdown" id="Deq-RN-PfC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="25w-vl-3fh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MN4-Ka-xFg" kind="relationship" relationship="rootViewController" id="XfO-Yd-gKp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LpJ-3A-xyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="315" y="1579"/>
+        </scene>
+        <!--Countdown-->
+        <scene sceneID="ocB-Mw-3eQ">
+            <objects>
+                <viewController title="Countdown" id="MN4-Ka-xFg" customClass="CountdownViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sOl-rL-Rej"/>
+                        <viewControllerLayoutGuide type="bottom" id="RQx-d3-MqV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P1z-bM-jBZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Days  Hours  Mins Secs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMr-wn-WeY">
+                                <rect key="frame" x="210" y="289" width="180" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Until my event" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-HU-nwo">
+                                <rect key="frame" x="230" y="345" width="141" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="id3-HU-nwo" firstAttribute="top" secondItem="GMr-wn-WeY" secondAttribute="bottom" constant="35" id="BdT-uS-dKg"/>
+                            <constraint firstItem="GMr-wn-WeY" firstAttribute="centerY" secondItem="P1z-bM-jBZ" secondAttribute="centerY" id="MPG-dT-xgi"/>
+                            <constraint firstItem="id3-HU-nwo" firstAttribute="centerX" secondItem="P1z-bM-jBZ" secondAttribute="centerX" id="PE9-xG-xrh"/>
+                            <constraint firstItem="GMr-wn-WeY" firstAttribute="centerX" secondItem="P1z-bM-jBZ" secondAttribute="centerX" id="TaR-Gy-5fR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mqf-fK-zGC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qak-tN-q9t">
+                            <connections>
+                                <segue destination="SzI-Bl-V9H" kind="presentation" id="P1j-Gk-jhj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="countdownLabel" destination="GMr-wn-WeY" id="dhf-ap-5MJ"/>
+                        <outlet property="eventNameLabel" destination="id3-HU-nwo" id="Bez-xU-cLo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hDi-Zz-JgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="963" y="1589"/>
+        </scene>
         <!--Timer-->
         <scene sceneID="Il2-jW-KOa">
             <objects>
@@ -390,6 +545,7 @@
                     <connections>
                         <segue destination="aS8-JE-0vy" kind="relationship" relationship="viewControllers" id="9b6-sw-Vk1"/>
                         <segue destination="UcV-YE-d7N" kind="relationship" relationship="viewControllers" id="dko-wB-Nan"/>
+                        <segue destination="hwF-VO-CHs" kind="relationship" relationship="viewControllers" id="ORP-qA-Wxo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sM3-xK-Nxg" userLabel="First Responder" sceneMemberID="firstResponder"/>

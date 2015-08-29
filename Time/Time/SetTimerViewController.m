@@ -27,7 +27,7 @@
 
 @implementation SetTimerViewController
 
-//To access the singleton: [PresetTimer sharedModel] + .timerName or .time or .userPresetTimers or .userUnsavedTimerData
+//To access the singleton: [PresetTimerData sharedModel] + .userCountdownTimerData + .timerName or .time or .userPresetTimers or .userUnsavedTimerData
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F4416FA1B920B48002969D0 /* CountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4416F91B920B48002969D0 /* CountdownViewController.m */; };
+		5F4416FD1B921609002969D0 /* SetCountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4416FC1B921609002969D0 /* SetCountdownViewController.m */; };
 		5F4CBFFC1B8916A500592B58 /* PresetTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4CBFFB1B8916A500592B58 /* PresetTimer.m */; };
 		6BB1946A1B88D99900082D0A /* StopwatchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB194691B88D99900082D0A /* StopwatchTableViewController.m */; };
 		6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */; };
@@ -31,6 +33,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F4416F81B920B48002969D0 /* CountdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownViewController.h; sourceTree = "<group>"; };
+		5F4416F91B920B48002969D0 /* CountdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownViewController.m; sourceTree = "<group>"; };
+		5F4416FB1B921609002969D0 /* SetCountdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCountdownViewController.h; sourceTree = "<group>"; };
+		5F4416FC1B921609002969D0 /* SetCountdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCountdownViewController.m; sourceTree = "<group>"; };
 		5F4CBFFA1B8916A500592B58 /* PresetTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetTimer.h; sourceTree = "<group>"; };
 		5F4CBFFB1B8916A500592B58 /* PresetTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetTimer.m; sourceTree = "<group>"; };
 		6B1AD1551B8D256C009D6ED3 /* DIGITALDREAMFAT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DIGITALDREAMFAT.ttf; path = "../../../../../../../Downloads/digital-dream/DIGITALDREAMFAT.ttf"; sourceTree = "<group>"; };
@@ -102,6 +108,10 @@
 				5F4CBFFB1B8916A500592B58 /* PresetTimer.m */,
 				6BB194711B89184700082D0A /* PresetTimerData.h */,
 				6BB194721B89184700082D0A /* PresetTimerData.m */,
+				5F4416F81B920B48002969D0 /* CountdownViewController.h */,
+				5F4416F91B920B48002969D0 /* CountdownViewController.m */,
+				5F4416FB1B921609002969D0 /* SetCountdownViewController.h */,
+				5F4416FC1B921609002969D0 /* SetCountdownViewController.m */,
 				6BB1946B1B88D9D000082D0A /* TimerHomepageViewController.h */,
 				6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */,
 				6BB1946E1B88D9EE00082D0A /* SetTimerViewController.h */,
@@ -242,9 +252,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BB194731B89184700082D0A /* PresetTimerData.m in Sources */,
+				5F4416FD1B921609002969D0 /* SetCountdownViewController.m in Sources */,
 				6BB1946A1B88D99900082D0A /* StopwatchTableViewController.m in Sources */,
 				8D0537611B86687C00588318 /* AppDelegate.m in Sources */,
 				6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */,
+				5F4416FA1B920B48002969D0 /* CountdownViewController.m in Sources */,
 				8D05375E1B86687C00588318 /* main.m in Sources */,
 				6BB194701B88D9EE00082D0A /* SetTimerViewController.m in Sources */,
 				5F4CBFFC1B8916A500592B58 /* PresetTimer.m in Sources */,

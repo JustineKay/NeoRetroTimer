@@ -50,15 +50,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
     
-    //rgb(230,233,240)
-    self.backgroundView.backgroundColor = [UIColor colorWithRed:(CGFloat)230/255 green:(CGFloat)233/255 blue:(CGFloat)240/255 alpha:1];
-    
-    self.timerBackgroundView.layer.cornerRadius = 100;
+    self.timerBackgroundView.layer.cornerRadius = 125;
+    self.timerBackgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+    self.timerBackgroundView.layer.borderWidth = 20;
+    self.timerBackgroundView.layer.borderColor = [PresetTimerData sharedModel].steelBlueGrey.CGColor;
     
     self.timeLabel.text = @"00:00:00";
-    self.timeLabel.textColor = [UIColor colorWithRed:(CGFloat)67/255 green:(CGFloat)28/255 blue:(CGFloat)93/255 alpha:1];
+    self.timeLabel.textColor = [PresetTimerData sharedModel].eggplant;
     self.presetTimerLabel.text = @"";
+    
+//    self.startPauseButton.layer.cornerRadius = 30;
+//    self.startPauseButton.layer.borderWidth = 3;
+//    self.startPauseButton.layer.borderColor = [PresetTimerData sharedModel].glacierBlue.CGColor;
+    [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
+    
+    self.presetTimerLabel.textColor = [PresetTimerData sharedModel].burntOrange;
     
     self.timerPickerData = [PresetTimerData sharedModel].userPresetTimers;
     
@@ -102,9 +111,9 @@
         [pickerLabel setTextAlignment:NSTextAlignmentCenter];
         [pickerLabel setBackgroundColor:[UIColor clearColor]];
         //here you can play with fonts
-        [pickerLabel setFont:[UIFont fontWithName:@"Existence-Light" size:14.0]];
+        [pickerLabel setFont:[UIFont fontWithName:@"PrintBold" size:22.0]];
         //rgb(67,28,93)
-        [pickerLabel setTextColor:[UIColor colorWithRed:(CGFloat)67/255 green:(CGFloat)28/255 blue:(CGFloat)93/255 alpha:1]];
+        [pickerLabel setTextColor:[PresetTimerData sharedModel].eggplant];
         
     }
     //picker view array is the datasource
@@ -127,6 +136,8 @@
         [self.timer invalidate];
         self.isRunning = FALSE;
         self.pausedTime = self.timeLabel.text;
+        [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
+        
         
     }else {
         
@@ -134,19 +145,11 @@
 
         [self startTimer];
         
-        self.isRunning = YES;
+        [self.startPauseButton setImage:[UIImage imageNamed:@"Pause Filled-O"] forState:UIControlStateNormal];
+        
+        self.isRunning = TRUE;
     
     }
-}
-
-- (void)startTimer:(PresetTimer *)timer {
-    // update timer lables
-    // start timer
-    
-    self.presetTimerLabel.text = timer.timerName;
-    self.timeLabel.text = timer.time;
-    
-    // create a new timer with timer.time as the time
 }
 
 - (void)updateTimeLabel{

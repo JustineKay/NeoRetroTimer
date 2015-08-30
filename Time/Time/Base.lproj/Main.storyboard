@@ -8,11 +8,11 @@
         <mutableArray key="DIGITALDREAM.ttf">
             <string>Digitaldream</string>
         </mutableArray>
-        <mutableArray key="Existence-Light.otf">
-            <string>Existence-Light</string>
-        </mutableArray>
         <mutableArray key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
+        </mutableArray>
+        <mutableArray key="PrintClearly_TT.ttf">
+            <string>PrintClearly</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -211,31 +211,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lz0-TQ-TkD" userLabel="BACKGROUND">
-                                <rect key="frame" x="16" y="0.0" width="568" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pt9-ay-sVV" userLabel="Timer View">
-                                <rect key="frame" x="200" y="124" width="200" height="200"/>
+                                <rect key="frame" x="175" y="94" width="250" height="250"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="GOU-yt-mDO"/>
-                                    <constraint firstAttribute="width" constant="200" id="Ufe-45-dvR"/>
+                                    <constraint firstAttribute="height" constant="250" id="GOU-yt-mDO"/>
+                                    <constraint firstAttribute="width" constant="250" id="Ufe-45-dvR"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CfV-3O-MOv" userLabel="Time Label">
-                                <rect key="frame" x="223" y="211" width="154" height="25"/>
-                                <fontDescription key="fontDescription" name="Digitaldream" family="Digital dream" pointSize="24"/>
+                                <rect key="frame" x="214" y="205" width="173" height="28"/>
+                                <fontDescription key="fontDescription" name="Digitaldream" family="Digital dream" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preset Timer label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvx-OY-pP9">
-                                <rect key="frame" x="235" y="166" width="131" height="21"/>
-                                <fontDescription key="fontDescription" name="Existence-Light" family="Existence" pointSize="17"/>
+                                <rect key="frame" x="218" y="156" width="164" height="25"/>
+                                <fontDescription key="fontDescription" name="PrintClearly" family="Print Clearly" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAG-7Y-7IG" userLabel="Reset Button">
-                                <rect key="frame" x="285" y="261" width="30" height="30"/>
+                                <rect key="frame" x="285" y="268" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="BtS-eb-TMq"/>
                                     <constraint firstAttribute="width" constant="30" id="SDu-Er-eph"/>
@@ -248,12 +248,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10s-kP-wGz" userLabel="Start/Pause Button">
-                                <rect key="frame" x="263" y="332" width="75" height="75"/>
+                                <rect key="frame" x="270" y="359" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="8qE-2k-x5r"/>
-                                    <constraint firstAttribute="width" constant="75" id="TfV-4E-Rhm"/>
+                                    <constraint firstAttribute="height" constant="60" id="8qE-2k-x5r"/>
+                                    <constraint firstAttribute="width" constant="60" id="TfV-4E-Rhm"/>
                                 </constraints>
-                                <state key="normal" image="Play Filled-O">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -261,7 +261,7 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJY-Ga-uuv">
-                                <rect key="frame" x="150" y="407" width="300" height="162"/>
+                                <rect key="frame" x="150" y="399" width="300" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="wJZ-CL-JUE"/>
                                 </constraints>
@@ -272,19 +272,19 @@
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="uvx-OY-pP9" secondAttribute="centerX" id="0fO-gB-6G7"/>
                             <constraint firstAttribute="centerX" secondItem="pt9-ay-sVV" secondAttribute="centerX" id="2g4-6f-RaE"/>
                             <constraint firstItem="Lz0-TQ-TkD" firstAttribute="top" secondItem="qro-3B-UCe" secondAttribute="topMargin" id="6IN-gr-iJh"/>
+                            <constraint firstAttribute="trailing" secondItem="Lz0-TQ-TkD" secondAttribute="trailing" id="J8U-0Q-fue"/>
                             <constraint firstItem="YJY-Ga-uuv" firstAttribute="centerX" secondItem="qro-3B-UCe" secondAttribute="centerX" id="KsS-vT-fEq"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerY" secondItem="CfV-3O-MOv" secondAttribute="centerY" constant="0.5" id="LoD-PQ-O0t"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Lz0-TQ-TkD" secondAttribute="bottom" id="OjP-dp-ZEd"/>
                             <constraint firstAttribute="centerX" secondItem="10s-kP-wGz" secondAttribute="centerX" id="Sc8-Za-uQb"/>
-                            <constraint firstItem="pt9-ay-sVV" firstAttribute="top" secondItem="Gcb-Iw-zBD" secondAttribute="bottom" constant="60" id="cki-sp-k7p"/>
-                            <constraint firstItem="TAG-7Y-7IG" firstAttribute="top" secondItem="CfV-3O-MOv" secondAttribute="bottom" constant="25" id="h7u-UC-I6v"/>
+                            <constraint firstItem="pt9-ay-sVV" firstAttribute="top" secondItem="Gcb-Iw-zBD" secondAttribute="bottom" constant="30" id="cki-sp-k7p"/>
+                            <constraint firstItem="TAG-7Y-7IG" firstAttribute="top" secondItem="CfV-3O-MOv" secondAttribute="bottom" constant="35" id="h7u-UC-I6v"/>
+                            <constraint firstItem="Lz0-TQ-TkD" firstAttribute="leading" secondItem="qro-3B-UCe" secondAttribute="leading" id="hXb-f2-LWI"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="TAG-7Y-7IG" secondAttribute="centerX" id="iEf-cb-K3g"/>
                             <constraint firstItem="CfV-3O-MOv" firstAttribute="top" secondItem="uvx-OY-pP9" secondAttribute="bottom" constant="24" id="kTb-qG-SXR"/>
-                            <constraint firstItem="10s-kP-wGz" firstAttribute="top" secondItem="pt9-ay-sVV" secondAttribute="bottom" constant="8" id="mGP-eG-Ryd"/>
-                            <constraint firstItem="YJY-Ga-uuv" firstAttribute="top" secondItem="10s-kP-wGz" secondAttribute="bottom" id="sdw-IR-dkI"/>
-                            <constraint firstItem="Lz0-TQ-TkD" firstAttribute="leading" secondItem="qro-3B-UCe" secondAttribute="leadingMargin" id="uYY-0j-Kdb"/>
+                            <constraint firstItem="10s-kP-wGz" firstAttribute="top" secondItem="pt9-ay-sVV" secondAttribute="bottom" constant="15" id="mGP-eG-Ryd"/>
+                            <constraint firstItem="YJY-Ga-uuv" firstAttribute="top" secondItem="10s-kP-wGz" secondAttribute="bottom" constant="-20" id="sdw-IR-dkI"/>
                             <constraint firstItem="pt9-ay-sVV" firstAttribute="centerX" secondItem="CfV-3O-MOv" secondAttribute="centerX" id="vfY-1W-b99"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Lz0-TQ-TkD" secondAttribute="trailing" id="y0Y-Ir-8yb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BRy-Xp-X0O">
@@ -580,7 +580,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Play Filled-O" width="100" height="100"/>
         <image name="Refresh Filled-C" width="100" height="100"/>
         <image name="playIcon" width="128" height="128"/>
     </resources>

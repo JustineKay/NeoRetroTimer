@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PresetTimer.h"
+#import <UIKit/UIKit.h>
 
 @interface PresetTimerData : NSObject
 
@@ -16,6 +17,18 @@
 @property (nonatomic) PresetTimer *userPresetTimerData;
 @property (nonatomic) PresetTimer *userUnsavedTimerData;
 @property (nonatomic) NSMutableArray *userCountdownTimerData;
+
+@property (nonatomic) UIColor *eggplant;
+@property (nonatomic) UIColor *burntOrange;
+@property (nonatomic) UIColor *chartreuse;
+@property (nonatomic) UIColor *ghostGrey;
+@property (nonatomic) UIColor *steelBlueGrey;
+@property (nonatomic) UIColor *glacierBlue;
+
+
++(UIColor *)makeColorWithRed:(NSInteger)red
+                       green:(NSInteger)green
+                        blue:(NSInteger)blue;
 
 -(void)initializeData;
 

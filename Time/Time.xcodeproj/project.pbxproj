@@ -19,6 +19,11 @@
 		6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */; };
 		6BB194701B88D9EE00082D0A /* SetTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */; };
 		6BB194731B89184700082D0A /* PresetTimerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB194721B89184700082D0A /* PresetTimerData.m */; };
+		6BC7F3181B929C3500FC98AE /* Steinerlight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC7F3171B929C3500FC98AE /* Steinerlight.ttf */; };
+		6BC7F3191B929C5F00FC98AE /* PrintBold_TT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC7F3141B929C0F00FC98AE /* PrintBold_TT.ttf */; };
+		6BC7F31A1B929C5F00FC98AE /* PrintClearly_TT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC7F3151B929C0F00FC98AE /* PrintClearly_TT.ttf */; };
+		6BC7F31B1B929C5F00FC98AE /* PrintDashed_TT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC7F3161B929C0F00FC98AE /* PrintDashed_TT.ttf */; };
+		6BC7F31C1B929C5F00FC98AE /* EngelLight_ltd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC7F3131B929BD000FC98AE /* EngelLight_ltd.ttf */; };
 		8D05375E1B86687C00588318 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D05375D1B86687C00588318 /* main.m */; };
 		8D0537611B86687C00588318 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0537601B86687C00588318 /* AppDelegate.m */; };
 		8D0537671B86687C00588318 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0537651B86687C00588318 /* Main.storyboard */; };
@@ -53,6 +58,11 @@
 		6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTimerViewController.m; sourceTree = "<group>"; };
 		6BB194711B89184700082D0A /* PresetTimerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetTimerData.h; sourceTree = "<group>"; };
 		6BB194721B89184700082D0A /* PresetTimerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetTimerData.m; sourceTree = "<group>"; };
+		6BC7F3131B929BD000FC98AE /* EngelLight_ltd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EngelLight_ltd.ttf; sourceTree = "<group>"; };
+		6BC7F3141B929C0F00FC98AE /* PrintBold_TT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrintBold_TT.ttf; sourceTree = "<group>"; };
+		6BC7F3151B929C0F00FC98AE /* PrintClearly_TT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrintClearly_TT.ttf; sourceTree = "<group>"; };
+		6BC7F3161B929C0F00FC98AE /* PrintDashed_TT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrintDashed_TT.ttf; sourceTree = "<group>"; };
+		6BC7F3171B929C3500FC98AE /* Steinerlight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Steinerlight.ttf; sourceTree = "<group>"; };
 		6BFFFA761B922D650077669E /* DIGITALDREAM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAM.ttf; sourceTree = "<group>"; };
 		6BFFFA771B922D650077669E /* DIGITALDREAMFATNARROW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMFATNARROW.ttf; sourceTree = "<group>"; };
 		6BFFFA781B922D650077669E /* DIGITALDREAMFATSKEW.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMFATSKEW.ttf; sourceTree = "<group>"; };
@@ -98,6 +108,11 @@
 		6BFFFA801B922D780077669E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6BC7F3171B929C3500FC98AE /* Steinerlight.ttf */,
+				6BC7F3141B929C0F00FC98AE /* PrintBold_TT.ttf */,
+				6BC7F3151B929C0F00FC98AE /* PrintClearly_TT.ttf */,
+				6BC7F3161B929C0F00FC98AE /* PrintDashed_TT.ttf */,
+				6BC7F3131B929BD000FC98AE /* EngelLight_ltd.ttf */,
 				6BFFFA761B922D650077669E /* DIGITALDREAM.ttf */,
 				6BFFFA771B922D650077669E /* DIGITALDREAMFATNARROW.ttf */,
 				6BFFFA781B922D650077669E /* DIGITALDREAMFATSKEW.ttf */,
@@ -265,12 +280,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BC7F3191B929C5F00FC98AE /* PrintBold_TT.ttf in Resources */,
+				6BC7F31A1B929C5F00FC98AE /* PrintClearly_TT.ttf in Resources */,
+				6BC7F31B1B929C5F00FC98AE /* PrintDashed_TT.ttf in Resources */,
+				6BC7F31C1B929C5F00FC98AE /* EngelLight_ltd.ttf in Resources */,
 				6B5FB3701B923154004D9958 /* Existence-StencilLight.otf in Resources */,
 				6B5FB36F1B92313A004D9958 /* DIGITALDREAMFATNARROW.ttf in Resources */,
 				6B5FB36E1B92312F004D9958 /* DIGITALDREAM.ttf in Resources */,
 				6B5FB36D1B923125004D9958 /* Existence-Light.otf in Resources */,
 				8D0537671B86687C00588318 /* Main.storyboard in Resources */,
 				8D05376C1B86687C00588318 /* LaunchScreen.xib in Resources */,
+				6BC7F3181B929C3500FC98AE /* Steinerlight.ttf in Resources */,
 				8D0537691B86687C00588318 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

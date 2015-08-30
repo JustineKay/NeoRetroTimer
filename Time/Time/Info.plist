@@ -4,6 +4,11 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Steinerlight.ttf</string>
+		<string>EngelLight_ltd.ttf</string>
+		<string>PrintDashed_TT.ttf</string>
+		<string>PrintClearly_TT.tff</string>
+		<string>PrintBold_TT.ttf</string>
 		<string>DIGITALDREAMFAT.ttf</string>
 		<string>Existence-Light.otf</string>
 		<string>Existence-StencilLight.otf</string>

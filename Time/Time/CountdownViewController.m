@@ -9,11 +9,14 @@
 #import "CountdownViewController.h"
 #import "SetCountdownViewController.h"
 #import "PresetTimerData.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface CountdownViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventNameLabel;
+
+@property (nonatomic) AVAudioPlayer *eventCountdownDone;
 
 @end
 
@@ -43,13 +46,15 @@
     NSTimer *timer;
         timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                  target:self
-                                               selector:@selector(countdown)
+                                               selector:@selector(timerFired:)
                                                userInfo:nil
                                                 repeats:YES];
+    
+
 }
 
 
--(void)countdown {
+-(void)timerFired:(NSTimer *)timer {
     NSDictionary *event = [[PresetTimerData sharedModel].userCountdownTimerData lastObject];
     if (event != nil) {
         self.countdownLabel.text = [((NSDate *)event[@"date"]) description];
@@ -63,6 +68,19 @@
         NSInteger days = (ti / 86400);
         
         self.countdownLabel.text = [NSString stringWithFormat:@"%02li days %02li hrs %02li min %02li sec", (long)days, (long)hours, (long)minutes, (long)seconds];
+        
+      
+        if (days == 0 && hours == 0 && minutes == 0 && seconds == 0){
+            
+            [timer invalidate];
+            
+            NSString *path = [NSString stringWithFormat:@"%@/Hallelujah-sound-effect.mp3", [[NSBundle mainBundle] resourcePath]];
+            NSURL *soundUrl = [NSURL fileURLWithPath:path];
+            
+            self.eventCountdownDone = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+            [self.eventCountdownDone play];
+        }
+
     }
 
 }

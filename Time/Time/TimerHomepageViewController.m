@@ -8,6 +8,7 @@
 
 #import "TimerHomepageViewController.h"
 #import "PresetTimerData.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface TimerHomepageViewController ()
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
@@ -23,6 +24,8 @@
 @property (nonatomic) NSInteger timeInSeconds;
 
 @property (nonatomic) BOOL *isRunning;
+
+@property (nonatomic) AVAudioPlayer *timerDoneSound;
 
 @end
 
@@ -258,6 +261,12 @@
     if (hours <= 0 && minutes <= 0 && seconds <= 0){
         
                 [timer invalidate];
+        //add sound?
+        NSString *path = [NSString stringWithFormat:@"%@/Coo-coo-clock-sound.mp3", [[NSBundle mainBundle] resourcePath]];
+        NSURL *soundUrl = [NSURL fileURLWithPath:path];
+        
+        self.timerDoneSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+       [self.timerDoneSound play];
     }
     
     NSLog(@"reaction timer ticking");

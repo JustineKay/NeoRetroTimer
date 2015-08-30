@@ -11,6 +11,7 @@
 
 #import "StopwatchTableViewController.h"
 #import "PresetTimerData.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface StopwatchTableViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -34,6 +35,8 @@
 @property (nonatomic) NSMutableArray *lapTimes;
 @property (strong, nonatomic) IBOutlet UITableView *lapTableView;
 @property (weak, nonatomic) IBOutlet UIView *headerBackgroundView;
+
+@property (nonatomic) AVAudioPlayer *lapSound;
 
 - (void)updateLapTimer;
 
@@ -156,6 +159,12 @@
 - (IBAction)lapButtonTapped:(UIButton *)sender {
     
       NSLog(@"Current time: %02f", self.currentLapTime);
+    
+    NSString *path = [NSString stringWithFormat:@"%@/BingSound.mp3", [[NSBundle mainBundle] resourcePath]];
+    NSURL *soundUrl = [NSURL fileURLWithPath:path];
+    
+    self.lapSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+     [self.lapSound play];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"mm:ss:SS"];

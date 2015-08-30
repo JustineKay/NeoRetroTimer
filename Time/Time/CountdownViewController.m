@@ -13,8 +13,11 @@
 
 @interface CountdownViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *countdownLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *daysLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hoursLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *secsLabel;
 
 @property (nonatomic) AVAudioPlayer *eventCountdownDone;
 
@@ -57,7 +60,7 @@
 -(void)timerFired:(NSTimer *)timer {
     NSDictionary *event = [[PresetTimerData sharedModel].userCountdownTimerData lastObject];
     if (event != nil) {
-        self.countdownLabel.text = [((NSDate *)event[@"date"]) description];
+//        self.countdownLabel.text = [((NSDate *)event[@"date"]) description];
         self.eventNameLabel.text = event[@"name"];
         
         NSDate *date = event[@"date"];
@@ -67,8 +70,12 @@
         NSInteger hours = (ti / 3600) % 24;
         NSInteger days = (ti / 86400);
         
-        self.countdownLabel.text = [NSString stringWithFormat:@"%02li days %02li hrs %02li min %02li sec", (long)days, (long)hours, (long)minutes, (long)seconds];
+        self.daysLabel.text = [NSString stringWithFormat:@"%02li days", (long)days];
+        self.hoursLabel.text = [NSString stringWithFormat:@"%02li hrs", (long)hours];
+        self.minsLabel.text = [NSString stringWithFormat:@"%02li mins", (long)minutes];
+        self.secsLabel.text = [NSString stringWithFormat:@"%02li secs", (long)seconds];
         
+        //self.countdownLabel.text = [NSString stringWithFormat:@"%02li days %02li hrs %02li min %02li sec", (long)days, (long)hours, (long)minutes, (long)seconds];
       
         if (days == 0 && hours == 0 && minutes == 0 && seconds == 0){
             

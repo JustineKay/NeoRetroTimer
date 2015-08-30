@@ -34,8 +34,9 @@
     [super viewDidLoad];
     
     self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+    self.userInputTextField.font = [UIFont fontWithName:@"PrintBold" size:18.0];;
     
-    
+    [self setupLabelUI];
     
     self.navigationItem.title = @"Set Timer";
     
@@ -45,8 +46,6 @@
     self.pickerMins = [self setDigitsForPickerColumnArrays];
     self.pickerSecs = [self setDigitsForPickerColumnArrays];
     
-    NSLog(@"%@, %@, %@", self.pickerHours, self.pickerMins, self.pickerSecs);
-    
     self.pickerData = @[self.pickerHours,
                         self.pickerMins,
                         self.pickerSecs
@@ -54,6 +53,19 @@
     
     self.setTimerPickerView.dataSource = self;
     self.setTimerPickerView.delegate = self;
+}
+
+- (void)setupLabelUI {
+    NSArray *labels = self.hrsMinsSecsLabels;
+    
+        for (UILabel *label in labels) {
+            label.font = [UIFont fontWithName:@"PrintBold" size:22.0];
+            label.textColor = [PresetTimerData sharedModel].burntOrange;
+            label.layer.borderWidth = 1.5;
+            label.layer.borderColor = [PresetTimerData sharedModel].chartreuse.CGColor;
+            //label.layer.backgroundColor = [PresetTimerData sharedModel].chartreuse.CGColor;
+            label.layer.cornerRadius = 5.0;
+        }
 }
 
 -(NSMutableArray *)setDigitsForPickerColumnArrays {
@@ -94,7 +106,6 @@
     
     return [self.pickerData[component] count];
 }
-
 
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
@@ -138,12 +149,12 @@
     
 }
 
+
 - (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
     
      [self dismissViewControllerAnimated:YES completion:nil];
 
 }
-
 
 
 - (IBAction)doneButtonTapped:(UIBarButtonItem *)sender {

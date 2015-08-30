@@ -261,12 +261,21 @@
     if (hours <= 0 && minutes <= 0 && seconds <= 0){
         
                 [timer invalidate];
-        //add sound?
+        //sound
         NSString *path = [NSString stringWithFormat:@"%@/Coo-coo-clock-sound.mp3", [[NSBundle mainBundle] resourcePath]];
         NSURL *soundUrl = [NSURL fileURLWithPath:path];
         
         self.timerDoneSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
        [self.timerDoneSound play];
+        
+        //background color animation
+        [UIView animateWithDuration:1.0 animations:^{
+            self.timerBackgroundView.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+        }];
+        
+//        [UIView animateWithDuration:1.0 animations:^{
+//            self.resetButton.tintColor = [PresetTimerData sharedModel].eggplant;
+//        }];
     }
     
     NSLog(@"reaction timer ticking");

@@ -10,9 +10,9 @@
 		5F4416FA1B920B48002969D0 /* CountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4416F91B920B48002969D0 /* CountdownViewController.m */; };
 		5F4416FD1B921609002969D0 /* SetCountdownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4416FC1B921609002969D0 /* SetCountdownViewController.m */; };
 		5F44170B1B9399B2002969D0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F44170A1B9399B2002969D0 /* AVFoundation.framework */; };
-		5F44170D1B939B61002969D0 /* BingSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F44170C1B939B61002969D0 /* BingSound.mp3 */; };
-		5F44170F1B939E85002969D0 /* Coo-coo-clock-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F44170E1B939E85002969D0 /* Coo-coo-clock-sound.mp3 */; };
-		5F4417111B939FCA002969D0 /* Hallelujah-sound-effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F4417101B939FCA002969D0 /* Hallelujah-sound-effect.mp3 */; };
+		5F4417131B93A6E1002969D0 /* BingSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F4417121B93A6E1002969D0 /* BingSound.mp3 */; };
+		5F4417151B93A6FD002969D0 /* Hallelujah-sound-effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F4417141B93A6FD002969D0 /* Hallelujah-sound-effect.mp3 */; };
+		5F4417171B93A729002969D0 /* Coo-coo-clock-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F4417161B93A729002969D0 /* Coo-coo-clock-sound.mp3 */; };
 		5F4CBFFC1B8916A500592B58 /* PresetTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4CBFFB1B8916A500592B58 /* PresetTimer.m */; };
 		6B5FB36D1B923125004D9958 /* Existence-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFFA7D1B922D730077669E /* Existence-Light.otf */; };
 		6B5FB36E1B92312F004D9958 /* DIGITALDREAM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BFFFA761B922D650077669E /* DIGITALDREAM.ttf */; };
@@ -52,9 +52,9 @@
 		5F4416FB1B921609002969D0 /* SetCountdownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCountdownViewController.h; sourceTree = "<group>"; };
 		5F4416FC1B921609002969D0 /* SetCountdownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCountdownViewController.m; sourceTree = "<group>"; };
 		5F44170A1B9399B2002969D0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		5F44170C1B939B61002969D0 /* BingSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = BingSound.mp3; path = ../../../../../../../Desktop/BingSound.mp3; sourceTree = "<group>"; };
-		5F44170E1B939E85002969D0 /* Coo-coo-clock-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Coo-coo-clock-sound.mp3"; path = "../../../../../../../Desktop/Coo-coo-clock-sound.mp3"; sourceTree = "<group>"; };
-		5F4417101B939FCA002969D0 /* Hallelujah-sound-effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Hallelujah-sound-effect.mp3"; path = "../../../../../../../Desktop/Hallelujah-sound-effect.mp3"; sourceTree = "<group>"; };
+		5F4417121B93A6E1002969D0 /* BingSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BingSound.mp3; sourceTree = "<group>"; };
+		5F4417141B93A6FD002969D0 /* Hallelujah-sound-effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Hallelujah-sound-effect.mp3"; sourceTree = "<group>"; };
+		5F4417161B93A729002969D0 /* Coo-coo-clock-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Coo-coo-clock-sound.mp3"; sourceTree = "<group>"; };
 		5F4CBFFA1B8916A500592B58 /* PresetTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetTimer.h; sourceTree = "<group>"; };
 		5F4CBFFB1B8916A500592B58 /* PresetTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetTimer.m; sourceTree = "<group>"; };
 		6B5FB3711B9254A8004D9958 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -175,9 +175,9 @@
 				6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */,
 				6BB1946E1B88D9EE00082D0A /* SetTimerViewController.h */,
 				6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */,
-				5F44170C1B939B61002969D0 /* BingSound.mp3 */,
-				5F44170E1B939E85002969D0 /* Coo-coo-clock-sound.mp3 */,
-				5F4417101B939FCA002969D0 /* Hallelujah-sound-effect.mp3 */,
+				5F4417121B93A6E1002969D0 /* BingSound.mp3 */,
+				5F4417161B93A729002969D0 /* Coo-coo-clock-sound.mp3 */,
+				5F4417141B93A6FD002969D0 /* Hallelujah-sound-effect.mp3 */,
 				8D0537651B86687C00588318 /* Main.storyboard */,
 				8D0537681B86687C00588318 /* Images.xcassets */,
 				8D05376A1B86687C00588318 /* LaunchScreen.xib */,
@@ -299,12 +299,12 @@
 				6BC7F31C1B929C5F00FC98AE /* EngelLight_ltd.ttf in Resources */,
 				6B5FB3701B923154004D9958 /* Existence-StencilLight.otf in Resources */,
 				6B5FB36F1B92313A004D9958 /* DIGITALDREAMFATNARROW.ttf in Resources */,
+				5F4417131B93A6E1002969D0 /* BingSound.mp3 in Resources */,
 				6B5FB36E1B92312F004D9958 /* DIGITALDREAM.ttf in Resources */,
-				5F4417111B939FCA002969D0 /* Hallelujah-sound-effect.mp3 in Resources */,
-				5F44170F1B939E85002969D0 /* Coo-coo-clock-sound.mp3 in Resources */,
-				5F44170D1B939B61002969D0 /* BingSound.mp3 in Resources */,
 				6B5FB36D1B923125004D9958 /* Existence-Light.otf in Resources */,
+				5F4417151B93A6FD002969D0 /* Hallelujah-sound-effect.mp3 in Resources */,
 				8D0537671B86687C00588318 /* Main.storyboard in Resources */,
+				5F4417171B93A729002969D0 /* Coo-coo-clock-sound.mp3 in Resources */,
 				8D05376C1B86687C00588318 /* LaunchScreen.xib in Resources */,
 				6BC7F3181B929C3500FC98AE /* Steinerlight.ttf in Resources */,
 				8D0537691B86687C00588318 /* Images.xcassets in Resources */,

@@ -10,6 +10,7 @@
 
 
 #import "StopwatchTableViewController.h"
+#import "PresetTimerData.h"
 
 @interface StopwatchTableViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -32,6 +33,7 @@
 @property (nonatomic) NSTimeInterval currentLapTime;
 @property (nonatomic) NSMutableArray *lapTimes;
 @property (strong, nonatomic) IBOutlet UITableView *lapTableView;
+@property (weak, nonatomic) IBOutlet UIView *headerBackgroundView;
 
 - (void)updateLapTimer;
 
@@ -59,6 +61,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.headerBackgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+    self.lapButton.layer.borderWidth = 2.5;
+    self.lapButton.layer.borderColor = [PresetTimerData sharedModel].glacierBlue.CGColor;
+    self.lapButton.backgroundColor = [PresetTimerData sharedModel].glacierBlue;
+    self.lapButton.layer.cornerRadius = 25;
+    self.lapButton.tintColor = [PresetTimerData sharedModel].burntOrange;
+    self.timeLabel.textColor = [PresetTimerData sharedModel].eggplant;
+    self.timeLabel.layer.borderWidth = 15;
+    self.timeLabel.layer.borderColor = [PresetTimerData sharedModel].steelBlueGrey.CGColor;
+    self.timeLabel.layer.cornerRadius =10;
+    
+    self.lapTimeLabel.textColor = [PresetTimerData sharedModel].burntOrange;
+    
+    [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
     
     self.isRunning = NO;
     
@@ -93,8 +110,8 @@
     self.startTime = nil;
     self.finishTime = nil;
     
-    self.timeLabel.text = @"00.00.00";
-   self.lapTimeLabel.text = @"00.00.00";
+    self.timeLabel.text = @"00:00:00";
+   self.lapTimeLabel.text = @"00:00:00";
     
 
     [self.lapTableView reloadData];
@@ -121,7 +138,7 @@
             
             [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
             
-             [self.startPauseButton setImage:[UIImage imageNamed:@"pauseIcon.png"] forState:UIControlStateNormal];
+             [self.startPauseButton setImage:[UIImage imageNamed:@"Pause Filled-O"] forState:UIControlStateNormal];
         }
       
     } else {
@@ -130,7 +147,7 @@
         
         [self.timer invalidate];
         
-        [self.startPauseButton setImage:[UIImage imageNamed:@"playIcon.png"] forState:UIControlStateNormal];
+        [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
     }
 }
 
@@ -141,7 +158,7 @@
       NSLog(@"Current time: %02f", self.currentLapTime);
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"mm : ss : SS"];
+    [dateFormatter setDateFormat:@"mm:ss:SS"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
     NSDate * newNow = [NSDate dateWithTimeIntervalSinceReferenceDate:self.currentLapTime];
     NSString *timeString = [dateFormatter stringFromDate:newNow];
@@ -232,8 +249,14 @@
    NSString *key = [self.laps objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [NSString stringWithFormat:@"Lap %lu", lapNumber];
+    cell.textLabel.font = [UIFont fontWithName:@"PrintBold" size:20.0];
+    cell.textLabel.textColor = [PresetTimerData sharedModel].steelBlueGrey;
     
     cell.detailTextLabel.text = key;
+    cell.detailTextLabel.font = [UIFont fontWithName:@"DigitaldreamFat" size:14.0];
+    cell.detailTextLabel.textColor = [PresetTimerData sharedModel].eggplant;
+    
+    
     
    return cell;
 }

@@ -22,54 +22,30 @@
 
 @property (nonatomic) NSString *userPresetTimer;
 
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *hrsMinsSecsLabels;
 
 @end
 
 @implementation SetTimerViewController
 
-//To access the singleton: [PresetTimerData sharedModel] + .userCountdownTimerData + .timerName or .time or .userPresetTimers or .userUnsavedTimerData
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+    
+    
     
     self.navigationItem.title = @"Set Timer";
     
     self.userInputTextField.text = @"";
     
-    NSMutableArray *hours = @[@"00"].mutableCopy;
-    NSMutableArray *mins = @[@"00"].mutableCopy;
-    NSMutableArray *secs = @[@"00"].mutableCopy;
+    self.pickerHours = [self setDigitsForPickerColumnArrays];
+    self.pickerMins = [self setDigitsForPickerColumnArrays];
+    self.pickerSecs = [self setDigitsForPickerColumnArrays];
     
-    NSInteger integer = 0;
-    
-    for (int i = 0; i < 99; i++) {
-        
-        integer += 1;
-        
-        NSLog(@"%ld", integer);
-        
-        NSString *digit = [NSString stringWithFormat:@"%ld", integer];
-        
-        if ([digit integerValue] < 10) {
-            
-            NSString *zero = @"0";
-            
-            digit = [zero stringByAppendingString:digit];
-        };
-        
-        [hours addObject:digit];
-        [mins addObject:digit];
-        [secs addObject:digit];
-        
-    }
-    
-    NSLog(@"hours: %@/n", hours);
-    NSLog(@"mins: %@/n", mins);
-    NSLog(@"secs: %@/n", secs);
-    
-    self.pickerHours = hours;
-    self.pickerMins = mins;
-    self.pickerSecs = secs;
+    NSLog(@"%@, %@, %@", self.pickerHours, self.pickerMins, self.pickerSecs);
     
     self.pickerData = @[self.pickerHours,
                         self.pickerMins,
@@ -80,27 +56,75 @@
     self.setTimerPickerView.delegate = self;
 }
 
-// The number of columns of data
+-(NSMutableArray *)setDigitsForPickerColumnArrays {
+    
+    NSMutableArray *digits = @[@"00"].mutableCopy;
+    
+    NSInteger integer = 0;
+    
+    for (int i = 0; i < 99; i++) {
+        
+        integer += 1;
+        
+        NSString *digit = [NSString stringWithFormat:@"%ld", integer];
+        
+        if ([digit integerValue] < 10) {
+            
+            NSString *zero = @"0";
+            
+            digit = [zero stringByAppendingString:digit];
+        };
+        
+        [digits addObject:digit];
+        
+    }
+    
+    return digits;
+
+}
+
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     
     return 3;
 }
 
-// The number of rows of data
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
 
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
     return [self.pickerData[component] count];
 }
 
-// The data to return for the row and component (column) that's being passed in
+
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-    //[self setTimer:[PresetTimerData sharedModel].userPresetTimerData With:pickerView];
-    
-    //NSLog(@"time: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
-    
     return self.pickerData[component][row];
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    
+    
+    UILabel *pickerLabel = (UILabel *)view;
+    
+    if (pickerLabel == nil) {
+        
+        pickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)];
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        
+        [pickerLabel setFont:[UIFont fontWithName:@"DigitaldreamFat" size:22.0]];
+        
+        [pickerLabel setTextColor:[PresetTimerData sharedModel].eggplant];
+        
+    }
+    //picker view array is the datasource
+    
+    [pickerLabel setText:[self.pickerHours objectAtIndex:row]];
+    [pickerLabel setText:[self.pickerMins objectAtIndex:row]];
+    [pickerLabel setText:[self.pickerSecs objectAtIndex: row]];
+    
+    return pickerLabel;
+    
 }
 
 -(void)setTimer:(PresetTimer *)timer With:(UIPickerView *)pickerView{
@@ -123,14 +147,6 @@
 
 
 - (IBAction)doneButtonTapped:(UIBarButtonItem *)sender {
-    
-//    if ([[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@""]){
-//        
-//        [[PresetTimerData sharedModel].userPresetTimerData.time isEqualToString:@"00:00:00"];
-//        
-//        NSLog(@"Unsaved Timer: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
-//        
-//        [self dismissViewControllerAnimated:YES completion:nil];
     
     if ([self.userInputTextField.text isEqualToString:@""]) {
         
@@ -172,20 +188,5 @@
     }
     
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

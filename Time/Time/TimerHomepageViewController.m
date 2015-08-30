@@ -20,7 +20,6 @@
 @property (nonatomic) NSArray *timerPickerData;
 @property (nonatomic) NSTimer *timer;
 @property (nonatomic) NSString *pausedTime;
-//secondsElapsed
 @property (nonatomic) NSInteger timeInSeconds;
 
 @property (nonatomic) BOOL *isRunning;
@@ -29,7 +28,6 @@
 
 @implementation TimerHomepageViewController
 
-//To access the singleton: [PresetTimerData sharedModel] + .timerName or .time or .userPresetTimers
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
@@ -62,9 +60,6 @@
     self.timeLabel.textColor = [PresetTimerData sharedModel].eggplant;
     self.presetTimerLabel.text = @"";
     
-//    self.startPauseButton.layer.cornerRadius = 30;
-//    self.startPauseButton.layer.borderWidth = 3;
-//    self.startPauseButton.layer.borderColor = [PresetTimerData sharedModel].glacierBlue.CGColor;
     [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
     
     self.presetTimerLabel.textColor = [PresetTimerData sharedModel].burntOrange;
@@ -105,18 +100,17 @@
     UILabel *pickerLabel = (UILabel *)view;
     
     if (pickerLabel == nil) {
-        //label size
         
         pickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [pickerView rowSizeForComponent:component].width, [pickerView rowSizeForComponent:component].height)];
         [pickerLabel setTextAlignment:NSTextAlignmentCenter];
         [pickerLabel setBackgroundColor:[UIColor clearColor]];
-        //here you can play with fonts
+        
         [pickerLabel setFont:[UIFont fontWithName:@"PrintBold" size:22.0]];
-        //rgb(67,28,93)
+        
         [pickerLabel setTextColor:[PresetTimerData sharedModel].eggplant];
         
     }
-    //picker view array is the datasource
+    
     [pickerLabel setText:[self.timerPickerData objectAtIndex:row]];
     
     return pickerLabel;
@@ -271,18 +265,18 @@
 }
 
 
-// The number of columns of data
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
-// The number of rows of data
+
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     
     return self.timerPickerData.count;
 }
 
-// The data to return for the row and component (column) that's being passed in
+
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
     return self.timerPickerData[row];

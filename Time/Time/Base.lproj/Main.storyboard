@@ -160,7 +160,7 @@
                                             <rect key="frame" x="15" y="12" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7TR-qa-dH4">
@@ -337,7 +337,7 @@
                         <viewControllerLayoutGuide type="top" id="SiN-aQ-kgW"/>
                         <viewControllerLayoutGuide type="bottom" id="Tz8-rc-HYS"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zXL-gG-dnH">
+                    <view key="view" contentMode="scaleToFill" id="zXL-gG-dnH" userLabel="Background view">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -350,22 +350,43 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE0-hL-Mo2">
-                                <rect key="frame" x="140" y="219" width="320" height="162"/>
+                                <rect key="frame" x="163" y="219" width="275" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="5LH-XK-bkA"/>
+                                </constraints>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="mins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M13-L0-vGH" userLabel="mins">
+                                <rect key="frame" x="279" y="391" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="hrs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="db4-KX-etT" userLabel="hrs">
+                                <rect key="frame" x="194" y="391" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="secs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucD-Ni-RDC" userLabel="secs">
+                                <rect key="frame" x="364" y="391" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="WTR-ns-stD" secondAttribute="centerX" id="0ve-YZ-DxX"/>
-                            <constraint firstItem="WTR-ns-stD" firstAttribute="top" secondItem="SiN-aQ-kgW" secondAttribute="bottom" constant="100" id="81p-v4-aek"/>
+                            <constraint firstAttribute="centerX" secondItem="M13-L0-vGH" secondAttribute="centerX" id="1jK-Qq-HHJ"/>
                             <constraint firstItem="OE0-hL-Mo2" firstAttribute="centerX" secondItem="zXL-gG-dnH" secondAttribute="centerX" id="9hS-pd-M81"/>
+                            <constraint firstItem="M13-L0-vGH" firstAttribute="leading" secondItem="db4-KX-etT" secondAttribute="trailing" constant="43" id="FI9-28-Z1T"/>
+                            <constraint firstItem="ucD-Ni-RDC" firstAttribute="centerY" secondItem="M13-L0-vGH" secondAttribute="centerY" id="HUn-W0-VnP"/>
+                            <constraint firstItem="ucD-Ni-RDC" firstAttribute="leading" secondItem="M13-L0-vGH" secondAttribute="trailing" constant="43" id="LMD-Bp-Yx7"/>
                             <constraint firstItem="OE0-hL-Mo2" firstAttribute="centerY" secondItem="zXL-gG-dnH" secondAttribute="centerY" id="M5N-4H-Adm"/>
+                            <constraint firstItem="M13-L0-vGH" firstAttribute="top" secondItem="OE0-hL-Mo2" secondAttribute="bottom" constant="10" id="XR5-OQ-pzJ"/>
+                            <constraint firstItem="db4-KX-etT" firstAttribute="centerY" secondItem="M13-L0-vGH" secondAttribute="centerY" id="jJd-bc-QS5"/>
                             <constraint firstItem="OE0-hL-Mo2" firstAttribute="top" secondItem="WTR-ns-stD" secondAttribute="bottom" constant="25" id="pzB-aR-Bhr"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="81p-v4-aek"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="ie0-4J-odi">
                         <barButtonItem key="leftBarButtonItem" title="Back" systemItem="cancel" id="XyM-zd-azA">
@@ -380,10 +401,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundView" destination="zXL-gG-dnH" id="hjO-Lh-Pex"/>
                         <outlet property="cancelButton" destination="XyM-zd-azA" id="q8M-Is-PnR"/>
                         <outlet property="doneButton" destination="MeB-NN-l6n" id="dw3-5v-RpA"/>
                         <outlet property="setTimerPickerView" destination="OE0-hL-Mo2" id="Unr-bT-wyH"/>
                         <outlet property="userInputTextField" destination="WTR-ns-stD" id="eHY-Pl-4uS"/>
+                        <outletCollection property="hrsMinsSecsLabels" destination="db4-KX-etT" id="ZH7-hn-0xO"/>
+                        <outletCollection property="hrsMinsSecsLabels" destination="M13-L0-vGH" id="TvG-zm-9Kw"/>
+                        <outletCollection property="hrsMinsSecsLabels" destination="ucD-Ni-RDC" id="tVe-1H-QES"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGJ-Mg-caM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -511,13 +536,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Days  Hours  Mins Secs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMr-wn-WeY">
                                 <rect key="frame" x="210" y="289" width="180" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Until my event" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="id3-HU-nwo">
                                 <rect key="frame" x="230" y="345" width="141" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

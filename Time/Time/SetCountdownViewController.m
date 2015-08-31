@@ -22,17 +22,26 @@
 @property (nonatomic) NSArray *datePickerMins;
 @property (nonatomic) NSArray *datePickerSecs;
 
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+
 @end
 
-//To access the singleton: [PresetTimerData sharedModel] + .userCountdownTimerData + .timerName or .time or .userPresetTimers or .userUnsavedTimerData
 
 @implementation SetCountdownViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Set Countdown";
     
-    self.userInputTextField.text = @"";
+    [self.setDatePickerData setValue:[PresetTimerData sharedModel].burntOrange forKey:@"textColor"];
+    self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+    self.eventCountdownButton.titleLabel.font = [UIFont fontWithName:@"PrintBold" size:22.0];
+    self.eventCountdownButton.tintColor = [PresetTimerData sharedModel].eggplant;
+    self.eventCountdownButton.layer.borderWidth = 2.5;
+    self.eventCountdownButton.layer.borderColor = [PresetTimerData sharedModel].chartreuse.CGColor;
+    self.eventCountdownButton.layer.cornerRadius = 10.0;
+    self.eventCountdownButton.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+    
+    self.userInputTextField.font = [UIFont fontWithName:@"PrintBold" size:18.0];
     
 }
 
@@ -55,21 +64,5 @@
 - (IBAction)cancelButtonTapped:(id)sender {
       [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

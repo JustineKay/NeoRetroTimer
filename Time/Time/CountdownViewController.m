@@ -21,6 +21,11 @@
 
 @property (nonatomic) AVAudioPlayer *eventCountdownDone;
 
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *countdownLabels;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *DaysHrsMinsSecsLabels;
+
+@property (strong, nonatomic) IBOutlet UIView *backgroundView;
+
 @end
 
 @implementation CountdownViewController
@@ -42,6 +47,50 @@
     return nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+
+    self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+    [self setUpEventLabelUI];
+    [self setUpDaysHrsMinsSecsLabelsUI];
+    [self setUpCountdownLabelsUI];
+    
+    
+}
+
+- (void)setUpCountdownLabelsUI {
+    NSArray *labels = self.countdownLabels;
+    
+    for (UILabel *label in labels) {
+        label.font = [UIFont fontWithName:@"DigitaldreamFat" size:28.0];
+        label.textColor = [PresetTimerData sharedModel].eggplant;
+        label.layer.borderWidth = 15.0;
+        label.layer.borderColor = [PresetTimerData sharedModel].steelBlueGrey.CGColor;
+        label.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+        label.layer.cornerRadius = 10.0;
+        
+    }
+}
+
+- (void)setUpDaysHrsMinsSecsLabelsUI {
+    NSArray *labels = self.DaysHrsMinsSecsLabels;
+    
+    for (UILabel *label in labels) {
+        label.font = [UIFont fontWithName:@"PrintClearly" size:22.0];
+        label.textColor = [PresetTimerData sharedModel].burntOrange;
+    }
+}
+
+-(void)setUpEventLabelUI{
+    
+    self.eventNameLabel.textColor = [PresetTimerData sharedModel].burntOrange;
+    self.eventNameLabel.layer.borderColor = [PresetTimerData sharedModel].chartreuse.CGColor;
+    self.eventNameLabel.layer.borderWidth = 3.0;
+    self.eventNameLabel.layer.cornerRadius = 10;
+    self.eventNameLabel.font = [UIFont fontWithName:@"PrintBold" size:22.0];
+    
+}
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -53,14 +102,15 @@
                                                userInfo:nil
                                                 repeats:YES];
     
-
 }
 
 
 -(void)timerFired:(NSTimer *)timer {
+    
     NSDictionary *event = [[PresetTimerData sharedModel].userCountdownTimerData lastObject];
+    
     if (event != nil) {
-//        self.countdownLabel.text = [((NSDate *)event[@"date"]) description];
+
         self.eventNameLabel.text = event[@"name"];
         
         NSDate *date = event[@"date"];
@@ -70,12 +120,10 @@
         NSInteger hours = (ti / 3600) % 24;
         NSInteger days = (ti / 86400);
         
-        self.daysLabel.text = [NSString stringWithFormat:@"%02li days", (long)days];
-        self.hoursLabel.text = [NSString stringWithFormat:@"%02li hrs", (long)hours];
-        self.minsLabel.text = [NSString stringWithFormat:@"%02li mins", (long)minutes];
-        self.secsLabel.text = [NSString stringWithFormat:@"%02li secs", (long)seconds];
-        
-        //self.countdownLabel.text = [NSString stringWithFormat:@"%02li days %02li hrs %02li min %02li sec", (long)days, (long)hours, (long)minutes, (long)seconds];
+        self.daysLabel.text = [NSString stringWithFormat:@"%02li", (long)days];
+        self.hoursLabel.text = [NSString stringWithFormat:@"%02li", (long)hours];
+        self.minsLabel.text = [NSString stringWithFormat:@"%02li", (long)minutes];
+        self.secsLabel.text = [NSString stringWithFormat:@"%02li", (long)seconds];
       
         if (days == 0 && hours == 0 && minutes == 0 && seconds == 0){
             
@@ -92,24 +140,10 @@
 
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)cancelButton:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

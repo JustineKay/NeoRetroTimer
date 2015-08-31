@@ -72,8 +72,6 @@
     self.timerPickerView.dataSource = self;
     self.timerPickerView.delegate = self;
     
-    self.navigationItem.title = @"Timer";
-    
     self.isRunning = FALSE;
     
     NSLog(@"timer picker data: %@", self.timerPickerData);

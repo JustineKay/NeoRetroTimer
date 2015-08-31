@@ -34,11 +34,9 @@
     [super viewDidLoad];
     
     self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
-    self.userInputTextField.font = [UIFont fontWithName:@"PrintBold" size:18.0];;
+    self.userInputTextField.font = [UIFont fontWithName:@"PrintBold" size:18.0];
     
     [self setupLabelUI];
-    
-    self.navigationItem.title = @"Set Timer";
     
     self.userInputTextField.text = @"";
     

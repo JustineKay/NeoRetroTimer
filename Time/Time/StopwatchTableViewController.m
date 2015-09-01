@@ -166,6 +166,17 @@
     self.lapSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
      [self.lapSound play];
     
+    //entire background view color animation
+    [UIView animateWithDuration:.5 animations:^{
+       self.headerBackgroundView.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+    }];
+    
+    [UIView animateWithDuration:.5 animations:^{
+        self.lapTableView.backgroundColor = [PresetTimerData sharedModel].glacierBlue;
+    }];
+    
+    
+
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"mm:ss:SS"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
@@ -178,6 +189,11 @@
     self.currentLapStartTime = [NSDate date];
     
     [self.lapTableView reloadData];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        self.headerBackgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+    }];
+    
 }
 
 

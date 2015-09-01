@@ -9,6 +9,7 @@
 #import "TimerHomepageViewController.h"
 #import "PresetTimerData.h"
 #import <AVFoundation/AVFoundation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface TimerHomepageViewController ()
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL *isRunning;
 
 @property (nonatomic) AVAudioPlayer *timerDoneSound;
+- (void)viewDidAppear:(BOOL)animated;
 
 @end
 
@@ -83,6 +85,7 @@
     [self.timer invalidate];
     self.pausedTime = Nil;
     
+    
     if ([PresetTimerData sharedModel].userUnsavedTimerData.time == Nil) {
         
         [self updateTimeLabel];
@@ -94,6 +97,8 @@
     
     }
 }
+
+
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
 
@@ -259,6 +264,8 @@
     if (hours <= 0 && minutes <= 0 && seconds <= 0){
         
                 [timer invalidate];
+        
+        
         //sound
         NSString *path = [NSString stringWithFormat:@"%@/Coo-coo-clock-sound.mp3", [[NSBundle mainBundle] resourcePath]];
         NSURL *soundUrl = [NSURL fileURLWithPath:path];
@@ -266,20 +273,57 @@
         self.timerDoneSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
        [self.timerDoneSound play];
         
-        //background color animation
-        [UIView animateWithDuration:1.0 animations:^{
+       
+        
+        //timer background color animation
+        [UIView animateWithDuration:2.0 animations:^{
             self.timerBackgroundView.backgroundColor = [PresetTimerData sharedModel].chartreuse;
         }];
         
-//        [UIView animateWithDuration:1.0 animations:^{
-//            self.resetButton.tintColor = [PresetTimerData sharedModel].eggplant;
-//        }];
-    }
+        //entire background view color animation
+        [UIView animateWithDuration:5.0 animations:^{
+            self.backgroundView.backgroundColor = [PresetTimerData sharedModel].eggplant;
+        }];
+        
+        
+        [UIView animateWithDuration:3.5 animations:^{
+             self.backgroundView.backgroundColor = [PresetTimerData sharedModel].burntOrange;
+        }completion:^(BOOL finished) {
+            self.timerBackgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+             self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+        }];
+    
+        
+//        //Entire background color ->  fade color to another
+//        CABasicAnimation *myColorAnimation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+//        [myColorAnimation setAutoreverses:YES];
+//        [myColorAnimation setRepeatCount:2];
+//        [myColorAnimation setDuration:0.3];
+//        [myColorAnimation setToValue:(id)[PresetTimerData sharedModel].eggplant];
+//        the default "from value" is the current value
+//        [self.view.layer addAnimation:fade forKey:@"fadeAnimation"];
+       
+
+//        //Entire background color -> fade color block
+//        [UIView animateWithDuration:0.3f animations:^{
+//            fade.layer.backgroundColor = [UIColor redColor].CGColor;
+        
+        
+        //Entire background color -> fade from one color to another
+//        [super viewDidAppear:animated];
+//        CABasicAnimation* fade = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+//        fade.fromValue = (id)[PresetTimerData sharedModel].eggplant;
+//        fade.toValue = (id)[PresetTimerData sharedModel].burntOrange;
+//        [fade setDuration:3];
+ //    [self.backgroundView.layer addAnimation:fade forKey:@"fadeAnimation"];
+//    
+
     
     NSLog(@"reaction timer ticking");
     
 }
 
+}
 
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

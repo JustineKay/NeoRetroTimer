@@ -109,10 +109,8 @@
     
     NSDictionary *event = [[PresetTimerData sharedModel].userCountdownTimerData lastObject];
     
-    if (event != nil) {
+      if (event != nil) {
 
-        self.eventNameLabel.text = event[@"name"];
-        
         NSDate *date = event[@"date"];
         NSInteger ti = ((NSInteger)[date timeIntervalSinceNow]);
         NSInteger seconds = ti % 60;
@@ -129,11 +127,72 @@
             
             [timer invalidate];
             
+            
             NSString *path = [NSString stringWithFormat:@"%@/Hallelujah-sound-effect.mp3", [[NSBundle mainBundle] resourcePath]];
             NSURL *soundUrl = [NSURL fileURLWithPath:path];
             
             self.eventCountdownDone = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
             [self.eventCountdownDone play];
+            
+            
+//            //label color changes
+//            [UIView animateWithDuration:2.0 animations:^{
+//                NSArray *labels = self.countdownLabels;
+//                
+//                for (UILabel *label in labels) {
+//                    label.textColor = [PresetTimerData sharedModel].chartreuse;
+//                    label.layer.borderColor = [PresetTimerData sharedModel].glacierBlue.CGColor;
+//                    label.layer.backgroundColor = [PresetTimerData sharedModel].eggplant.CGColor;
+//                }
+//            }];
+//            
+//            //entire background view color animation
+//            [UIView animateWithDuration:5.0 animations:^{
+//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].burntOrange;
+//            }];
+//            
+//            
+//            [UIView animateWithDuration:3.5 animations:^{
+//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+//            }completion:^(BOOL finished) {
+//                
+//                NSArray *labels = self.countdownLabels;
+//                
+//                for (UILabel *label in labels) {
+//                    label.textColor = [PresetTimerData sharedModel].eggplant;
+//                    label.layer.borderColor = [PresetTimerData sharedModel].steelBlueGrey.CGColor;
+//                    label.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+//                }
+//                
+//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+//            }];
+            
+            
+            
+            [UIView animateWithDuration:2.0 animations:^{
+                self.daysLabel.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+                self.hoursLabel.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+                self.minsLabel.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+                self.secsLabel.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+            }];
+            
+            [UIView animateWithDuration:5.0 animations:^{
+                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].glacierBlue;
+            }];
+
+            
+            [UIView animateWithDuration:3.5 animations:^{
+            self.backgroundView.backgroundColor = [PresetTimerData sharedModel].eggplant;
+           }completion:^(BOOL finished) {
+            self.daysLabel.backgroundColor = [PresetTimerData sharedModel].burntOrange;
+            self.hoursLabel.backgroundColor = [PresetTimerData sharedModel].burntOrange;
+            self.minsLabel.backgroundColor = [PresetTimerData sharedModel].burntOrange;
+            self.secsLabel.backgroundColor = [PresetTimerData sharedModel].burntOrange;
+            
+            self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+            }];
+
+        
         }
 
     }

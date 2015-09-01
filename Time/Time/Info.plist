@@ -2,24 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Steinerlight.ttf</string>
-		<string>EngelLight_ltd.ttf</string>
-		<string>PrintDashed_TT.ttf</string>
-		<string>PrintClearly_TT.tff</string>
-		<string>PrintBold_TT.ttf</string>
-		<string>DIGITALDREAMFAT.ttf</string>
-		<string>Existence-Light.otf</string>
-		<string>Existence-StencilLight.otf</string>
-		<string>DIGITALDREAMFATNARROW.ttf</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.mikekavouras.$(PRODUCT_NAME:rfc1034identifier)</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -34,6 +22,18 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Steinerlight.ttf</string>
+		<string>EngelLight_ltd.ttf</string>
+		<string>PrintDashed_TT.ttf</string>
+		<string>PrintClearly_TT.tff</string>
+		<string>PrintBold_TT.ttf</string>
+		<string>DIGITALDREAMFAT.ttf</string>
+		<string>Existence-Light.otf</string>
+		<string>Existence-StencilLight.otf</string>
+		<string>DIGITALDREAMFATNARROW.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

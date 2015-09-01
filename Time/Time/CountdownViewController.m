@@ -123,7 +123,7 @@
         self.minsLabel.text = [NSString stringWithFormat:@"%02li", (long)minutes];
         self.secsLabel.text = [NSString stringWithFormat:@"%02li", (long)seconds];
       
-        if (days == 0 && hours == 0 && minutes == 0 && seconds == 0){
+        if (days <= 00 && hours <= 00 && minutes <= 00 && seconds <= 00){
             
             [timer invalidate];
             
@@ -170,31 +170,43 @@
             
             
             [UIView animateWithDuration:2.0 animations:^{
-                self.daysLabel.backgroundColor = [PresetTimerData sharedModel].chartreuse;
-                self.hoursLabel.backgroundColor = [PresetTimerData sharedModel].chartreuse;
-                self.minsLabel.backgroundColor = [PresetTimerData sharedModel].chartreuse;
-                self.secsLabel.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+                self.daysLabel.layer.backgroundColor = [PresetTimerData sharedModel].chartreuse.CGColor;
+                self.hoursLabel.layer.backgroundColor = [PresetTimerData sharedModel].chartreuse.CGColor;
+                self.minsLabel.layer.backgroundColor = [PresetTimerData sharedModel].chartreuse.CGColor;
+                self.secsLabel.layer.backgroundColor = [PresetTimerData sharedModel].chartreuse.CGColor;
             }];
             
             [UIView animateWithDuration:5.0 animations:^{
                 self.backgroundView.backgroundColor = [PresetTimerData sharedModel].glacierBlue;
             }];
-
             
             [UIView animateWithDuration:3.5 animations:^{
-            self.backgroundView.backgroundColor = [PresetTimerData sharedModel].eggplant;
-           }completion:^(BOOL finished) {
-            self.daysLabel.backgroundColor = [PresetTimerData sharedModel].burntOrange;
-            self.hoursLabel.backgroundColor = [PresetTimerData sharedModel].burntOrange;
-            self.minsLabel.backgroundColor = [PresetTimerData sharedModel].burntOrange;
-            self.secsLabel.backgroundColor = [PresetTimerData sharedModel].burntOrange;
-            
-            self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].eggplant;
             }];
-
-        
+            
+            [UIView animateWithDuration:5.0 animations:^{
+                self.daysLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+                self.hoursLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+                self.minsLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+                self.secsLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+                
+                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+            }];
+            
+//            [UIView animateWithDuration:5.0 animations:^{
+//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].eggplant;
+//            }completion:^(BOOL finished) {
+//                self.daysLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+//                self.hoursLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+//                self.minsLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+//                self.secsLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
+//                
+//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+//            }];
+            
+            
         }
-
+          
     }
 
 }

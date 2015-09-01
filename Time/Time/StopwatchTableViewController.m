@@ -77,18 +77,19 @@
     self.timeLabel.layer.cornerRadius =10;
     
     self.lapTimeLabel.textColor = [PresetTimerData sharedModel].burntOrange;
+    self.lapTableView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
     
     [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
     
     self.isRunning = NO;
     
-    _currentTime = 0;
-    _currentLapTime = 0;
-    _laps = [NSMutableArray array];
-    _isRunning = NO;
-    _currentLapStartTime = 0;
-    _startTime = nil;
-    _finishTime = nil;
+    self.currentTime = 0;
+    self.currentLapTime = 0;
+    self.laps = [NSMutableArray array];
+    self.isRunning = NO;
+    self.currentLapStartTime = 0;
+    self.startTime = nil;
+    self.finishTime = nil;
    
 }
 
@@ -106,7 +107,7 @@
 
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {
-
+    
     self.currentTime = 0;
     [self.laps removeAllObjects];
     self.isRunning = NO;
@@ -114,12 +115,13 @@
     self.finishTime = nil;
     
     self.timeLabel.text = @"00:00:00";
-   self.lapTimeLabel.text = @"00:00:00";
+    self.lapTimeLabel.text = @"00:00:00";
     
-
+    
     [self.lapTableView reloadData];
-   
-    }
+    self.lapTableView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+    
+}
 
 
 - (IBAction)startPauseButtonTapped:(UIButton *)sender {
@@ -256,12 +258,11 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
+    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return [self.laps count];
 }
 
@@ -285,50 +286,5 @@
     
    return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

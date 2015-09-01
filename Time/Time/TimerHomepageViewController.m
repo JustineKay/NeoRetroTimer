@@ -81,10 +81,11 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     
+    [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
+    self.isRunning = FALSE;
     [self.timerPickerView reloadAllComponents];
     [self.timer invalidate];
     self.pausedTime = Nil;
-    
     
     if ([PresetTimerData sharedModel].userUnsavedTimerData.time == Nil) {
         
@@ -142,11 +143,8 @@
     }else {
         
         [self updateTimeLabel];
-
         [self startTimer];
-        
         [self.startPauseButton setImage:[UIImage imageNamed:@"Pause Filled-O"] forState:UIControlStateNormal];
-        
         self.isRunning = TRUE;
     
     }
@@ -155,6 +153,7 @@
 - (void)updateTimeLabel{
     
     if (self.pausedTime != Nil) {
+        
         self.timeLabel.text = self.pausedTime;
         [self setNumericalValueOfTime:self.pausedTime];
     
@@ -263,7 +262,8 @@
     
     if (hours <= 0 && minutes <= 0 && seconds <= 0){
         
-                [timer invalidate];
+        [timer invalidate];
+        [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
         
         
         //sound

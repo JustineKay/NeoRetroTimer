@@ -33,6 +33,19 @@
     [super viewDidLoad];
     
     [self.setDatePickerData setValue:[PresetTimerData sharedModel].burntOrange forKey:@"textColor"];
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDate *currentDate = [NSDate date];
+    
+    NSDateComponents *dateDelta = [[NSDateComponents alloc] init];
+    
+    [dateDelta setDay:0];
+    [dateDelta setHour:0];
+    [dateDelta setMinute:0];
+    NSDate *minimumDate = [calendar dateByAddingComponents:dateDelta toDate:currentDate options:0];
+    
+    [self.setDatePickerData setMinimumDate:minimumDate];
+    
     self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
     self.eventCountdownButton.titleLabel.font = [UIFont fontWithName:@"PrintBold" size:22.0];
     self.eventCountdownButton.tintColor = [PresetTimerData sharedModel].eggplant;

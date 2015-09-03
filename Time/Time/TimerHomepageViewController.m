@@ -80,24 +80,27 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     
-    [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
-    self.isRunning = FALSE;
-    
     [self.timerPickerView reloadAllComponents];
     
-    [self.timer invalidate];
-    self.pausedTime = Nil;
-    
-    if ([PresetTimerData sharedModel].userUnsavedTimerData.time == Nil) {
-        
+    if (self.timeInSeconds == 0) {
+        [self.timer invalidate];
         [self updateTimeLabel];
-        
-    } else{
-    
-        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
-        self.presetTimerLabel.text = @"";
+        self.isRunning = FALSE;
+        [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
+        self.pausedTime = Nil;
     
     }
+    
+//    if ([PresetTimerData sharedModel].userUnsavedTimerData.time == Nil) {
+//        
+//        [self updateTimeLabel];
+//        
+//    } else{
+//    
+//        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
+//        self.presetTimerLabel.text = @"";
+//    
+//    }
 }
 
 
@@ -133,6 +136,8 @@
 }
 
 - (IBAction)startPauseButtonTapped:(UIButton *)sender {
+    
+   
 
     if (self.isRunning) {
         [self.timer invalidate];
@@ -143,6 +148,7 @@
         
     }else if (self.timeInSeconds > 0){
         
+        NSLog(@"time in seconds: %ld", (long)self.timeInSeconds);
         [self updateTimeLabel];
         [self startTimer];
         [self.startPauseButton setImage:[UIImage imageNamed:@"Pause Filled-O"] forState:UIControlStateNormal];
@@ -219,7 +225,7 @@
     
     NSLog(@"hrs: %ld, mns: %ld, scs: %ld", hrsIntInSec, mnsIntInSec, scsInt);
     NSLog( @"go time in seconds: %ld", goTimeInSeconds);
-    NSLog(@"%@", [PresetTimerData sharedModel].userPresetTimerData.time);
+    NSLog(@"user Preset time: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
     NSLog(@"timer name: %@", [PresetTimerData sharedModel].userPresetTimerData.timerName);
     
     self.timeInSeconds = goTimeInSeconds;

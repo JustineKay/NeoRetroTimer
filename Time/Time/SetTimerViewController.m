@@ -142,14 +142,22 @@
     NSString *sec = [self.pickerSecs objectAtIndex:[pickerView selectedRowInComponent:2]];
     NSString *hourMinSec = [hour stringByAppendingFormat:@":%@:%@", min, sec];
     
-    timer.time = hourMinSec;
+    if ([hourMinSec isEqualToString:@"00:00:00"]) {
+        timer.time = Nil;
+    }else {
     
+    timer.time = hourMinSec;
+    }
 }
 
 
 - (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
     
-     [self dismissViewControllerAnimated:YES completion:nil];
+    [PresetTimerData sharedModel].userPresetTimerData.timerName = Nil;
+    [PresetTimerData sharedModel].userPresetTimerData.time  = Nil;
+    [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 

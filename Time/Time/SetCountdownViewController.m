@@ -36,7 +36,7 @@
     
     [self.setDatePickerData setValue:[PresetTimerData sharedModel].burntOrange forKey:@"textColor"];
     
-    self.setDatePickerData.datePickerMode = UIDatePickerModeDate;
+    //self.setDatePickerData.datePickerMode = UIDatePickerModeDate;
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *currentDate = [NSDate date];

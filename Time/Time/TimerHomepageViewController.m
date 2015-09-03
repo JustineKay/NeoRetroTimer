@@ -64,10 +64,9 @@
     self.timeLabel.text = @"00:00:00";
     self.timeLabel.textColor = [PresetTimerData sharedModel].eggplant;
     self.presetTimerLabel.text = @"";
+    self.presetTimerLabel.textColor = [PresetTimerData sharedModel].burntOrange;
     
     [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
-    
-    self.presetTimerLabel.textColor = [PresetTimerData sharedModel].burntOrange;
     
     self.timerPickerData = [PresetTimerData sharedModel].userPresetTimers;
     
@@ -83,7 +82,9 @@
     
     [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
     self.isRunning = FALSE;
+    
     [self.timerPickerView reloadAllComponents];
+    
     [self.timer invalidate];
     self.pausedTime = Nil;
     
@@ -140,7 +141,7 @@
         [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
         
         
-    }else {
+    }else if (self.timeInSeconds > 0){
         
         [self updateTimeLabel];
         [self startTimer];
@@ -237,6 +238,8 @@
 
 -(void)timerFired:(NSTimer *)timer{
     
+    if (self.timeInSeconds > 0) {
+    
     self.timeInSeconds -= 1;
     
     //hours
@@ -260,7 +263,7 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hours, minutes, seconds];
     
     
-    if (hours <= 0 && minutes <= 0 && seconds <= 0){
+    if (hours == 0 && minutes == 0 && seconds == 0){
         
         [timer invalidate];
         [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
@@ -271,9 +274,9 @@
         NSURL *soundUrl = [NSURL fileURLWithPath:path];
         
         self.timerDoneSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
-       [self.timerDoneSound play];
+        [self.timerDoneSound play];
         
-       
+        
         
         //timer background color animation
         [UIView animateWithDuration:2.0 animations:^{
@@ -287,42 +290,15 @@
         
         
         [UIView animateWithDuration:3.5 animations:^{
-             self.backgroundView.backgroundColor = [PresetTimerData sharedModel].burntOrange;
+            self.backgroundView.backgroundColor = [PresetTimerData sharedModel].burntOrange;
         }completion:^(BOOL finished) {
             self.timerBackgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
-             self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+            self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
         }];
-    
         
-//        //Entire background color ->  fade color to another
-//        CABasicAnimation *myColorAnimation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
-//        [myColorAnimation setAutoreverses:YES];
-//        [myColorAnimation setRepeatCount:2];
-//        [myColorAnimation setDuration:0.3];
-//        [myColorAnimation setToValue:(id)[PresetTimerData sharedModel].eggplant];
-//        the default "from value" is the current value
-//        [self.view.layer addAnimation:fade forKey:@"fadeAnimation"];
-       
-
-//        //Entire background color -> fade color block
-//        [UIView animateWithDuration:0.3f animations:^{
-//            fade.layer.backgroundColor = [UIColor redColor].CGColor;
-        
-        
-        //Entire background color -> fade from one color to another
-//        [super viewDidAppear:animated];
-//        CABasicAnimation* fade = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
-//        fade.fromValue = (id)[PresetTimerData sharedModel].eggplant;
-//        fade.toValue = (id)[PresetTimerData sharedModel].burntOrange;
-//        [fade setDuration:3];
- //    [self.backgroundView.layer addAnimation:fade forKey:@"fadeAnimation"];
-//    
-
+    }
+    }
     
-    NSLog(@"reaction timer ticking");
-    
-}
-
 }
 
 

@@ -22,6 +22,8 @@
 @property (nonatomic) NSArray *datePickerMins;
 @property (nonatomic) NSArray *datePickerSecs;
 
+@property (nonatomic) UIDatePickerMode *datePickerMode;
+
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
 @end
@@ -34,15 +36,17 @@
     
     [self.setDatePickerData setValue:[PresetTimerData sharedModel].burntOrange forKey:@"textColor"];
     
+    self.setDatePickerData.datePickerMode = UIDatePickerModeDate;
+    
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *currentDate = [NSDate date];
     
-    NSDateComponents *dateDelta = [[NSDateComponents alloc] init];
+    NSDateComponents *date = [[NSDateComponents alloc] init];
     
-    [dateDelta setDay:0];
-    [dateDelta setHour:0];
-    [dateDelta setMinute:0];
-    NSDate *minimumDate = [calendar dateByAddingComponents:dateDelta toDate:currentDate options:0];
+    [date setDay:0];
+    [date setHour:0];
+    [date setMinute:0];
+    NSDate *minimumDate = [calendar dateByAddingComponents:date toDate:currentDate options:0];
     
     [self.setDatePickerData setMinimumDate:minimumDate];
     

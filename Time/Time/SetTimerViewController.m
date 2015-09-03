@@ -61,7 +61,6 @@
             label.textColor = [PresetTimerData sharedModel].burntOrange;
             label.layer.borderWidth = 1.5;
             label.layer.borderColor = [PresetTimerData sharedModel].chartreuse.CGColor;
-            //label.layer.backgroundColor = [PresetTimerData sharedModel].chartreuse.CGColor;
             label.layer.cornerRadius = 5.0;
         }
 }

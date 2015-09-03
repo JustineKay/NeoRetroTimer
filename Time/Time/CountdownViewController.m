@@ -26,6 +26,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *backgroundView;
 
+@property (nonatomic) NSTimer *eventTimer;
+
 @end
 
 @implementation CountdownViewController
@@ -95,13 +97,27 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSTimer *timer;
-        timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                 target:self
-                                               selector:@selector(timerFired:)
-                                               userInfo:nil
-                                                repeats:YES];
     
+    NSDictionary *event = [[PresetTimerData sharedModel].userCountdownTimerData lastObject];
+    
+    if (event != nil) {
+        
+        self.eventNameLabel.text = event[@"name"];
+        
+        NSDate *date = event[@"date"];
+        
+        NSInteger ti = ((NSInteger)[date timeIntervalSinceNow]);
+        
+        if (ti > 0 && self.eventTimer == Nil) {
+            
+            
+            self.eventTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                     target:self
+                                                   selector:@selector(timerFired:)
+                                                   userInfo:nil
+                                                    repeats:YES];
+        }
+    }
 }
 
 
@@ -109,7 +125,7 @@
     
     NSDictionary *event = [[PresetTimerData sharedModel].userCountdownTimerData lastObject];
     
-      if (event != nil) {
+    if (event != nil) {
 
         NSDate *date = event[@"date"];
         NSInteger ti = ((NSInteger)[date timeIntervalSinceNow]);
@@ -123,11 +139,11 @@
         self.minsLabel.text = [NSString stringWithFormat:@"%02li", (long)minutes];
         self.secsLabel.text = [NSString stringWithFormat:@"%02li", (long)seconds];
       
-        if (days <= 00 && hours <= 00 && minutes <= 00 && seconds <= 00){
+        if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0){
             
             [timer invalidate];
             
-            
+            //audio
             NSString *path = [NSString stringWithFormat:@"%@/Hallelujah-sound-effect.mp3", [[NSBundle mainBundle] resourcePath]];
             NSURL *soundUrl = [NSURL fileURLWithPath:path];
             
@@ -135,40 +151,7 @@
             [self.eventCountdownDone play];
             
             
-//            //label color changes
-//            [UIView animateWithDuration:2.0 animations:^{
-//                NSArray *labels = self.countdownLabels;
-//                
-//                for (UILabel *label in labels) {
-//                    label.textColor = [PresetTimerData sharedModel].chartreuse;
-//                    label.layer.borderColor = [PresetTimerData sharedModel].glacierBlue.CGColor;
-//                    label.layer.backgroundColor = [PresetTimerData sharedModel].eggplant.CGColor;
-//                }
-//            }];
-//            
-//            //entire background view color animation
-//            [UIView animateWithDuration:5.0 animations:^{
-//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].burntOrange;
-//            }];
-//            
-//            
-//            [UIView animateWithDuration:3.5 animations:^{
-//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].chartreuse;
-//            }completion:^(BOOL finished) {
-//                
-//                NSArray *labels = self.countdownLabels;
-//                
-//                for (UILabel *label in labels) {
-//                    label.textColor = [PresetTimerData sharedModel].eggplant;
-//                    label.layer.borderColor = [PresetTimerData sharedModel].steelBlueGrey.CGColor;
-//                    label.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
-//                }
-//                
-//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
-//            }];
-            
-            
-            
+            //animation
             [UIView animateWithDuration:2.0 animations:^{
                 self.daysLabel.layer.backgroundColor = [PresetTimerData sharedModel].chartreuse.CGColor;
                 self.hoursLabel.layer.backgroundColor = [PresetTimerData sharedModel].chartreuse.CGColor;
@@ -192,17 +175,6 @@
                 
                 self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
             }];
-            
-//            [UIView animateWithDuration:5.0 animations:^{
-//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].eggplant;
-//            }completion:^(BOOL finished) {
-//                self.daysLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
-//                self.hoursLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
-//                self.minsLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
-//                self.secsLabel.layer.backgroundColor = [PresetTimerData sharedModel].burntOrange.CGColor;
-//                
-//                self.backgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
-//            }];
             
             
         }

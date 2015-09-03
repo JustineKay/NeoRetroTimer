@@ -97,8 +97,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    NSLog(@"self.timer: %@", self.eventTimer);
     
     NSDictionary *event = [[PresetTimerData sharedModel].userCountdownTimerData lastObject];
+    
+    NSLog(@"event dictionary: %@", event);
     
     if (event != nil) {
         
@@ -124,8 +127,10 @@
 -(void)timerFired:(NSTimer *)timer {
     
     NSDictionary *event = [[PresetTimerData sharedModel].userCountdownTimerData lastObject];
+    NSDate *date = event[@"date"];
+    NSInteger ti = ((NSInteger)[date timeIntervalSinceNow]);
     
-    if (event != nil) {
+    if (event != nil && ti >= 0) {
 
         NSDate *date = event[@"date"];
         NSInteger ti = ((NSInteger)[date timeIntervalSinceNow]);
@@ -139,7 +144,7 @@
         self.minsLabel.text = [NSString stringWithFormat:@"%02li", (long)minutes];
         self.secsLabel.text = [NSString stringWithFormat:@"%02li", (long)seconds];
       
-        if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0){
+        if (days == 0 && hours == 0 && minutes == 0 && seconds == 0){
             
             [timer invalidate];
             

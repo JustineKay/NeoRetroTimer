@@ -82,7 +82,12 @@
     
     [self.timerPickerView reloadAllComponents];
     
-    if (self.timeInSeconds == 0) {
+    if ([PresetTimerData sharedModel].userUnsavedTimerData.time != Nil){
+        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
+        self.presetTimerLabel.text = @"";
+    
+    }else if (self.timeInSeconds == 0) {
+        
         [self.timer invalidate];
         [self updateTimeLabel];
         self.isRunning = FALSE;
@@ -91,16 +96,6 @@
     
     }
     
-//    if ([PresetTimerData sharedModel].userUnsavedTimerData.time == Nil) {
-//        
-//        [self updateTimeLabel];
-//        
-//    } else{
-//    
-//        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
-//        self.presetTimerLabel.text = @"";
-//    
-//    }
 }
 
 

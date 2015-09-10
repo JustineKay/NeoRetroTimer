@@ -23,6 +23,7 @@
 		6BB1946D1B88D9D000082D0A /* TimerHomepageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946C1B88D9D000082D0A /* TimerHomepageViewController.m */; };
 		6BB194701B88D9EE00082D0A /* SetTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */; };
 		6BB194731B89184700082D0A /* PresetTimerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB194721B89184700082D0A /* PresetTimerData.m */; };
+		6BB937AB1BA0FF2D00BDA285 /* DIGITALDREAMFAT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BB937AA1BA0FF2D00BDA285 /* DIGITALDREAMFAT.ttf */; };
 		6BC7F3181B929C3500FC98AE /* Steinerlight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC7F3171B929C3500FC98AE /* Steinerlight.ttf */; };
 		6BC7F3191B929C5F00FC98AE /* PrintBold_TT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC7F3141B929C0F00FC98AE /* PrintBold_TT.ttf */; };
 		6BC7F31A1B929C5F00FC98AE /* PrintClearly_TT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BC7F3151B929C0F00FC98AE /* PrintClearly_TT.ttf */; };
@@ -66,6 +67,7 @@
 		6BB1946F1B88D9EE00082D0A /* SetTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTimerViewController.m; sourceTree = "<group>"; };
 		6BB194711B89184700082D0A /* PresetTimerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetTimerData.h; sourceTree = "<group>"; };
 		6BB194721B89184700082D0A /* PresetTimerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetTimerData.m; sourceTree = "<group>"; };
+		6BB937AA1BA0FF2D00BDA285 /* DIGITALDREAMFAT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DIGITALDREAMFAT.ttf; sourceTree = "<group>"; };
 		6BC7F3131B929BD000FC98AE /* EngelLight_ltd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EngelLight_ltd.ttf; sourceTree = "<group>"; };
 		6BC7F3141B929C0F00FC98AE /* PrintBold_TT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrintBold_TT.ttf; sourceTree = "<group>"; };
 		6BC7F3151B929C0F00FC98AE /* PrintClearly_TT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrintClearly_TT.ttf; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				6BC7F3161B929C0F00FC98AE /* PrintDashed_TT.ttf */,
 				6BC7F3131B929BD000FC98AE /* EngelLight_ltd.ttf */,
 				6BFFFA761B922D650077669E /* DIGITALDREAM.ttf */,
+				6BB937AA1BA0FF2D00BDA285 /* DIGITALDREAMFAT.ttf */,
 				6BFFFA771B922D650077669E /* DIGITALDREAMFATNARROW.ttf */,
 				6BFFFA781B922D650077669E /* DIGITALDREAMFATSKEW.ttf */,
 				6BFFFA791B922D650077669E /* DIGITALDREAMFATSKEWNARROW.ttf */,
@@ -262,10 +265,11 @@
 				TargetAttributes = {
 					8D0537571B86687B00588318 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = PL82FBEDAB;
+						DevelopmentTeam = BA3X38Y2VZ;
 					};
 					8D0537701B86687C00588318 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = BA3X38Y2VZ;
 						TestTargetID = 8D0537571B86687B00588318;
 					};
 				};
@@ -295,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BC7F3191B929C5F00FC98AE /* PrintBold_TT.ttf in Resources */,
+				6BB937AB1BA0FF2D00BDA285 /* DIGITALDREAMFAT.ttf in Resources */,
 				6BC7F31A1B929C5F00FC98AE /* PrintClearly_TT.ttf in Resources */,
 				6BC7F31B1B929C5F00FC98AE /* PrintDashed_TT.ttf in Resources */,
 				6BC7F31C1B929C5F00FC98AE /* EngelLight_ltd.ttf in Resources */,
@@ -467,7 +472,7 @@
 				INFOPLIST_FILE = Time/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zoufishanmehdi.Time;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustineKay.Time;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -482,7 +487,7 @@
 				INFOPLIST_FILE = Time/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zoufishanmehdi.Time;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JustineKay.Time;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -492,6 +497,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -503,6 +510,7 @@
 				INFOPLIST_FILE = TimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Time.app/Time";
 			};
 			name = Debug;
@@ -511,6 +519,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -518,6 +528,7 @@
 				INFOPLIST_FILE = TimeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Time.app/Time";
 			};
 			name = Release;

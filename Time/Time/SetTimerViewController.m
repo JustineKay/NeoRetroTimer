@@ -143,7 +143,7 @@
     NSString *hourMinSec = [hour stringByAppendingFormat:@":%@:%@", min, sec];
     
     if ([hourMinSec isEqualToString:@"00:00:00"]) {
-        timer.time = Nil;
+        timer.time = nil;
     }else {
     
     timer.time = hourMinSec;
@@ -153,9 +153,9 @@
 
 - (IBAction)cancelButtonTapped:(UIBarButtonItem *)sender {
     
-    [PresetTimerData sharedModel].userPresetTimerData.timerName = Nil;
-    [PresetTimerData sharedModel].userPresetTimerData.time  = Nil;
-    [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
+    [PresetTimerData sharedModel].userPresetTimerData.timerName = nil;
+    [PresetTimerData sharedModel].userPresetTimerData.time  = nil;
+    [PresetTimerData sharedModel].userUnsavedTimerData.time = nil;
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -166,8 +166,8 @@
     
     if ([self.userInputTextField.text isEqualToString:@""]) {
         
-        [PresetTimerData sharedModel].userPresetTimerData.timerName = Nil;
-        [PresetTimerData sharedModel].userPresetTimerData.time  = Nil;
+        [PresetTimerData sharedModel].userPresetTimerData.timerName = nil;
+        [PresetTimerData sharedModel].userPresetTimerData.time  = nil;
         
         NSLog(@"Preset Timer: %@", [PresetTimerData sharedModel].userPresetTimerData.time);
         
@@ -185,7 +185,7 @@
         
         [self setTimer:[PresetTimerData sharedModel].userPresetTimerData With:self.setTimerPickerView];
         
-        [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
+        [PresetTimerData sharedModel].userUnsavedTimerData.time = nil;
         NSLog(@"Unsaved Timer: %@", [PresetTimerData sharedModel].userUnsavedTimerData.time);
         
         NSString *time = [PresetTimerData sharedModel].userPresetTimerData.time;
@@ -197,7 +197,7 @@
         [[PresetTimerData sharedModel].userPresetTimers insertObject:self.userPresetTimer atIndex:00];
         NSLog(@"user preset timers: %@", [PresetTimerData sharedModel].userPresetTimers);
         
-        [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
+        [PresetTimerData sharedModel].userUnsavedTimerData.time = nil;
         NSLog(@"unsaved time: %@", [PresetTimerData sharedModel].userUnsavedTimerData.time);
         
         [self dismissViewControllerAnimated:YES completion:nil];

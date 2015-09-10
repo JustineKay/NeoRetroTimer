@@ -119,6 +119,9 @@
                                                    selector:@selector(timerFired:)
                                                    userInfo:nil
                                                     repeats:YES];
+            
+            //this fills in the 1 sec gap before the time interval calls the method
+            [self timerFired:self.eventTimer];
         }
     }
 }
@@ -147,6 +150,10 @@
         if (days == 0 && hours == 0 && minutes == 0 && seconds == 0){
             
             [timer invalidate];
+            
+            if (timer == self.eventTimer) {
+                self.eventTimer = nil;
+            }
             
             //audio
             NSString *path = [NSString stringWithFormat:@"%@/Hallelujah-sound-effect.mp3", [[NSBundle mainBundle] resourcePath]];

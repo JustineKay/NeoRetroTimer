@@ -24,7 +24,7 @@
 @property (nonatomic) NSString *pausedTime;
 @property (nonatomic) NSInteger timeInSeconds;
 
-@property (nonatomic) BOOL *isRunning;
+@property (nonatomic) BOOL isRunning;
 
 @property (nonatomic) AVAudioPlayer *timerDoneSound;
 - (void)viewDidAppear:(BOOL)animated;
@@ -73,7 +73,7 @@
     self.timerPickerView.dataSource = self;
     self.timerPickerView.delegate = self;
     
-    self.isRunning = FALSE;
+    self.isRunning = NO;
     
     NSLog(@"timer picker data: %@", self.timerPickerData);
 }
@@ -82,18 +82,23 @@
     
     [self.timerPickerView reloadAllComponents];
     
-    if ([PresetTimerData sharedModel].userUnsavedTimerData.time != Nil){
-        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
-        self.presetTimerLabel.text = @"";
+    if ([PresetTimerData sharedModel].userUnsavedTimerData.time != nil){
+        [self.timer invalidate];
+        self.isRunning = NO;
+        self.pausedTime = nil;
+        [self updateTimeLabel];
+        [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
     
     }else if (self.timeInSeconds == 0) {
         
         [self.timer invalidate];
         [self updateTimeLabel];
-        self.isRunning = FALSE;
+        self.isRunning = NO;
+        self.pausedTime = nil;
         [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
-        self.pausedTime = Nil;
     
+    }else {
+        [self updateTimeLabel];
     }
     
 }
@@ -125,8 +130,8 @@
 
 - (IBAction)resetButtonTapped:(UIButton *)sender {
     
-    self.pausedTime = Nil;
-    [PresetTimerData sharedModel].userUnsavedTimerData.time = Nil;
+    self.pausedTime = nil;
+    [PresetTimerData sharedModel].userUnsavedTimerData.time = nil;
     [self updateTimeLabel];
 }
 
@@ -136,7 +141,7 @@
 
     if (self.isRunning) {
         [self.timer invalidate];
-        self.isRunning = FALSE;
+        self.isRunning = nil;
         self.pausedTime = self.timeLabel.text;
         [self.startPauseButton setImage:[UIImage imageNamed:@"Start Filled-100"] forState:UIControlStateNormal];
         
@@ -147,34 +152,35 @@
         [self updateTimeLabel];
         [self startTimer];
         [self.startPauseButton setImage:[UIImage imageNamed:@"Pause Filled-O"] forState:UIControlStateNormal];
-        self.isRunning = TRUE;
+        self.isRunning = YES;
     
     }
 }
 
 - (void)updateTimeLabel{
+    NSString *timeString = nil;
     
-    if (self.pausedTime != Nil) {
+    if (self.pausedTime != nil) {
         
-        self.timeLabel.text = self.pausedTime;
-        [self setNumericalValueOfTime:self.pausedTime];
-    
-    }else if ([PresetTimerData sharedModel].userUnsavedTimerData.time != Nil) {
+        timeString = self.pausedTime;
         
+    } else if ([PresetTimerData sharedModel].userUnsavedTimerData.time != nil) {
+        
+        timeString = [PresetTimerData sharedModel].userUnsavedTimerData.time;
         self.presetTimerLabel.text = @"";
-        self.timeLabel.text = [PresetTimerData sharedModel].userUnsavedTimerData.time;
-        [self setNumericalValueOfTime:[PresetTimerData sharedModel].userUnsavedTimerData.time];
         
-    }else {
+    } else {
         
-        [self setPresetTimer:[PresetTimerData sharedModel].userPresetTimerData With:self.timerPickerView];
+        PresetTimer *presetTimerData = [PresetTimerData sharedModel].userPresetTimerData;
         
-        self.presetTimerLabel.text = [PresetTimerData sharedModel].userPresetTimerData.timerName;
-        self. timeLabel.text = [PresetTimerData sharedModel].userPresetTimerData.time;
+        [self setPresetTimer:presetTimerData With:self.timerPickerView];
+        self.presetTimerLabel.text = presetTimerData.timerName;
         
-        [self setNumericalValueOfTime:[PresetTimerData sharedModel].userPresetTimerData.time];
+        timeString = presetTimerData.time;
     }
     
+    self.timeLabel.text = timeString;
+    [self setNumericalValueOfTime:timeString];
 }
 
 -(void)setPresetTimer:(PresetTimer *)timer With: (UIPickerView *)pickerView{

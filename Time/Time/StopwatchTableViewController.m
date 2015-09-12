@@ -109,6 +109,7 @@
 - (IBAction)resetButtonTapped:(UIButton *)sender {
     
     self.currentTime = 0;
+    self.currentLapTime = 0;
     [self.laps removeAllObjects];
     self.isRunning = NO;
     self.startTime = nil;

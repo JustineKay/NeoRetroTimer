@@ -183,13 +183,15 @@
         
         
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Oops!"
-                                                                       message:@"Start stopwatch to record lap time."
+                                                                       message:@"Restart stopwatch to record lap time."
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction * action) {}];
         
         [alert addAction:defaultAction];
+        alert.view.tintColor = [PresetTimerData sharedModel].burntOrange;
+        
         [self presentViewController:alert animated:YES completion:nil];
         
     }else{

@@ -50,7 +50,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="334"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toE-Or-8o7">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toE-Or-8o7">
                                     <rect key="frame" x="125" y="94" width="350" height="100"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="350" id="Px9-xm-IFO"/>
@@ -106,7 +106,7 @@
                                         <action selector="lapButtonTapped:" destination="Beo-F0-gsW" eventType="touchUpInside" id="l4a-cR-dcX"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5f-bi-fJ0" userLabel="LapTimeLabel">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5f-bi-fJ0" userLabel="LapTimeLabel">
                                     <rect key="frame" x="457" y="43" width="128" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="Cj0-Vh-RlC"/>

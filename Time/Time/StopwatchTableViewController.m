@@ -87,10 +87,10 @@
     self.currentLapTime = 0;
     self.laps = [NSMutableArray array];
     self.isRunning = NO;
-    self.currentLapStartTime = 0;
+    self.currentLapStartTime = nil;
     self.startTime = nil;
     self.finishTime = nil;
-   
+    
 }
 
 
@@ -114,9 +114,10 @@
     self.isRunning = NO;
     self.startTime = nil;
     self.finishTime = nil;
+    self.millisecondsElapsed = 0;
     
-    self.timeLabel.text = @"00:00:00";
-    self.lapTimeLabel.text = @"00:00:00";
+    self.timeLabel.text = @"00:00.00";
+    self.lapTimeLabel.text = @"00:00.00";
     
     
     [self.lapTableView reloadData];
@@ -128,12 +129,16 @@
 - (IBAction)startPauseButtonTapped:(UIButton *)sender {
     if (self.currentLapStartTime == nil) {
         self.currentLapStartTime = [NSDate date];
+        
+        NSLog(@"current Lap Start time: %@", self.currentLapStartTime);
     }
-
+    
     
     if (!self.isRunning) {
         self.isRunning = YES;
         self.startTime = [NSDate date];
+        
+        NSLog( @"start time: %@", self.startTime);
         
         if (![self.timer isValid]) {
             self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01
@@ -144,12 +149,20 @@
             
             [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
             
-             [self.startPauseButton setImage:[UIImage imageNamed:@"Pause Filled-O"] forState:UIControlStateNormal];
+            [self.startPauseButton setImage:[UIImage imageNamed:@"Pause Filled-O"] forState:UIControlStateNormal];
         }
-      
+        
     } else {
+        
+        //I added this as well as set the first if statement in
+        //this method to "== nil" instead of 0.
+        //(not sure yet if this really helps solve our bugs)
+        self.currentLapStartTime = nil;
+        
         self.isRunning = NO;
         self.finishTime = [NSDate date];
+        
+        NSLog(@"finish time: %@", self.finishTime);
         
         [self.timer invalidate];
         
@@ -161,41 +174,63 @@
 
 - (IBAction)lapButtonTapped:(UIButton *)sender {
     
-      NSLog(@"Current time: %02f", self.currentLapTime);
-    
-    NSString *path = [NSString stringWithFormat:@"%@/BingSound.mp3", [[NSBundle mainBundle] resourcePath]];
-    NSURL *soundUrl = [NSURL fileURLWithPath:path];
-    
-    self.lapSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
-     [self.lapSound play];
-    
-    //entire background view color animation
-    [UIView animateWithDuration:.5 animations:^{
-       self.headerBackgroundView.backgroundColor = [PresetTimerData sharedModel].chartreuse;
-    }];
-    
-    [UIView animateWithDuration:.5 animations:^{
-        self.lapTableView.backgroundColor = [PresetTimerData sharedModel].glacierBlue;
-    }];
-    
-    
-
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"mm:ss:SS"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-    NSDate * newNow = [NSDate dateWithTimeIntervalSinceReferenceDate:self.currentLapTime];
-    NSString *timeString = [dateFormatter stringFromDate:newNow];
-    self.lapTimeLabel.text = timeString;
-    
-     [self.laps addObject:self.lapTimeLabel.text];
-
-    self.currentLapStartTime = [NSDate date];
-    
-    [self.lapTableView reloadData];
-    
-    [UIView animateWithDuration:1.0 animations:^{
-        self.headerBackgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
-    }];
+    if (self.millisecondsElapsed == 0) {
+        
+        self.lapButton.enabled = NO;
+        self.lapButton.enabled = YES;
+        
+    }else if (self.currentLapStartTime == nil){
+        
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Oops!"
+                                                                       message:@"Start stopwatch to record lap time."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    }else{
+        
+        NSLog(@"Current time: %02f", self.currentLapTime);
+        
+        NSString *path = [NSString stringWithFormat:@"%@/BingSound.mp3", [[NSBundle mainBundle] resourcePath]];
+        NSURL *soundUrl = [NSURL fileURLWithPath:path];
+        
+        self.lapSound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:nil];
+        [self.lapSound play];
+        
+        //entire background view color animation
+        [UIView animateWithDuration:.5 animations:^{
+            self.headerBackgroundView.backgroundColor = [PresetTimerData sharedModel].chartreuse;
+        }];
+        
+        [UIView animateWithDuration:.5 animations:^{
+            self.lapTableView.backgroundColor = [PresetTimerData sharedModel].glacierBlue;
+        }];
+        
+        
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"mm:ss.SS"];
+        [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+        NSDate * newNow = [NSDate dateWithTimeIntervalSinceReferenceDate:self.currentLapTime];
+        NSString *timeString = [dateFormatter stringFromDate:newNow];
+        self.lapTimeLabel.text = timeString;
+        
+        [self.laps addObject:self.lapTimeLabel.text];
+        NSLog(@"laps: %@", self.laps);
+        
+        self.currentLapStartTime = [NSDate date];
+        
+        [self.lapTableView reloadData];
+        
+        [UIView animateWithDuration:1.0 animations:^{
+            self.headerBackgroundView.backgroundColor = [PresetTimerData sharedModel].ghostGrey;
+        }];
+    }
     
 }
 
@@ -213,7 +248,9 @@
     
     NSInteger millisec = remainder_s;
     
-    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)minutes, (long)seconds, (long)millisec];
+    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld.%02ld", (long)minutes, (long)seconds, (long)millisec];
+    
+    //NSLog(@"Timer Updated");
 }
 
 
@@ -230,7 +267,9 @@
     
     NSInteger millisec = remainder_s;
     
-    self.lapTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)minutes, (long)seconds, (long)millisec];
+    self.lapTimeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld.%02ld", (long)minutes, (long)seconds, (long)millisec];
+    
+    NSLog(@"Lap Timer updated");
 }
 
 
@@ -272,8 +311,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"lapViewCell" forIndexPath:indexPath];
     
     unsigned long lapNumber = indexPath.row + 1;
-
-   NSString *key = [self.laps objectAtIndex:indexPath.row];
+    
+    NSString *key = [self.laps objectAtIndex:indexPath.row];
     
     cell.textLabel.text = [NSString stringWithFormat:@"Lap %lu", lapNumber];
     cell.textLabel.font = [UIFont fontWithName:@"PrintBold" size:20.0];
@@ -285,7 +324,7 @@
     
     
     
-   return cell;
+    return cell;
 }
 
 @end

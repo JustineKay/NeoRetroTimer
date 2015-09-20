@@ -15,7 +15,7 @@ Currently in process of refactoring and adding new features.
 
 
 **Feature Requirements**
-2 primary screens
+ 2 primary screens
 
 * Stopwatch
   * Laps
@@ -52,4 +52,5 @@ Currently in process of refactoring and adding new features.
 * Local notifications
 
 User stories define product features
+
 Present for feedback

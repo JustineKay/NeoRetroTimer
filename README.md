@@ -3,16 +3,18 @@ Originally group project: "unit-1-final-project" with Zoufishan Mehdi
 
 Currently in process of refactoring and adding new features.
 
-Original Requirements:
 
-# Unit 1 Final Project
+
+## Original Requirements:
+
+**Unit 1 Final Project**
 
 **Dates:**
 09/01 - Practice demos
 09/03 - Final demos
 
 
-## Feature Requirements
+**Feature Requirements**
 2 primary screens
 
 * Stopwatch
@@ -26,26 +28,26 @@ Original Requirements:
   * User can pause timer
   * Special events countdown (graduation, birthday, labor day)
 
-## Technical Requirements
+**Technical Requirements**
 * NSTimer or alternative (CADisplayLink, performSelector:)
 * UITabBarController
 * UITabBar with UIImage
 * Each screen is a separate UIViewController
 
-## Project Plan
+**Project Plan**
 * Outlining tasks based on user stories
 * Delegation of tasks amongst team members
 	* Work should be evenly divided
 * Identify checkpoints
 * Communcation plan
  
-## Bonus
+**Bonus**
 * Progress indicator for timer
 * Sounds, vibrations
 * World Clock (additional tab)
 * Themed UI
 
-## Extra bonus
+**Extra bonus**
 * Backgrounding
 * Local notifications
 

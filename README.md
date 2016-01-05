@@ -1,8 +1,18 @@
-# NeoRetroTimer
-Originally group project: "unit-1-final-project" with Zoufishan Mehdi
+# NeoRetroTimer  
+A simple timer, stopwatch and special event countdown app with a punch of color and quirk.
+Whenever the timer or countdown has run out or you log a lap on the stopwatch, the app flashes different bold colors as it chimes.  
 
-Currently in process of refactoring and adding new features.
+Originally a group project (unit-1-final-project) with Zoufishan Mehdi
 
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website1.png" width="220" />
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website2.png" width="220" />
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website3.png" width="220" />
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website4.png" width="220" />
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website5.png" width="220" />
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website6.png" width="220" />
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website7.png" width="220" />
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website9.png" width="220" />
+<img src="https://github.com/JustineKay/NeoRetroTimer/blob/master/Images/NeoRetroTimer-website10.png" width="220" />
 
 
 ## Original Requirements:
